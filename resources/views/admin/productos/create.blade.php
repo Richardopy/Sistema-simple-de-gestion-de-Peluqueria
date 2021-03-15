@@ -62,58 +62,70 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label>Nombre del medicamento:</label>
+                        <label>Nombre del producto:</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-pills"></i></span>
+                                <span class="input-group-text"><i class="fas fa-shopping-bag"></i></span>
                             </div>
-                            <input type="text" class="form-control @error('med_nom') is-invalid @enderror" value="{{ old('med_nom') }}" name="med_nom" placeholder="Nombre del medicamento">
-                            @error('med_nom')
+                            <input type="text" class="form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre') }}" name="nombre" placeholder="Nombre del producto">
+                            @error('nombre')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for="informacion">Descripción del producto</label>
-                        <textarea name="mensaje" id="informacion" class="textarea form-control" style="width: 100%" placeholder="Escriba el cuerpo del mensaje" cols="30" rows="10" required>{{ old('mensaje') }}</textarea>
-                        @error('mensaje')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6"><br>
-                        <label>Precio de compra:</label>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
-                            </div>
-                            <input type="number" id="compra" value="{{ old('med_preciocompra') }}" name="med_preciocompra" class="form-control @error('med_preciocompra') is-invalid @enderror" placeholder="Precio de compra">
-                            @error('med_preciocompra')
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="informacion">Descripción del producto</label>
+                            <textarea name="description" id="informacion" class="textarea form-control" style="width: 100%" placeholder="Escriba el cuerpo del mensaje" cols="30" rows="10" required>{{ old('description') }}</textarea>
+                            @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6"><br>
                         <label>Precio de venta:</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
                             </div>
-                            <input type="number" id="venta" value="{{ old('med_precioventa') }}" name="med_precioventa" class="form-control @error('med_precioventa') is-invalid @enderror" placeholder="Precio de venta">
-                            @error('med_precioventa')
+                            <input type="number" id="precio" value="{{ old('precio') }}" name="precio" class="form-control @error('precio') is-invalid @enderror" placeholder="Precio de venta">
+                            @error('venta')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6"><br>
+                        <label>Precio de oferta:</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
+                            </div>
+                            <input type="number" id="oferta" value="{{ old('oferta') }}" name="oferta" class="form-control @error('oferta') is-invalid @enderror" placeholder="Precio de oferta">
+                            @error('oferta')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="informacion">Seleccione Categorias</label><br>
+                            <select class="js-example-basic-multiple" style="width: 100%" class="form-select select2" name="categorias[]" multiple="multiple">
+                                @foreach($categorias as $value)
+                                    <option value="{{ $value->id }}">{{ $value->nombre }}</option>
+                                @endforeach
+                            </select>  
                         </div>
                     </div>
                 </div>
@@ -169,6 +181,7 @@
                 height: '100%',
             });
         });
+        $('.js-example-basic-multiple').select2();
     </script>
 
 @stop
