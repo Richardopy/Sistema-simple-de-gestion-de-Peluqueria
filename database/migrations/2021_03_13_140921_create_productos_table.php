@@ -16,14 +16,13 @@ class CreateProductosTable extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('codigo')->nullable();
             $table->longText('description');
             $table->integer('precio');
             $table->integer('oferta')->nullable();
             $table->boolean('estado')->default(1);
             $table->string('categoria');
             $table->string('foto')->nullable();
-
-
 
             $table->timestamps();
         });
