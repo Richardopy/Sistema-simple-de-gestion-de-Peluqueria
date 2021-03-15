@@ -1,14 +1,18 @@
 @extends('adminlte::page')
 
-@section('title', 'Evaluaciones completadas')
+@section('title', 'Categorias')
 
 @section('content_header')
-    <h1>Evaluaciones completadas</h1><hr>
-
+    <h1>Categorias</h1>
 @stop
 
 @section('content')
-	
-	hola
 
+
+    <livewire:categorias />
+
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
 @stop
