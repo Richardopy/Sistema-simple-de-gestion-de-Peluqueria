@@ -229,6 +229,12 @@ return [
             'url'         => 'admin/categorias',
             'icon'        => 'fas fa-boxes'
         ],
+        [
+            'text'        => 'Productos',
+            'url'         => 'admin/productos',
+            'icon'        => 'fas fa-shopping-basket',
+            'active'      => ['admin/productos', 'admin/productos*', 'regex:@^content/[0-9]+$@'],
+        ],
     ],
 
     /*
@@ -333,6 +339,21 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        'summernote' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '//cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js',
                 ],
             ],
         ],
