@@ -21,4 +21,14 @@ class Productos extends Component{
 
         return view('livewire.productos',["productos"=>$productos]);
     }
+
+    public function delete($id)
+    {
+        if($id){
+            $producto = Producto::find($id);
+            $producto->estado=0;
+            $producto->update();
+            session()->flash('message', 'Producto eliminado correctamente');
+        }
+}
 }

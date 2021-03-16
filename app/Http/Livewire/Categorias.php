@@ -87,5 +87,5 @@ class Categorias extends Component{
             $categoria->update();
             session()->flash('message', 'Categoria eliminada correctamente');
         }
-}
+    }
 }

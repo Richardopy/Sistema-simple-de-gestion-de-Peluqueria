@@ -23,7 +23,8 @@
 		                    <td>{{ $value->nombre }}</td>
 		                    <td>
 		                    <a href="productos/{{ $value->id }}"><button class="btn btn-sm btn-success"><i class="far fa-eye"></i></button></a>
-		                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal{{ $value->id }}"><i class="far fa-trash-alt"></i></button>
+							<a href="productos/{{ $value->id }}/edit"><button class="btn btn-sm btn-info"><i class="far fa-edit"></i></button></a>
+							<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal{{ $value->id }}"><i class="far fa-trash-alt"></i></button>
 
 								<!-- Modal -->
 								<div class="modal fade" id="exampleModal{{$value->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
