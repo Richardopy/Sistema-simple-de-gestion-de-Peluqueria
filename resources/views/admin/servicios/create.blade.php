@@ -53,7 +53,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-shopping-bag"></i></span>
                             </div>
-                            <input type="text" class="form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre') }}" name="nombre" placeholder="Nombre del producto">
+                            <input type="text" class="form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre') }}" name="nombre" placeholder="Nombre del servicio">
                             @error('nombre')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

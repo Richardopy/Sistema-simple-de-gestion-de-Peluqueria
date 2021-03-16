@@ -44,7 +44,6 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
                         </div>
-                        <input type="number" value="{{$servicio->codigo}}" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="col-md-6"><br>

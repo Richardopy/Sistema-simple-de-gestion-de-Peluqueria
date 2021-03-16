@@ -17,8 +17,7 @@ class ServicioController extends Controller
     }
 
     public function create(){
-        $servicios=Servicio::where("estado",1)->get();
-        return view("admin.servicios.create",["servicios"=>$servicios]);
+        return view("admin.servicios.create");
     }
 
     public function store(Request $request) {
@@ -37,30 +36,34 @@ class ServicioController extends Controller
                     Image::make($request->file('foto'))
                         ->heighten(1000)
                         ->save(public_path() . '/images/servicios/' . $nombre);
-                    $producto->foto=$nombre;
+                    $servicio->foto=$nombre;
                     $control=1;
                 }
             }
         }
 
 		$servicio->description=$request->get('description');
-		$servicio->codigo=$request->get('codigo');
 		$servicio->precio=$request->get('precio');
 		$servicio->oferta=$request->get('oferta');
+
+        if($servicio->save()){
+            Session::flash('success', '¡El servicio se creo correctamente!');
+        }
+
         return Redirect::to('admin/servicios');
 	}	
+
     public function show($id) {
         $servicio=Servicio::findOrFail($id);  
-
-     
-        return view('admin.productos.show',["producto"=>$producto,"categoriaproducto"=>$categoriaproducto]);  
+        return view('admin.servicio.show',["servicio"=>$servicio]);  
     }
+
     public function edit($id) {
         $servicio=Servicio::findOrFail($id);  
 
-       
-        return view('admin.productos.edit',["producto"=>$producto,"categoriaproducto"=>$categoriaproducto]);
-}
+        return view('admin.servicio.edit',["servicio"=>$servicio]);
+    }
+
     public function update(Request $request,$id) {
 
         $servicio=Servicio::findOrFail($id); 
@@ -82,31 +85,14 @@ class ServicioController extends Controller
                 }
             }
         }
-
         $servicio->description=$request->get('description');
-        $servicio->codigo=$request->get('codigo');
         $servicio->precio=$request->get('precio');
         $servicio->oferta=$request->get('oferta');
 
         if ($servicio->update()){
-            
-            $categoriaproductos=CategoriaProducto::where('producto_id',$id)->get();
-
-            foreach ($categoriaproductos as $value){
-                $value->delete();
-            }
-
-            foreach ($request->categorias as $categoria){
-                $categoriaproducto=new CategoriaProducto;
-
-                $categoriaproducto->producto_id=$producto->id;
-                $categoriaproducto->categoria_id=$categoria;
-
-                $categoriaproducto->save();
-            }
-
             Session::flash('success', '¡El servicio se creo correctamente!');
         }
+
         return Redirect::to('admin/servicios');
-}	
+    }	
 }
