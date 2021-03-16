@@ -17,7 +17,7 @@ class Servicios extends Component{
 
     public function render(){
 
-    	$servicios = Servicios::where('estado',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
+    	$servicios = Servicio::where('estado',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
 
         return view('livewire.servicios',["servicios"=>$servicios]);
     }
