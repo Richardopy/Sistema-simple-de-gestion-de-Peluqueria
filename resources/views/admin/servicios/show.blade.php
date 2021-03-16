@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <label>Nombre del servicio:</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -33,7 +33,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="informacion">Descripción del servicio</label>
-                        <?= $producto->description ?>
+                        <?= $servicio->description ?>
                     </div>
                 </div>
             </div>
@@ -44,6 +44,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
                         </div>
+                        <input type="number" value="{{$servicio->precio }}" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="col-md-6"><br>

@@ -20,8 +20,7 @@ class CreateServiciosTable extends Migration
             $table->integer('precio');
             $table->integer('oferta')->nullable();
             $table->boolean('estado')->default(1);
-             $table->string('categoria');
-              $table->string('foto')->nullable();
+            $table->string('foto')->nullable();
 
 
             $table->timestamps();

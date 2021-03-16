@@ -26,8 +26,8 @@
         }
     </style>
 
-{!! Form::model($servicio,['method'=>'PATCH','route'=>['servicio.update',$servicio->id],'files'=>'true']) !!}
-{{Form::token()}}
+    {!! Form::model($servicio,['method'=>'PATCH','route'=>['servicios.update',$servicio->id],'files'=>'true']) !!}
+    {{Form::token()}}
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label>Nombre del servicio:</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -152,6 +152,7 @@
             event.preventDefault();
         }
     </script>
+@stop
 @section('adminlte_js')
     <script>
         $(function () {

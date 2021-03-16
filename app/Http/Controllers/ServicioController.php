@@ -55,13 +55,13 @@ class ServicioController extends Controller
 
     public function show($id) {
         $servicio=Servicio::findOrFail($id);  
-        return view('admin.servicio.show',["servicio"=>$servicio]);  
+        return view('admin.servicios.show',["servicio"=>$servicio]);  
     }
 
     public function edit($id) {
         $servicio=Servicio::findOrFail($id);  
 
-        return view('admin.servicio.edit',["servicio"=>$servicio]);
+        return view('admin.servicios.edit',["servicio"=>$servicio]);
     }
 
     public function update(Request $request,$id) {
