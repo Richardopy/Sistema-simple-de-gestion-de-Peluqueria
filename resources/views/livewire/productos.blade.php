@@ -22,7 +22,7 @@
 		                    <td>{{ $value->id }}</td>
 		                    <td>{{ $value->nombre }}</td>
 		                    <td>
-		                    <a href=""><button class="btn btn-sm btn-info">Editar</button></a>
+		                    <a href="productos/{{ $value->id }}"><button class="btn btn-sm btn-success"><i class="far fa-eye"></i></button></a>
 		                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal{{ $value->id }}"><i class="far fa-trash-alt"></i></button>
 
 								<!-- Modal -->

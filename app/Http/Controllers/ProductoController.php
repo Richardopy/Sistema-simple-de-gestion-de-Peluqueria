@@ -9,7 +9,7 @@ use Image, file;
 use Illuminate\Support\Facades\Redirect;
 use Session;
 use App\Models\CategoriaProducto;
-
+use DB;
 
 class ProductoController extends Controller
 {
@@ -66,5 +66,16 @@ class ProductoController extends Controller
         }
         return Redirect::to('admin/productos');
 	}	
+    public function show($id) {
+        $producto=Producto::findOrFail($id);  
+
+        $categoriaproducto=DB::table('categoria_productos as cp')
+            ->join('productos as p','cp.producto_id','p.id')
+            ->join('categorias as c','cp.categoria_id','c.id')
+            ->select('c.nombre')
+            ->where('p.id',$id)->get();
+        
+        return view('admin.productos.show',["producto"=>$producto,"categoriaproducto"=>$categoriaproducto]);
+    }
 }
 

@@ -97,7 +97,7 @@
                                 <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
                             </div>
                             <input type="number" id="precio" value="{{ old('precio') }}" name="precio" class="form-control @error('precio') is-invalid @enderror" placeholder="Precio de venta">
-                            @error('venta')
+                            @error('precio')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
