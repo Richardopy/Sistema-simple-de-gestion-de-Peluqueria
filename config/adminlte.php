@@ -235,6 +235,12 @@ return [
             'icon'        => 'fas fa-shopping-basket',
             'active'      => ['admin/productos', 'admin/productos*', 'regex:@^content/[0-9]+$@'],
         ],
+        [
+            'text'        => 'Servicios',
+            'url'         => 'admin/servicios',
+            'icon'        => 'fas fa-hand-holding',
+            'active'      => ['admin/servicios', 'admin/servicios*', 'regex:@^content/[0-9]+$@'],
+        ],
     ],
 
     /*

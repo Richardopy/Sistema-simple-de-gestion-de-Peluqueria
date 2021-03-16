@@ -20,10 +20,7 @@ protected $table='servicios';
             'precio',
             'oferta',
             'estado',
-            'categoria',
             'foto',
-
-
 ];
 
 
