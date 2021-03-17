@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <label>Nombre del servicio:</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -157,6 +157,7 @@
                 height: '100%',
             });
         });
+        $('.js-example-basic-multiple').select2();
     </script>
 
 @stop
