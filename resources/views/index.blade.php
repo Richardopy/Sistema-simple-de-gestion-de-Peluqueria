@@ -42,29 +42,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
 	<!--// web-fonts -->
 
+	@livewireStyles
+
 </head>
 <body>
 	<!-- banner -->
 	<div class="banner jarallax" id="home">
 		<img class="jarallax-img" src="{{ asset('frontend/images/22.jpg')}}" alt="">
-		<header>
-			<div class="container">
-				<div class="header-bottom-agileits">
-					<div class="w3-logo">
-						<h1><a href="{{ asset ('index.html')}}">Beauty Salon</a></h1>
-					</div>
-					<div class="address">
-						<p>4th block,New York City.</p>
-						<p class="para-y"><a href="{{ asset('about.html') }}">Get more info</a></p>
-					</div>
-					<div class="nav-contact-w3ls">
-						<p>+0 111 222 333<span class="fa fa-phone" aria-hidden="true"></span></p>
-						<p class="para-y"><a href="mailto:info@example.com">info@example.com</a><span class="fa fa-envelope-o" aria-hidden="true"></span></p>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-		</header>
+
+		<livewire:info />
+
 		<!-- navigation -->
 		<div class="nav-bg">
 			<div class="container">
@@ -94,8 +81,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<li><a href="typography.html">Typography</a></li>
 								</ul>
 							</li>
-							<li><a href="gallery.html">Gallery</a></li>
 							<li><a href="{{ asset('frontend/contact.html')}}">Contact</a></li>
+							@guest
+								<li><a href="{{ url('/login') }}">Iniciar Sesión</a></li>
+							@else
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">{{ Auth::user()->name }}<b class="caret"></b></a>
+									<ul class="dropdown-menu agile_short_dropdown">
+										<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Cerrar sesión</a></li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+	                                        @csrf
+	                                    </form>
+									</ul>
+								</li>
+							@endguest
 						</ul>
 
 					</div>
@@ -607,6 +607,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--js for bootstrap working-->
 	<script src="{{asset('frontend/js/bootstrap.js')}}"></script>
 	<!-- //for bootstrap working -->
+	@livewireScripts
 </body>
 
 </html>
