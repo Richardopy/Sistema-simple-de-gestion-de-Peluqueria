@@ -20,7 +20,7 @@ class Cliente extends Component{
 
         $clientes = User::where('nivel',3)->where('name','LIKE','%'.$this->search.'%')->paginate(20);
         
-        return view('livewire.cliente',["clientes"=>$clientes]);
+        return view('livewire.cliente.index',["clientes"=>$clientes]);
 
     }
     
@@ -32,14 +32,15 @@ class Cliente extends Component{
 
     public function store(){
         $validatedDate = $this->validate([
-            'name' => 'required,string,max:255',
-            'password' => 'required',
-            'email' => 'required,string,email,max:255,unique:users',
+            'name' => 'required|max:255',
+            'password' => 'required|min:8',
+            'email' => 'required|email',
         ]);
 
         return User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
+            $this->name = 'name';
+            $this->password = 'password';
+            $this->email = 'email';
             'password' => Hash::make($input['password']),
             'nivel' => 3,
         ]);

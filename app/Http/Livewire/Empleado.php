@@ -45,7 +45,6 @@ class Empleado extends Component
         $this->resetInputFields();
     }
 
-
     public function delete($id)
     {
         if($id){

@@ -37,7 +37,7 @@
 								        </button>
 								      </div>
 								      <div class="modal-body">
-								        <p>¿Realmente quiere eliminar la categoria {{ $value->nombre }}?</p>
+								        <p>¿Realmente quiere eliminar el producto {{ $value->nombre }}?</p>
 								      </div>
 								      <div class="modal-footer">
 								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
