@@ -34,6 +34,9 @@
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">{{ Auth::user()->name }}<b class="caret"></b></a>
 									<ul class="dropdown-menu agile_short_dropdown">
+										@if (Auth::user()->nivel == 1)
+											<li><a href="{{ url('/admin/panel') }}">Panel de Control</a></li>
+										@endif
 										<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Cerrar sesión</a></li>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

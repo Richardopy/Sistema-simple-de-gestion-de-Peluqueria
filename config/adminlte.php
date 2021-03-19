@@ -225,6 +225,22 @@ return [
 
     'menu' => [
         [
+            'text'        => 'Panel de Control',
+            'url'         => 'admin/panel',
+            'icon'        => 'fas fa-tachometer-alt'
+        ],
+        [
+            'header' => 'account_settings'
+        ],
+        [
+            'text' => 'profile',
+            'url'  => 'user/profile',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'header' => 'PRODUCTOS',
+        ],
+        [
             'text'        => 'Categorias',
             'url'         => 'admin/categorias',
             'icon'        => 'fas fa-boxes'
@@ -235,11 +251,30 @@ return [
             'icon'        => 'fas fa-shopping-basket',
             'active'      => ['admin/productos', 'admin/productos*', 'regex:@^content/[0-9]+$@'],
         ],
+
+        [
+            'header' => 'SERVICIOS',
+        ],
         [
             'text'        => 'Servicios',
             'url'         => 'admin/servicios',
             'icon'        => 'fas fa-hand-holding',
             'active'      => ['admin/servicios', 'admin/servicios*', 'regex:@^content/[0-9]+$@'],
+        ],
+        [
+            'header' => 'USUARIOS',
+        ],
+        [
+            'text'        => 'Clientes',
+            'url'         => 'admin/clientes',
+            'icon'        => 'far fa-user',
+            'active'      => ['admin/clientes', 'admin/clientes*', 'regex:@^content/[0-9]+$@'],
+        ],
+        [
+            'text'        => 'Colaboradores',
+            'url'         => 'admin/colaboradores',
+            'icon'        => 'fas fa-users',
+            'active'      => ['admin/colaboradores', 'admin/colaboradores*', 'regex:@^content/[0-9]+$@'],
         ],
     ],
 

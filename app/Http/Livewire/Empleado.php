@@ -9,6 +9,7 @@ use App\Models\User;
 class Empleado extends Component
 {
     use WithPagination;
+    
     protected $paginationTheme = 'bootstrap';
     public $search='';
     public $name;
@@ -27,10 +28,9 @@ class Empleado extends Component
     public function store()
     {
         $validatedDate = $this->validate([
-            'name' => 'required'
-            'nivel' => '2'
+            'name' => 'required',
         ]);
-
+    }
 
     public function edit($id)
     {
