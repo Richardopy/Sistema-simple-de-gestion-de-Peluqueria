@@ -5,53 +5,62 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
-class Empleado extends Component
-{
+class Empleado extends Component{
+    
     use WithPagination;
     
     protected $paginationTheme = 'bootstrap';
     public $search='';
-    public $name;
-    public $updateMode = false;
+    public $name,$password,$email;
+
+
     public function render(){
 
-        $empleados = User::where('nivel',2)->where('name','LIKE','%'.$this->search.'%')->paginate(20);
+        $clientes = User::where('nivel',2)->where('name','LIKE','%'.$this->search.'%')->paginate(20);
         
-        return view('livewire.empleado.index',["empleados"=>$empleados]);
+        return view('livewire.empleado.index',["clientes"=>$clientes]);
 
     }
+    
     private function resetInputFields(){
         $this->name = '';
+        $this->password = '';
+        $this->email = '';
     }
 
-    public function store()
-    {
+    public function store(){
         $validatedDate = $this->validate([
-            'name' => 'required',
+            'name' => 'required|max:255',
+            'password' => 'required|min:8',
+            'email' => 'required|email|unique:users',
         ]);
-    }
 
-    public function edit($id)
-    {
-        $this->updateMode = true;
-        $empleado = Empleado::where('id',$id)->first();
-        $this->name = $empleado->name;
-    }
+        return User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
+            'nivel' => 2
+        ]);
 
-    public function cancel()
-    {
-        $this->updateMode = false;
         $this->resetInputFields();
     }
 
-    public function delete($id)
-    {
+
+    public function delete($id){
         if($id){
-            $empleado = Empleado::find($id);
-            $empleado->estado=0;
-            $empleado->update();
-            session()->flash('message', 'Empleado eliminado correctamente');
+            $cliente = User::find($id);
+            if ($cliente->estado==1) {
+                $cliente->estado=0;
+                session()->flash('message', 'Cliente desactivado correctamente');
+            }else{
+                $cliente->estado=1;
+                session()->flash('message', 'Cliente activado correctamente');
+            }
+            
+            $cliente->update();
+            
         }
     }
 }

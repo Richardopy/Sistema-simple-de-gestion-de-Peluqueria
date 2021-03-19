@@ -34,31 +34,33 @@ class Cliente extends Component{
         $validatedDate = $this->validate([
             'name' => 'required|max:255',
             'password' => 'required|min:8',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
         ]);
 
         return User::create([
-            $this->name = 'name';
-            $this->password = 'password';
-            $this->email = 'email';
-            'password' => Hash::make($input['password']),
-            'nivel' => 3,
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
+            'nivel' => 3
         ]);
 
-    }
-
-    public function cancel(){
-        $this->updateMode = false;
         $this->resetInputFields();
     }
 
 
     public function delete($id){
         if($id){
-            $cliente = Cliente::find($id);
-            $cliente->estado=0;
+            $cliente = User::find($id);
+            if ($cliente->estado==1) {
+                $cliente->estado=0;
+                session()->flash('message', 'Cliente desactivado correctamente');
+            }else{
+                $cliente->estado=1;
+                session()->flash('message', 'Cliente activado correctamente');
+            }
+            
             $cliente->update();
-            session()->flash('message', 'Cliente eliminado correctamente');
+            
         }
     }
 }
