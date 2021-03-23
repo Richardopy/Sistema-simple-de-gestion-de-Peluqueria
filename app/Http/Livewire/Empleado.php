@@ -24,10 +24,11 @@ class Empleado extends Component{
 
     }
     
-    private function resetInputFields(){
+    public function resetInputFields(){
         $this->name = '';
         $this->password = '';
         $this->email = '';
+        $this->password_confirmation = '';
     }
 
     public function store(){
@@ -36,7 +37,6 @@ class Empleado extends Component{
             'password' => 'min:8 required_with:password_confirmation|same:password_confirmation',
             'password_confirmation'=> 'required|min:8',
             'email' => 'required|email|unique:users',
-        $this->resetInputFields();
         ]);
 
         return User::create([

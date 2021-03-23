@@ -28,15 +28,21 @@ class Cliente extends Component{
         $this->name = '';
         $this->password = '';
         $this->email = '';
+        $this->password_confirmation = '';
     }
 
     public function store(){
+
         $validatedDate = $this->validate([
             'name' => 'required|max:255',
             'password' => 'min:8 required_with:password_confirmation|same:password_confirmation',
             'password_confirmation'=> 'required|min:8',
             'email' => 'required|email|unique:users',
-        ]);
+        ],
+        [
+            'name.required' => 'Carga las cosas man',
+        ]
+        );
 
         return User::create([
             'name' => $this->name,
@@ -44,6 +50,7 @@ class Cliente extends Component{
             'password' => Hash::make($this->password),
             'nivel' => 3
         ]);
+
         $this->resetInputFields();
 
     }

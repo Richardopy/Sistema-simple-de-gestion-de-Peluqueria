@@ -9,10 +9,15 @@ use App\Models\Categoria;
 class Categorias extends Component{
 
     use WithPagination;
+
     protected $paginationTheme = 'bootstrap';
+    
     public $search='';
+    
     public $nombre, $categoria_id;
+    
     public $updateMode = false;
+    
     public function render(){
 
         $categorias = Categoria::where('estado',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
@@ -20,6 +25,7 @@ class Categorias extends Component{
         return view('livewire.categoria.index',["categorias"=>$categorias]);
 
     }
+    
     private function resetInputFields(){
         $this->nombre = '';
     }
