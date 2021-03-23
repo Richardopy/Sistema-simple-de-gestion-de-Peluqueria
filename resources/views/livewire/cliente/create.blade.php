@@ -14,6 +14,12 @@
         <label for="exampleFormControlInput1">Contraseña:</label>
         <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Contraseña" wire:model="password">
         @error('password') <span class="text-danger">{{ $message }}</span>@enderror
+
+    </div>
+     <div class="form-group">
+        <label for="exampleFormControlInput1">Confirme su Contraseña:</label>
+        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Confirmación de Contraseña" wire:model="password_confirmation">
+        @error('password_confirmation') <span class="text-danger">{{ $message }}</span>@enderror
     </div>
    
     <button wire:click.prevent="store()" class="btn btn-success">Guardar</button>

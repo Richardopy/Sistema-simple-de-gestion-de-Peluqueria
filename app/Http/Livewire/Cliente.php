@@ -13,7 +13,7 @@ class Cliente extends Component{
     
     protected $paginationTheme = 'bootstrap';
     public $search='';
-    public $name,$password,$email;
+    public $name,$password,$email,$password_confirmation;
 
 
     public function render(){
@@ -33,7 +33,8 @@ class Cliente extends Component{
     public function store(){
         $validatedDate = $this->validate([
             'name' => 'required|max:255',
-            'password' => 'required|min:8',
+            'password' => 'min:8 required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation'=> 'required|min:6',
             'email' => 'required|email|unique:users',
         ]);
 
@@ -46,7 +47,6 @@ class Cliente extends Component{
 
         $this->resetInputFields();
     }
-
 
     public function delete($id){
         if($id){
