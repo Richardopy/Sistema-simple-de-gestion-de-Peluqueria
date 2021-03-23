@@ -671,36 +671,18 @@ p.para-w3-agile {
 .area-inner {
 	padding: 0;
 }
-.area-img1,
-.area-img2,
-.area-img3,
-.area-img4,
+.area-img,
 .area-right {
 	flex-basis: 50%;
 	-webkit-flex-basis: 50%;
 }
-.area-img1,
-.area-img2,
-.area-img3,
-.area-img4 {
+.area-img {
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	-ms-background-size: cover;
 	background-size: cover;
 	    min-height: 330px;
-}
-.area-img1 {
-	background: url(../images/2.jpg)no-repeat 0px 0px;
-}
-.area-img2 {
-	background: url(../images/4.jpg)no-repeat 0px 0px;
-}
-.area-img3 {
-	background: url(../images/1.jpg)no-repeat 0px 0px;
-}
-.area-img4 {
-	background: url(../images/5.jpg)no-repeat 0px 0px;
 }
 .area-right {
 	padding: 2em;
@@ -3110,10 +3092,7 @@ iframe{
 		font-size: 2em;
 		letter-spacing: 1px;
 	}
-	.area-img1,
-	.area-img2,
-	.area-img3,
-	.area-img4 {
+	.area-img {
 		min-height: 220px;
 	}
 	.agile-dish-caption {
