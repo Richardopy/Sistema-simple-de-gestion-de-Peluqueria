@@ -37,7 +37,16 @@ class Empleado extends Component{
             'password' => 'min:8 required_with:password_confirmation|same:password_confirmation',
             'password_confirmation'=> 'required|min:8',
             'email' => 'required|email|unique:users',
-        ]);
+        ],
+     [
+            'name.required' => 'El campo nombre no puede estar vacio',
+
+            'password.required' => 'El campo contraseña no puede estar vacio',
+
+            'password_confirmation.required' => 'El campo confirmar contraseña no puede estar vacio',
+            
+            'email.required' => 'El campo correo no puede estar vacio',        ]
+        );
 
         return User::create([
             'name' => $this->name,

@@ -40,8 +40,13 @@ class Cliente extends Component{
             'email' => 'required|email|unique:users',
         ],
         [
-            'name.required' => 'Carga las cosas man',
-        ]
+            'name.required' => 'El campo nombre no puede estar vacio',
+
+            'password.required' => 'El campo contraseña no puede estar vacio',
+
+            'password_confirmation.required' => 'El campo confirmar contraseña no puede estar vacio',
+            
+            'email.required' => 'El campo correo no puede estar vacio',        ]
         );
 
         return User::create([
