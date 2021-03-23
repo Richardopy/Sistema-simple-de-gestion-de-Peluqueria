@@ -34,7 +34,7 @@ class Cliente extends Component{
         $validatedDate = $this->validate([
             'name' => 'required|max:255',
             'password' => 'min:8 required_with:password_confirmation|same:password_confirmation',
-            'password_confirmation'=> 'required|min:6',
+            'password_confirmation'=> 'required|min:8',
             'email' => 'required|email|unique:users',
         ]);
 
@@ -44,8 +44,8 @@ class Cliente extends Component{
             'password' => Hash::make($this->password),
             'nivel' => 3
         ]);
-
         $this->resetInputFields();
+
     }
 
     public function delete($id){

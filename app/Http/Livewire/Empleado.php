@@ -13,7 +13,7 @@ class Empleado extends Component{
     
     protected $paginationTheme = 'bootstrap';
     public $search='';
-    public $name,$password,$email;
+    public $name,$password,$email,$password_confirmation;
 
 
     public function render(){
@@ -33,8 +33,10 @@ class Empleado extends Component{
     public function store(){
         $validatedDate = $this->validate([
             'name' => 'required|max:255',
-            'password' => 'required|min:8',
+            'password' => 'min:8 required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation'=> 'required|min:8',
             'email' => 'required|email|unique:users',
+        $this->resetInputFields();
         ]);
 
         return User::create([
