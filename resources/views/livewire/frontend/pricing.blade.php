@@ -5,13 +5,13 @@
 				<h3 class="w3l_header">Productos <span>Disponibles</span></h3>
 				<p>Texto genérico - Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico</p>
 			</div>
-			<div class="pricing-grids-info">
+			<div class="row">
 				@foreach ($productos as $value)
-					<div class="pricing-grid grid-one">
+					<div class="col-md-3 card-body card shadow-lg">
+						<div class="area-img" style="background: url(/images/productos/{{ $value->foto }})no-repeat 0px 0px;">
+						</div>
 						<div class="w3ls-top">
 							<h3>{{$value->nombre }}</h3>
-						</div>
-						<div class="area-img" style="background: url(/images/productos/{{ $value->foto }})no-repeat 0px 0px;">
 						</div>
 						<div class="w3ls-bottom">
 							<ul class="count">
