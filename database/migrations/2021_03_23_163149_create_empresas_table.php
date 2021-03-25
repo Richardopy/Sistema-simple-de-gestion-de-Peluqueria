@@ -31,6 +31,22 @@ class CreateEmpresasTable extends Migration
             $table->string('twitter')->nullable();
             $table->string('correo')->nullable();
             $table->date('fundacion');
+            $table->time('lunesingreso')->nullable();
+            $table->time('lunessalida')->nullable();
+            $table->time('martesingreso')->nullable();
+            $table->time('martessalida')->nullable();
+            $table->time('miercolesingreso')->nullable();
+            $table->time('miercolessalida')->nullable();
+            $table->time('juevesingreso')->nullable();
+            $table->time('juevessalida')->nullable();
+            $table->time('viernesingreso')->nullable();
+            $table->time('viernessalida')->nullable();
+            $table->time('sabadoingreso')->nullable();
+            $table->time('sabadosalida')->nullable();
+            $table->time('domingoingreso')->nullable();
+            $table->time('domingosalida')->nullable();
+            $table->boolean('delivery')->default(0);
+            $table->integer('limitedelivery')->nullable();
 
             $table->timestamps();
         });

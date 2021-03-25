@@ -59,7 +59,7 @@
 	                <label>Teléfono de la Empresa:</label>
 	                <div class="input-group mb-3">
 	                    <div class="input-group-prepend">
-	                        <span class="input-group-text"><i class="fas fa-phone-alt"></i></i></span>
+	                        <span class="input-group-text"><i class="fas fa-phone-alt"></i></span>
 	                    </div>
 	                    <input type="text" class="form-control" value="{{ $empresa->telefono1 }}" readonly>
 	                </div>
@@ -68,7 +68,7 @@
 		            <label>Fecha de fundación de la Empresa:</label>
 		            <div class="input-group mb-3">
 		                <div class="input-group-prepend">
-		                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></i></i></span>
+		                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
 		                </div>
 		                <input type="text" class="form-control" value="{{ $empresa->fundacion }}" readonly>
 		            </div>
@@ -148,14 +148,72 @@
 	                <label>Correo de la Empresa:</label>
 	                <div class="input-group mb-3">
 	                    <div class="input-group-prepend">
-	                        <span class="input-group-text"><i class="fas fa-envelope-open-text"></i></i></i></span>
+	                        <span class="input-group-text"><i class="fas fa-envelope-open-text"></i></span>
 	                    </div>
 	                    <input type="text" class="form-control" value="{{ $empresa->correo }}" readonly>
 	                </div>
 	            </div>
+	            @if ($empresa->delivery == 1)
+	            	<div class="col-md-12">
+		                <label>Limite de delivery:</label>
+		                <div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text"><i class="fas fa-shipping-fast"></i></span>
+		                    </div>
+		                    <input type="text" class="form-control" value="{{ $empresa->limitedelivery }} Km." readonly>
+		                </div>
+		            </div>
+	            @endif
 	        </div>
 	        <div class="row">
-	        	<div class="col-12">
+	        	<div class="col-md-12" align="center">
+	        		<b>Horario de atención</b><hr>
+	        	</div>
+	        	@if ($empresa->lunesingreso)
+	        		<div class="col-md-3">
+		        		<b>Lunes:</b><br>
+		        		Desde las: {{ $empresa->lunesingreso }} hrs. - hasta las {{ $empresa->lunessalida }} hrs.
+		        	</div>
+	        	@endif
+	        	@if ($empresa->martesingreso)
+	        		<div class="col-md-3">
+		        		<b>Martes:</b><br>
+		        		Desde las: {{ $empresa->martesingreso }} hrs. - hasta las {{ $empresa->martessalida }} hrs.
+		        	</div>
+	        	@endif
+	        	@if ($empresa->miercolesingreso)
+	        		<div class="col-md-3">
+		        		<b>Miércoles:</b><br>
+		        		Desde las: {{ $empresa->miercolesingreso }} hrs. - hasta las {{ $empresa->miercolessalida }} hrs.
+		        	</div>
+	        	@endif
+	        	@if ($empresa->juevesingreso)
+	        		<div class="col-md-3">
+		        		<b>Jueves:</b><br>
+		        		Desde las: {{ $empresa->juevesingreso }} hrs. - hasta las {{ $empresa->juevessalida }} hrs.
+		        	</div>
+	        	@endif
+	        	@if ($empresa->viernesingreso)
+	        		<div class="col-md-3">
+		        		<b>Viernes:</b><br>
+		        		Desde las: {{ $empresa->viernesingreso }} hrs. - hasta las {{ $empresa->viernessalida }} hrs.
+		        	</div>
+	        	@endif
+	        	@if ($empresa->sabadoingreso)
+	        		<div class="col-md-3">
+		        		<b>Sábado:</b><br>
+		        		Desde las: {{ $empresa->sabadoingreso }} hrs. - hasta las {{ $empresa->sabadosalida }} hrs.
+		        	</div>
+	        	@endif
+	        	@if ($empresa->domingoingreso)
+	        		<div class="col-md-3">
+		        		<b>Domingo:</b><br>
+		        		Desde las: {{ $empresa->domingoingreso }} hrs. - hasta las {{ $empresa->domingosalida }} hrs.
+		        	</div>
+	        	@endif
+	        </div>
+	        <div class="row">
+	        	<div class="col-12"><hr>
                     <style type="text/css">
                         #mapa{border:0px solid #999;height:250px; border-radius: 10px;}
                     </style>

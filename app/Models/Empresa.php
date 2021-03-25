@@ -31,6 +31,21 @@ class Empresa extends Model{
         'twitter',
         'correo',
         'fundacion',
-
+        'lunesingreso',
+        'lunessalida',
+        'martesingreso',
+        'martessalida',
+        'miercolesingreso',
+        'miercolessalida',
+        'juevesingreso',
+        'juevessalida',
+        'viernesingreso',
+        'viernessalida',
+        'sabadoingreso',
+        'sabadosalida',
+        'domingoingreso',
+        'domingosalida',
+        'delivery',
+        'limitedelivery',
     ];
 }

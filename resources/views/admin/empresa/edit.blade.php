@@ -253,6 +253,199 @@
 		                </div>
 		            </div>
 		            <div class="col-md-12">
+		            	<label>¿Cuenta con delivery?</label>
+		            	<div class="input-group mb-3">
+						  	<div class="input-group-prepend">
+						    	<div class="input-group-text">
+						      		<input type="checkbox" {{ ($empresa->delivery == 1) ? "checked" : "" }} name="delivery" id="delivery" aria-label="Checkbox for following text input">
+						    	</div>
+						  	</div>
+						  	<input type="number" min="0" class="form-control" id="deliverykm" name="limitedelivery" aria-label="Text input with checkbox" value="{{ $empresa->limitedelivery }}" placeholder="Agregar kilometros de alcance" {{ ($empresa->delivery) ? "" : "readonly" }}> Km.
+						</div>
+		            </div>
+		        </div>
+		        <div class="row">
+		        	<div class="col-md-12" align="center">
+		        		<b>Horario de atención</b><hr>
+		        	</div>
+	        		<div class="col-md-3">
+	        			<b>Lunes:</b><br>
+		        		<div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text">Apertura</span>
+		                    </div>
+		                    <input type="time" class="form-control @error('lunesingreso') is-invalid @enderror" value="{{ $empresa->lunesingreso }}" name="lunesingreso">
+	                        @error('lunesingreso')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+		                </div>
+		                <div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text">Cierre</span>
+		                    </div>
+		                    <input type="time" class="form-control @error('lunessalida') is-invalid @enderror" value="{{ $empresa->lunessalida }}" name="lunessalida">
+	                        @error('lunessalida')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+		                </div>
+		        	</div>
+	        		<div class="col-md-3">
+		        		<b>Martes:</b><br>
+		        		<div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text">Apertura</span>
+		                    </div>
+		                    <input type="time" class="form-control @error('martesingreso') is-invalid @enderror" value="{{ $empresa->martesingreso }}" name="martesingreso">
+	                        @error('martesingreso')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+		                </div>
+		                <div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text">Cierre</span>
+		                    </div>
+		                    <input type="time" class="form-control @error('martessalida') is-invalid @enderror" value="{{ $empresa->martessalida }}" name="martessalida">
+	                        @error('martessalida')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+		                </div>
+		        	</div>
+	        		<div class="col-md-3">
+		        		<b>Miércoles:</b><br>
+		        		<div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text">Apertura</span>
+		                    </div>
+		                    <input type="time" class="form-control @error('miercolesingreso') is-invalid @enderror" value="{{ $empresa->miercolesingreso }}" name="miercolesingreso">
+	                        @error('miercolesingreso')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+		                </div>
+		                <div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text">Cierre</span>
+		                    </div>
+		                    <input type="time" class="form-control @error('miercolessalida') is-invalid @enderror" value="{{ $empresa->miercolessalida }}" name="miercolessalida">
+	                        @error('miercolessalida')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+		                </div>
+		        	</div>
+	        		<div class="col-md-3">
+		        		<b>Jueves:</b><br>
+		        		<div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text">Apertura</span>
+		                    </div>
+		                    <input type="time" class="form-control @error('juevesingreso') is-invalid @enderror" value="{{ $empresa->juevesingreso }}" name="juevesingreso">
+	                        @error('juevesingreso')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+		                </div>
+		                <div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text">Cierre</span>
+		                    </div>
+		                    <input type="time" class="form-control @error('juevessalida') is-invalid @enderror" value="{{ $empresa->juevessalida }}" name="juevessalida">
+	                        @error('juevessalida')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+		                </div>
+		        	</div>
+	        		<div class="col-md-4">
+		        		<b>Viernes:</b><br>
+		        		<div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text">Apertura</span>
+		                    </div>
+		                    <input type="time" class="form-control @error('viernesingreso') is-invalid @enderror" value="{{ $empresa->viernesingreso }}" name="viernesingreso">
+	                        @error('viernesingreso')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+		                </div>
+		                <div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text">Cierre</span>
+		                    </div>
+		                    <input type="time" class="form-control @error('viernessalida') is-invalid @enderror" value="{{ $empresa->viernessalida }}" name="viernessalida">
+	                        @error('viernessalida')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+		                </div>
+		        	</div>
+	        		<div class="col-md-4">
+		        		<b>Sábado:</b><br>
+		        		<div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text">Apertura</span>
+		                    </div>
+		                    <input type="time" class="form-control @error('sabadoingreso') is-invalid @enderror" value="{{ $empresa->sabadoingreso }}" name="sabadoingreso">
+	                        @error('sabadoingreso')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+		                </div>
+		                <div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text">Cierre</span>
+		                    </div>
+		                    <input type="time" class="form-control @error('sabadosalida') is-invalid @enderror" value="{{ $empresa->sabadosalida }}" name="sabadosalida">
+	                        @error('sabadosalida')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+		                </div>
+		        	</div>
+	        		<div class="col-md-4">
+		        		<b>Domingo:</b><br>
+		        		<div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text">Apertura</span>
+		                    </div>
+		                    <input type="time" class="form-control @error('domingoingreso') is-invalid @enderror" value="{{ $empresa->domingoingreso }}" name="domingoingreso">
+	                        @error('domingoingreso')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+		                </div>
+		                <div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text">Cierre</span>
+		                    </div>
+		                    <input type="time" class="form-control @error('domingosalida') is-invalid @enderror" value="{{ $empresa->domingosalida }}" name="domingosalida">
+	                        @error('domingosalida')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+		                </div>
+		        	</div>
+		        </div>
+		        <div class="row">
+		            <div class="col-md-12">
 		            	<div class="form-group"><br>
 			                <label><b>Marcar ubicación de la empresa:</b></label>
 			                <style type="text/css">
@@ -305,6 +498,20 @@
             //document.getElementById("yourBtn").innerHTML = fileName[fileName.length - 1];
             event.preventDefault();
         }
+
+        var checkbox = document.getElementById('delivery');
+		checkbox.addEventListener("change", validaCheckbox, false);
+		function validaCheckbox(){
+		  	var checked = checkbox.checked;
+		  	if(checked){
+		    	$("#deliverykm").attr("readonly", false); 
+		    	$("#deliverykm").attr("required", true);
+		  	}else{
+		  		$("#deliverykm").attr("readonly", true);
+		  		$("#deliverykm").attr("required", false);
+		  		$("#deliverykm").val("");
+		  	}
+		}
     </script>
 @stop
 

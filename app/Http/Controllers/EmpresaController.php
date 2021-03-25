@@ -61,6 +61,27 @@ class EmpresaController extends Controller{
         $empresa->twitter=$request->get('twitter');
         $empresa->correo=$request->get('correo');
         $empresa->fundacion=$request->get('fundacion');
+        $empresa->lunesingreso=$request->get('lunesingreso');
+        $empresa->lunessalida=$request->get('lunessalida');
+        $empresa->martesingreso=$request->get('martesingreso');
+        $empresa->martessalida=$request->get('martessalida');
+        $empresa->miercolesingreso=$request->get('miercolesingreso');
+        $empresa->miercolessalida=$request->get('miercolessalida');
+        $empresa->juevesingreso=$request->get('juevesingreso');
+        $empresa->juevessalida=$request->get('juevessalida');
+        $empresa->viernesingreso=$request->get('viernesingreso');
+        $empresa->viernessalida=$request->get('viernessalida');
+        $empresa->sabadoingreso=$request->get('sabadoingreso');
+        $empresa->sabadosalida=$request->get('sabadosalida');
+        $empresa->domingoingreso=$request->get('domingoingreso');
+        $empresa->domingosalida=$request->get('domingosalida');
+        if ($request->get('delivery') == 'on') {
+            $empresa->delivery=1;
+        }else{
+            $empresa->delivery=0;
+        }
+        
+        $empresa->limitedelivery=$request->get('limitedelivery');
 
         if ($empresa->update()){
 
