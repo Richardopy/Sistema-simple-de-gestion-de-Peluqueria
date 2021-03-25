@@ -238,6 +238,12 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
+            'text' => 'Perfil Empresa',
+            'url'  => 'admin/empresa',
+            'icon' => 'fas fa-briefcase',
+            'active' => ['admin/empresa', 'admin/empresa*', 'regex:@^content/[0-9]+$@'],
+        ],
+        [
             'header' => 'PRODUCTOS',
         ],
         [
