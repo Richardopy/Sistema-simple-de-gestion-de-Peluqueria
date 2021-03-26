@@ -21,7 +21,7 @@
 					<li><a href="{{ url('/quienessomos') }}">Quienes Somos</a></li>
 					<li><a href="{{ url('/productos') }}">Productos</a></li>
 					<li><a href="{{ url('/servicios') }}">Servicios</a></li>
-					<li><a href="{{ asset('frontend/contact.html')}}">Contacto</a></li>
+					<li><a href="{{ url('/contacto') }}">Contacto</a></li>
 					@guest
 						<li><a href="{{ url('/login') }}">Iniciar Sesión</a></li>
 					@else
