@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html lang="en">
 
 <head>
-	<title>Beauty Salon a Beauty Category Bootstrap Responsive website Template | Services :: w3layouts</title>
+	<title>Contacto</title>
 	<!-- Meta Tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,11 +25,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 	<!-- //Meta Tags -->
 	<!-- Style Sheets -->
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{ asset ('/frontend/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<!--// Bootstrap-CSS -->
-	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="{{ asset ('/frontend/css/font-awesome.css')}}" rel="stylesheet">
 	<!--// Font-Awesome-CSS -->
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{ asset ('/frontend/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<!-- //Style Sheets -->
 	<!-- web-fonts -->
 	<link href="//fonts.googleapis.com/css?family=Khula:300,400,600,700,800" rel="stylesheet">
@@ -45,10 +45,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<div class="header-bottom-agileits">
 					<div class="w3-logo">
-						<h1><a href="index.html">Beauty Salon</a></h1>
+						<h1><a href="index.html">Peluqueria</a></h1>
 					</div>
 					<div class="address">
-						<p>4th block,New York City.</p>
+						<p></p>
 						<p class="para-y"><a href="about.html">Get more info</a></p>
 					</div>
 					<div class="nav-contact-w3ls">
@@ -80,7 +80,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul class="nav navbar-nav">
 						<li><a href="index.html">Home</a></li>
 						<li><a href="about.html">About</a></li>
-						<li><a class="active" href="services.html">Services</a></li>
+						<li><a href="services.html">Services</a></li>
 						<li class="dropdown">
 								<a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">Pages<b class="caret"></b></a>
 								<ul class="dropdown-menu agile_short_dropdown">
@@ -89,7 +89,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</ul>
 							</li>
 						<li><a href="gallery.html">Gallery</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a class="active" href="contact.html">Contact</a></li>
 					</ul>
 
 				</div>
@@ -101,119 +101,74 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //navigation -->
 	</div>
 	<!-- //banner -->
-	<!-- services -->
-<div class="practice-areas">
-		<div class="container">
-			<div class="wthree_head_section">
-				<h3 class="w3l_header">Our <span>Services</span></h3>
-				<p>Treat yourself to a facial or celebrating a special occasion, aromatherapy, our beauty 
-and skin care services will suit every beauty need.</p>
-			</div>
-			<div class="area-main">
-				<div class="col-md-6 area-inner">
-					<div class="area-img1">
-					</div>
-					<div class="area-right p1">
-						<h5>FACIAL</h5>
-						<p class="para-w3-agile">Phasellus sed iaculis nibh, non suscipit tortor. Aenean ante massa, lobortis et dolor eget, sollicitudin luctus arcu.
-							Donec eros tortor, ultrices in lectus quis, aliquet commodo lectus.</p>
-					</div>
+	<!-- contact -->
+<div class="contact">
+	<div class="container">
+		<div class="wthree_head_section">
+			<h3 class="w3l_header">Contact <span>Us</span></h3>
+			<p>Treat yourself to a facial or celebrating a special occasion, aromatherapy, our beauty 
+				and skin care services will suit every beauty need.</p>
+			</div>		
+		<div class="gal-btm">
+			<div class="map-home">
+				<div class="col-md-4 drop-pad sign-gd-two">
+					<h3>Contact Us</h3>
+					<ul>
+						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i> 1234k Avenue, 4th block,
+ <span>New York City.</span></li>
+						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i> +1234 567 567</li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
+					</ul>
+					<h3 class="connect">Get Connected</h3>
+					<ul class="top-links">
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+					</ul>
 				</div>
-				<div class="col-md-6 area-inner">
-					<div class="area-img2">
+				<div class="col-md-8 contact-w3ls">
+					<form action="#" method="post">
+					<div class="col-md-5 col-sm-5 contact-left agileits-w3layouts">
+					
+						<div class="f-control"> 
+							<label class="header">Full Name <span>:</span></label>
+							<input type="text" name="First Name" placeholder="Name" required="">
+						</div>
+						
+						<div class="f-control"> 
+							<label class="header">Email <span>:</span></label>
+							<input type="email" class="email" name="Email" placeholder="Email" required="">
+						</div>
+						
+						<div class="f-control">
+							<label class="header">Mobile Number <span>:</span></label>
+							<input type="text" name="Number" placeholder="Mobile Number" required="">
+						</div>	
+						<!-- <input type="text" class="email" name="Last Name" placeholder="Last Name" required=""> -->
+					</div> 
+					<div class="col-md-7 col-sm-7 contact-right agileits-w3layouts">
+						
+							<label class="header">Message <span>:</span></label>
+							<textarea name="Message" placeholder="Message" required=""></textarea>
+						
+						
 					</div>
-					<div class="area-right p2">
-						<h5>MAKEUP</h5>
-						<p class="para-w3-agile">Phasellus sed iaculis nibh, non suscipit tortor. Aenean ante massa, lobortis et dolor eget, sollicitudin luctus arcu.
-							Donec eros tortor, ultrices in lectus quis, aliquet commodo lectus.</p>
-					</div>
+					<div class="clearfix"> </div> 
+					<input type="submit" value="Send">
+				</form>
 				</div>
-			</div>
-			<div class="area-main">
-				<div class="col-md-6 area-inner">
-					<div class="area-right p3">
-						<h5>NAIL CARE</h5>
-						<p class="para-w3-agile">Phasellus sed iaculis nibh, non suscipit tortor. Aenean ante massa, lobortis et dolor eget, sollicitudin luctus arcu.
-							Donec eros tortor, ultrices in lectus quis, aliquet commodo lectus.</p>
-					</div>
-					<div class="area-img3">
-					</div>
-				</div>
-				<div class="col-md-6 area-inner">
-					<div class="area-right p4">
-						<h5>HAIR CARE</h5>
-						<p class="para-w3-agile">Phasellus sed iaculis nibh, non suscipit tortor. Aenean ante massa, lobortis et dolor eget, sollicitudin luctus arcu.
-							Donec eros tortor, ultrices in lectus quis, aliquet commodo lectus.</p>
-					</div>
-					<div class="area-img4">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>	
-	<!-- //services -->
-	<!-- wthree-mid -->
-	<div class="wthree-mid jarallax">
-		<img class="jarallax-img" src="images/33.jpg" alt="">
-		<div class="container">
-			<h3>Nisl amet dolor sit ipsum veroeros sed blandit</h3>
-			<p>Standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-			<div class="botton">
-				<a href="#">About Us</a>
-			</div>
-		</div>
-	</div>
-<!-- //wthree-mid -->
-
-	<!-- about-top -->
-	<div class="agileits-about-top">
-		<div class="container">
-			<div class="wthree_head_section">
-				<h3 class="w3l_header">Services <span>Overview </span></h3>
-				<p>Treat yourself to a facial or celebrating a special occasion, aromatherapy, our beauty 
-and skin care services will suit every beauty need.</p>
-			</div>
-			<div class="agileinfo-top-grids">
-				<div class="col-sm-4 wthree-top-grid">
-					<img src="images/p11.jpg" class="img-responsive" alt="" />
-					<h4>Hot Stone Therapy</h4>
-					<p>Pellentesque auctor euismod lectus a pretium. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-				</div>
-				<div class="col-sm-4 wthree-top-grid">
-					<img src="images/p4.jpg" class="img-responsive" alt="" />
-					<h4>Hair Coloring</h4>
-					<p>Pellentesque auctor euismod lectus a pretium. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-				</div>
-				<div class="col-sm-4 wthree-top-grid">
-					<img src="images/p5.jpg" class="img-responsive" alt="" />
-					<h4>Facial Treatment</h4>
-					<p>Pellentesque auctor euismod lectus a pretium. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-				</div>
-				<div class="clearfix"> </div>
+				<div class="clearfix"></div>
 			</div>
 		</div>
 	</div>
-	<!-- //about-top -->
-
-	<!-- Modal1 -->
-	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4>Beauty Salon</h4>
-					<img src="images/11.jpg" alt=" " class="img-responsive">
-					<h5>Neque porro quisquam est qui dolorem </h5>
-					<p>Ut in ligula sollicitudin, auctor elit vel, mollis tortor. Nullam id magna in eros mollis porttitor vel et eros.Phasellus
-						sed iaculis nibh, non suscipit tortor. Aenean ante massa, lobortis et dolor eget, sollicitudin luctus arcu. Donec eros
-						tortor, ultrices in lectus quis, aliquet commodo lectus.Donec eros tortor, ultrices in lectus quis, aliquet commodo
-						lectus.</p>
-				</div>
-			</div>
-		</div>
+</div>
+<!-- //contact -->
+<!-- map -->
+	<div class="frame">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d96704.53970617482!2d-74.05317380152253!3d40.76165377918555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sNew+York+City+beauty+salon!5e0!3m2!1sen!2sin!4v1512820386082" allowfullscreen></iframe>
 	</div>
-	<!-- //Modal1 -->
+<!-- //map -->
 	<!-- footer -->
 	<div class="footer">
 	<div class="container">

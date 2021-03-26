@@ -31,7 +31,9 @@ Route::resource('/admin/productos', App\Http\Controllers\ProductoController::cla
 
 Route::resource('/admin/servicios', App\Http\Controllers\ServicioController::class)->middleware('auth');
 
-Route::resource('/admin/empresa', App\Http\Controllers\EmpresaController::class)->middleware('auth');
+Route::resource('/contacto', App\Http\Controllers\ContactoController::class);
+
+Route::resource('/admin/productos', App\Http\Controllers\ProductoController::class)->middleware('auth');
 
 Auth::routes();
 
