@@ -1,3 +1,22 @@
+<style>
+	.portfolio-hover{
+        height: 300px;
+        background: #FFF;
+        overflow: hidden;
+    }
+    .portfolio-hover img{
+        width: 112%;
+        height: auto;
+        margin-left: -15px;
+    }
+    @supports(object-fit: cover){
+        .portfolio-hover img{
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+    }
+</style>
 <div class="practice-areas">
 	<div class="container">
 		<div class="wthree_head_section">
@@ -5,27 +24,47 @@
 			<p>Se destacan en el mercado por ser realizados por profesionales cualificados. Estilos vanguardistas y elegantes lo encontrarás aquí.
 			¿Quieres hacerte uno de nuestros tratamientos? ¡No esperes ni un minuto! Reserva tu cita ya</p>
 		</div>
-		<div class="area-main">
+		<div class="row">
 			@php
 				$cont=1;
 			@endphp
 			@foreach ($servicios as $value)
-				<div class="col-md-6 area-inner">
-					<div class="area-img" style="background: url(/images/servicios/{{ $value->foto }})no-repeat 0px 0px;">
+				@if ($cont > 2)
+					<div class="col-md-6">
+						<div class="row">
+							<div class="p{{ $cont }} col-md-6" style="padding: 20px;min-height: 300px !important;">
+								<h3 align="center">{{$value->nombre }}</h3><hr>
+								<p class="para-w3-agile"><?= $value->description ?></p>
+								<div style="position: absolute;bottom:10px;right:10px;"><button class="btn btn-warning">Solicitar cita</button></div>
+							</div>
+							<div class="col-md-6 portfolio-hover" style="min-height: 300px !important;">
+								<img src="/images/servicios/{{ $value->foto }}" height="300px" alt="">
+							</div>
+						</div>
 					</div>
-					<div class="area-right p{{ $cont }}">
-						<h5>{{$value->nombre }}</h5>
-						<p class="para-w3-agile"><?= $value->description ?></p>
+				@else
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-6 portfolio-hover" style="min-height: 300px !important;">
+								<img src="/images/servicios/{{ $value->foto }}" height="300px" alt="">
+							</div>
+							<div class="p{{ $cont }} col-md-6" style="padding: 20px;min-height: 300px !important;">
+								<h3 align="center">{{$value->nombre }}</h3><hr>
+								<p class="para-w3-agile"><?= $value->description ?></p>
+								<div style="position: absolute;bottom:10px;right:10px;"><button class="btn btn-warning">Solicitar cita</button></div>
+							</div>
+						</div>
 					</div>
-				</div>
-				@if ($cont%2==0)
-					</div>
-					<div class="area-main">
 				@endif
 				@php
 					$cont+=1;
 				@endphp
 			@endforeach
+			<div class="col-md-12" align="center">
+				<div class="more">
+					<a href="{{ url('/servicios')}}">Ver más servicios</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

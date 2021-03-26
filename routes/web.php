@@ -35,6 +35,8 @@ Route::get('/contacto', [App\Http\Controllers\ContactoController::class, 'index'
 
 Route::resource('/admin/productos', App\Http\Controllers\ProductoController::class)->middleware('auth');
 
+Route::resource('/admin/empresa', App\Http\Controllers\EmpresaController::class)->middleware('auth');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
