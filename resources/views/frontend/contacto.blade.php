@@ -25,101 +25,50 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 	<!-- //Meta Tags -->
 	<!-- Style Sheets -->
-	<link href="{{ asset ('/frontend/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}" type="text/css" media="all">
 	<!--// Bootstrap-CSS -->
-	<link href="{{ asset ('/frontend/css/font-awesome.css')}}" rel="stylesheet">
+	<link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.css') }}" type="text/css" media="all">
 	<!--// Font-Awesome-CSS -->
-	<link href="{{ asset ('/frontend/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.css') }}" type="text/css" media="all">
+
+	<link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.css') }}" type="text/css" media="all">
+
+	<link rel="stylesheet" href="{{ asset('frontend/css/flexslider.css') }}" type="text/css" media="screen" property="" />
+	<!--// Owl-Carousel-CSS -->
+	<link href="{{asset('frontend/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<!-- //Style Sheets -->
 	<!-- web-fonts -->
 	<link href="//fonts.googleapis.com/css?family=Khula:300,400,600,700,800" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
-	<!--// web-fonts -->
 </head>
-
 <body>
-	<!-- banner -->
-	<div class="banner-1 jarallax" id="home">
-		<img class="jarallax-img" src="images/22.jpg" alt="">
-		<header>
-			<div class="container">
-				<div class="header-bottom-agileits">
-					<div class="w3-logo">
-						<h1><a href="index.html">Peluqueria</a></h1>
-					</div>
-					<div class="address">
-						<p></p>
-						<p class="para-y"><a href="about.html">Get more info</a></p>
-					</div>
-					<div class="nav-contact-w3ls">
-						<p>+0 111 222 333<span class="fa fa-phone" aria-hidden="true"></span></p>
-						<p class="para-y"><a href="mailto:info@example.com">info@example.com</a><span class="fa fa-envelope-o" aria-hidden="true"></span></p>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-		</header>
-		<!-- navigation -->
-	<div class="nav-bg">
-		<div class="container">
-			<nav class="navbar navbar-default shift">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-					    aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				  </button>
 
-				</div>
+	<div class="banner jarallax" id="home">
+		<img class="jarallax-img" src="{{ asset('frontend/images/22.jpg')}}" alt="">
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="services.html">Services</a></li>
-						<li class="dropdown">
-								<a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">Pages<b class="caret"></b></a>
-								<ul class="dropdown-menu agile_short_dropdown">
-									<li><a href="icons.html">Web Icons</a></li>
-									<li><a href="typography.html">Typography</a></li>
-								</ul>
-							</li>
-						<li><a href="gallery.html">Gallery</a></li>
-						<li><a class="active" href="contact.html">Contact</a></li>
-					</ul>
+		<livewire:info />
 
-				</div>
-				<!-- /.navbar-collapse -->
-
-			</nav>
-		</div>
+		<livewire:navbar />
+	
 	</div>
-	<!-- //navigation -->
-	</div>
-	<!-- //banner -->
-	<!-- contact -->
+
 <div class="contact">
 	<div class="container">
 		<div class="wthree_head_section">
-			<h3 class="w3l_header">Contact <span>Us</span></h3>
-			<p>Treat yourself to a facial or celebrating a special occasion, aromatherapy, our beauty 
-				and skin care services will suit every beauty need.</p>
-			</div>		
+			<h3 class="w3l_header">Contacta con profesionales <span>Ya!</span></h3>
+			<p>Cumplite los caprichos con una limpieza facial o celebrando una ocasión especial, aromaterapia, nuestro centro de belleza
+y los servicios de cuidado de la piel se adaptarán a todas las necesidades de belleza.</p>
+		</div>		
 		<div class="gal-btm">
 			<div class="map-home">
 				<div class="col-md-4 drop-pad sign-gd-two">
-					<h3>Contact Us</h3>
+					<h3>Contactá con nosotros </h3>
 					<ul>
-						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i> 1234k Avenue, 4th block,
- <span>New York City.</span></li>
-						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i> +1234 567 567</li>
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
+						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>{{ $empresa->direccion }}</li>
+						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+595984541456</li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:{{ $empresa->correo }}">{{ $empresa->correo }}</a></li>
 					</ul>
-					<h3 class="connect">Get Connected</h3>
+					<h3 class="connect">¡Seguinos en nuestras redes para informaciones y promociones!</h3>
 					<ul class="top-links">
 						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -132,30 +81,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-5 col-sm-5 contact-left agileits-w3layouts">
 					
 						<div class="f-control"> 
-							<label class="header">Full Name <span>:</span></label>
-							<input type="text" name="First Name" placeholder="Name" required="">
+							<label class="header">Nombre Completo <span>:</span></label>
+							<input type="text" name="First Name" placeholder="Escriba su nombre" required="">
 						</div>
 						
 						<div class="f-control"> 
-							<label class="header">Email <span>:</span></label>
-							<input type="email" class="email" name="Email" placeholder="Email" required="">
+							<label class="header">Correo Electrónico <span>:</span></label>
+							<input type="email" class="email" name="Email" placeholder="Escriba su correo electrónico" required="">
 						</div>
 						
 						<div class="f-control">
-							<label class="header">Mobile Number <span>:</span></label>
-							<input type="text" name="Number" placeholder="Mobile Number" required="">
+							<label class="header">Celular <span>:</span></label>
+							<input type="text" name="Number" placeholder="Número de Celular" required="">
 						</div>	
 						<!-- <input type="text" class="email" name="Last Name" placeholder="Last Name" required=""> -->
 					</div> 
 					<div class="col-md-7 col-sm-7 contact-right agileits-w3layouts">
 						
-							<label class="header">Message <span>:</span></label>
-							<textarea name="Message" placeholder="Message" required=""></textarea>
-						
-						
+							<label class="header">Mensaje <span>:</span></label>
+							<textarea name="Message" placeholder="Escriba aquí su mensaje" required=""></textarea>
 					</div>
 					<div class="clearfix"> </div> 
-					<input type="submit" value="Send">
+					<input type="submit" value="Enviar">
 				</form>
 				</div>
 				<div class="clearfix"></div>
@@ -165,22 +112,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- //contact -->
 <!-- map -->
-	<div class="frame">
+		<div class="frame">
 		<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d96704.53970617482!2d-74.05317380152253!3d40.76165377918555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sNew+York+City+beauty+salon!5e0!3m2!1sen!2sin!4v1512820386082" allowfullscreen></iframe>
 	</div>
 <!-- //map -->
 	<!-- footer -->
-	<div class="footer">
-	<div class="container">
-		<div class="f-bg-w3l">
-		<div class="col-md-4 w3layouts_footer_grid">
-					<h2>Contact <span>Information</span></h2>
-					    <ul class="con_inner_text">
-							<li><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, 4th block, <label> New York City.</label></li>
-							<li><span class="fa fa-envelope-o" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
-							<li><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
-						</ul>
-
 					<ul class="social_agileinfo">
 						<li><a href="#" class="w3_facebook"><i class="fa fa-facebook"></i></a></li>
 						<li><a href="#" class="w3_twitter"><i class="fa fa-twitter"></i></a></li>
@@ -188,41 +124,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="#" class="w3_google"><i class="fa fa-google-plus"></i></a></li>
 					</ul>
 				</div>
-				<div class="col-md-4 w3layouts_footer_grid">
-					<h2>Subscribe <span>Newsletter</span></h2>
-					<p>By subscribing to our mailing list you will always get latest news from us.</p>
-					<form action="#" method="post">
-						<input type="email" name="Email" placeholder="Enter your email..." required="">
-						<button class="btn1"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
-						<div class="clearfix"> </div>
-					</form>
-				</div>
-				<div class="col-md-4 w3layouts_footer_grid">
-					<h3>Recent <span>Works</span></h3>
-					 <ul class="con_inner_text midimg">
-						<li><a href="#"><img src="images/p2.jpg" alt="" class="img-responsive" /></a></li>
-					    <li><a href="#"><img src="images/p3.jpg" alt="" class="img-responsive" /></a></li>
-						<li><a href="#"><img src="images/p4.jpg" alt="" class="img-responsive" /></a></li>
-						<li><a href="#"><img src="images/p5.jpg" alt="" class="img-responsive" /></a></li>
-						<li><a href="#"><img src="images/p6.jpg" alt="" class="img-responsive" /></a></li>
-					    <li><a href="#"><img src="images/p7.jpg" alt="" class="img-responsive" /></a></li>
-						 <li><a href="#"><img src="images/p8.jpg" alt="" class="img-responsive" /></a></li>
-						<li><a href="#"><img src="images/p9.jpg" alt="" class="img-responsive" /></a></li>
-				     </ul>
-					
-				</div>
+		<livewire:footer />
 				<div class="clearfix"> </div>
 			</div>
 			</div>
-			<p class="copyright">© 2017 Beauty Salon. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
 	</div>
 	<!-- //footer -->
-
+	</script>
+	<!-- //Owl-Carousel-JavaScript -->
 	<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 	<!-- //smooth scrolling -->
-	<script type='text/javascript' src='js/jquery-2.2.3.min.js'></script>
+	<script type='text/javascript' src="{{asset('frontend/js/jquery-2.2.3.min.js')}}"></script>
 	<!-- start-smoth-scrolling -->
-	<script src="js/jarallax.js"></script>
+
+
+	<script src="{{asset('frontend/js/jarallax.js')}}"></script>
+
 	<script type="text/javascript">
 		/* init Jarallax */
 		$('.jarallax').jarallax({
@@ -231,9 +148,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			imgHeight: 768
 		})
 	</script>
+	<!-- flexSlider -->
+	<script defer src="{{asset('frontend/js/jquery.flexslider.js')}}"></script>
+	<script type="text/javascript">
+		$(window).load(function () {
+			$('.flexslider').flexslider({
+				animation: "slide",
+				start: function (slider) {
+					$('body').removeClass('loading');
+				}
+			});
+		});
+	</script>
+	<!-- //flexSlider -->
+
+	<!-- Owl-Carousel-JavaScript -->
+	<script src="{{asset('frontend/js/owl.carousel.js')}}"></script>
+	<script>
+		$(document).ready(function () {
+			$("#owl-demo").owlCarousel({
+				items: 2,
+				lazyLoad: true,
+				autoPlay: false,
+				pagination: true,
+			});
+		});
+	</script>
 	<!-- //Owl-Carousel-JavaScript -->
-	<script type="text/javascript" src="js/move-top.js"></script>
-	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript" src="{{ asset('frontend/js/move-top.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('frontend/js/easing.js')}}"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function ($) {
 			$(".scroll").click(function (event) {
@@ -265,9 +208,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 	<!-- //here ends scrolling icon -->
 
+	<!-- stats -->
+	<script src="{{asset('frontend/js/jquery.waypoints.min.js')}}"></script>
+	<script src="{{asset('frontend/js/jquery.countup.js')}}"></script>
+	<script>
+		$('.counter').countUp();
+	</script>
+	<!-- //stats -->
+	 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHcQT0yBuaLXWdx6Mv_hAroOB0HLmNp5g&callback=Maps" async defer></script>
+    <script>
 
 	<!--js for bootstrap working-->
-	<script src="js/bootstrap.js"></script>
+	<script src="{{asset('frontend/js/bootstrap.js')}}"></script>
 	<!-- //for bootstrap working -->
+	@livewireScripts
 </body>
 </html>
