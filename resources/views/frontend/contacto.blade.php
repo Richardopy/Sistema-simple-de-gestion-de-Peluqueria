@@ -112,8 +112,13 @@ y los servicios de cuidado de la piel se adaptarán a todas las necesidades de b
 </div>
 <!-- //contact -->
 <!-- map -->
-		<div class="frame">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d96704.53970617482!2d-74.05317380152253!3d40.76165377918555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sNew+York+City+beauty+salon!5e0!3m2!1sen!2sin!4v1512820386082" allowfullscreen></iframe>
+	<div class="frame">
+		<style type="text/css">
+            #mapa{border:0px solid #999;height:400px; border-radius: 10px;}
+        </style>
+        <div id="mapa" class="shadow"></div>
+        <div id="tiempo"><br><button class="btn btn-outline-success" onclick="calculartiempo({{$empresa->latitud}},{{$empresa->longitud}},'{{$empresa->nombre}}')" style="width: 100%">Calcular distancia y tiempo de llegada</button></div>
+        <br><p align="center">Abrir en Google Maps <a href="https://maps.google.com/?q={{$empresa->latitud}},{{$empresa->longitud}}">Ver Instrucciones</a></p>
 	</div>
 <!-- //map -->
 	<!-- footer -->
@@ -215,11 +220,17 @@ y los servicios de cuidado de la piel se adaptarán a todas las necesidades de b
 		$('.counter').countUp();
 	</script>
 	<!-- //stats -->
-	 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHcQT0yBuaLXWdx6Mv_hAroOB0HLmNp5g&callback=Maps" async defer></script>
+	 <script type="text/javascript" src="{{ asset('frontend/js/maps.js')}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHcQT0yBuaLXWdx6Mv_hAroOB0HLmNp5g&callback=Maps" async defer></script>
     <script>
-
-	<!--js for bootstrap working-->
-	<script src="{{asset('frontend/js/bootstrap.js')}}"></script>
+        function Maps(){
+            let lat = {{$empresa->latitud}};
+            let lng = {{$empresa->longitud}};
+            let empresa = '{{$empresa->nombre}}';
+            let direccion = '{{$empresa->direccion}}';
+            initMap(lat,lng,empresa,direccion);
+        }        
+    </script>
 	<!-- //for bootstrap working -->
 	@livewireScripts
 </body>
