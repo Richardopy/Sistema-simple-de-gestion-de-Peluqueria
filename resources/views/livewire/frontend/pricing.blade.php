@@ -1,29 +1,30 @@
-<div>
-	<div class="w3ls-section wthree-pricing" id="pricing">
-		<div class="container">
-			<div class="wthree_head_section">
-				<h3 class="w3l_header">Productos <span>Disponibles</span></h3>
-				<p>Nuestros productos son de marcas reconocidas a nivel mundial por sus revolucionarias fórmulas aplicadas a la belleza corporal</p>
-			</div>
-			<div class="row">
-				@foreach ($productos as $value)
-					<div class="col-md-3 card-body card shadow-lg">
-						<div class="area-img" style="background: url(/images/productos/{{ $value->foto }})no-repeat 0px 0px;">
-						</div>
-						<div class="w3ls-top">
-							<h3>{{$value->nombre }}</h3>
-						</div>
-						<div class="w3ls-bottom">
-							<ul class="count">
-								<li><?= $value->description ?></li>
-							</ul>
-							<h4>{{$value->precio }}<span class="sup">₲</span> </h4>
-							<div class="more">
-								<a href="{{ asset('frontend/contact.html')}}">Comprar</a>
-							</div>
+
+<div class="w3ls-section wthree-pricing" id="pricing">
+	<div class="container">
+		<div class="wthree_head_section">
+			<h3 class="w3l_header">Productos <span>Disponibles</span></h3>
+			<p>Nuestros productos son de marcas reconocidas a nivel mundial por sus revolucionarias fórmulas aplicadas a la belleza corporal</p>
+		</div>
+		<div class="row">
+			@foreach ($productos as $value)
+				<div class="col-md-3 card-body card shadow-lg">
+					<div class="area-img" style="background: url(/images/productos/{{ $value->foto }})no-repeat 0px 0px;">
+					</div>
+					<div class="w3ls-top">
+						<h3>{{$value->nombre }}</h3>
+					</div>
+					<div class="w3ls-bottom">
+						<ul class="count">
+							<li><?= $value->description ?></li>
+						</ul>
+						<h4>{{$value->precio }}<span class="sup">₲</span> </h4>
+						<div class="more">
+							<a href="{{ asset('frontend/contact.html')}}">Comprar</a>
 						</div>
 					</div>
-				@endforeach	
-			</div>
-				<div class="clearfix"> </div>
+				</div>
+			@endforeach	
+		</div>
+		<div class="clearfix"> </div>
+	</div>
 </div>

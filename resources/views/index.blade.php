@@ -1,11 +1,5 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 	<title>Peluqueria</title>
@@ -55,11 +49,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- navigation -->
 		<livewire:navbar />
 
-				</nav>
-			</div>
-		</div>
 		<!-- /.navbar-collapse -->
 		<livewire:banners />
+	</div>
 		<!-- //navigation -->
 	    <!-- //banner -->
 		<!-- Latest News -->
@@ -72,22 +64,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<livewire:pricing />
 
 		<!--End-slider-script-->
-			</div>
-		</div>
-	</div>
 		<!--//pricing-->
 		<!-- counter -->
 		<livewire:statistics />
 		<!-- //counter -->
 		<!-- Clients -->
 		<livewire:customer-review />
-
-			<!--// Owl-Carousel -->
-		</div>
-	</div>
-	<!--// Clients -->
-	<!-- footer -->
-			<livewire:footer />
+		
+		<livewire:footer />
 
 	<!-- //footer -->
 

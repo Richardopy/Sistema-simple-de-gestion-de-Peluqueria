@@ -33,7 +33,7 @@
 	            <div class="row">
                     <div class="col-12">
                         <div class="form-group" align="center">
-                            <label>Foto del producto:</label><br>
+                            <label>Logotipo dela empresa:</label><br>
                             <output id="list">
                             	@if ($empresa->logo)
                             		<img src="{{asset('images/empresa/'.$empresa->logo)}}" class="img-responsive" alt="" style="width: 200px;" />
