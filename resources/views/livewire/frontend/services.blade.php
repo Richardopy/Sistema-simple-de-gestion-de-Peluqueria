@@ -3,7 +3,8 @@
 		<div class="container">
 			<div class="wthree_head_section">
 				<h3 class="w3l_header">Nuestros <span>Servicios</span></h3>
-				<p>Texto Genérico - Texto Genérico - Texto Genérico - Texto Genérico - Texto Genérico - Texto Genérico - Texto Genérico - Texto Genérico - Texto Genérico - Texto Genérico - Texto Genérico - Texto Genérico - Texto Genérico</p>
+				<p>Se destacan en el mercado por ser realizados por profesionales cualificados. Estilos vanguardistas y elegantes lo encontrarás aquí.
+				¿Quieres hacerte uno de nuestros tratamientos? ¡No esperes ni un minuto! Reserva tu cita ya</p>
 			</div>
 			<div class="area-main">
 				@php
@@ -16,7 +17,11 @@
 						<div class="area-right p{{ $cont }}">
 							<h5>{{$value->nombre }}</h5>
 							<p class="para-w3-agile"><?= $value->description ?></p>
+						<div class="botton">
+										<a href="{{ asset('frontend/reserva.html')}}" onclick="AccionInnerHTML() id= "servicio" 
+							Reserva </a>		
 						</div>
+
 					</div>
 					@if ($cont%2==0)
 						</div>

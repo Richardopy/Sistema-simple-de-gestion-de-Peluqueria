@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="wthree_head_section">
 				<h3 class="w3l_header">Productos <span>Disponibles</span></h3>
-				<p>Texto genérico - Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico -Texto genérico</p>
+				<p>Nuestros productos son de marcas reconocidas a nivel mundial por sus revolucionarias fórmulas aplicadas a la belleza corporal</p>
 			</div>
 			<div class="row">
 				@foreach ($productos as $value)
