@@ -18,7 +18,7 @@
 							<h5>{{$value->nombre }}</h5>
 							<p class="para-w3-agile"><?= $value->description ?></p>
 						<div class="botton">
-										<a href="{{ asset('frontend/reserva.html')}}" onclick="AccionInnerHTML() id= "servicio" 
+										<a href="{{ asset('frontend/reserva.html')}}" onclick="addservicios() id = "{{$value->id }}" 
 							Reserva </a>		
 						</div>
 
