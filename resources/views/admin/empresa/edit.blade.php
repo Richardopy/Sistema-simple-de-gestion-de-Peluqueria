@@ -35,7 +35,11 @@
                         <div class="form-group" align="center">
                             <label>Foto del producto:</label><br>
                             <output id="list">
-                                <img src="{{asset('imgsystem/producto.png')}}" class="img-responsive" alt="" style="width: 200px;" />
+                            	@if ($empresa->logo)
+                            		<img src="{{asset('images/empresa/'.$empresa->logo)}}" class="img-responsive" alt="" style="width: 200px;" />
+                            	@else
+                            		<img src="{{asset('imgsystem/producto.png')}}" class="img-responsive" alt="" style="width: 200px;" />
+                            	@endif
                             </output>
                             <div class="yourBtn" onclick="getFile()">
                                 <img src="{{asset('imgsystem/flechita.svg')}}" alt=""> <span>Subir Imagen&hellip;</span>
