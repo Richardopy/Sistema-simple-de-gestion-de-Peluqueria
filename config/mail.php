@@ -37,10 +37,10 @@ return [
         'smtp' => [
             'transport' => 'smtp',
             'host' => env('MAIL_HOST', 'stmp.gmail.com'),
-            'port' => env('MAIL_PORT', 465),
+            'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
-            'username' => env('tech.circle.peluqueria@gmail.com'),
-            'password' => env('ykeecglqechlbvwq'),
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -84,9 +84,8 @@ return [
     */
 
     'from' => [
-        'address' => env('tech.circle.peluqueria@gmail.com'),
-        'name' => env("Tech Circle Peluqueria
-"),
+        'address' => env('MAIL_FROM_ADDRESS'),
+        'name' => env("MAIL_FROM_NAME"),
     ],
 
     /*
