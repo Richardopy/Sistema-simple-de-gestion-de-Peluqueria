@@ -9,9 +9,9 @@
     <p>Hola! Se ha reportado un nuevo cliente queriendo contactar con su empresa </p>
     <p>Estos son los datos del usuario que ha realizado el reporte:</p>
     <ul>
-        <li>Nombre: {{ $contactAAAAqui->user->name }}</li>
-        <li>Teléfono: {{ $distressCall->user->phone }}</li>
-        <li>Mensaje: {{ $distressCall->user->dni }}</li>
+        <li>Nombre: {{ $contacto->user->name }}</li>
+        <li>Teléfono: {{ $contacto->user->phone }}</li>
+        <li>Mensaje: {{ $contacto->user->message }}</li>
     </ul>
 </body>
 </html>
