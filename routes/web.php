@@ -31,7 +31,7 @@ Route::resource('/admin/productos', App\Http\Controllers\ProductoController::cla
 
 Route::resource('/admin/servicios', App\Http\Controllers\ServicioController::class)->middleware('auth');
 
-Route::get('/contacto', [App\Http\Controllers\ContactoController::class, 'index'])->name('contacto');
+Route::post('/contacto', [App\Http\Controllers\ContactoController::class, 'index'])->name('contacto');
 
 Route::resource('/admin/productos', App\Http\Controllers\ProductoController::class)->middleware('auth');
 

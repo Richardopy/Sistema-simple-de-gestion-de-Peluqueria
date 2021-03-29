@@ -65,7 +65,7 @@ y los servicios de cuidado de la piel se adaptarán a todas las necesidades de b
 					<h3>Contactá con nosotros </h3>
 					<ul>
 						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>{{ $empresa->direccion }}</li>
-						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+595984541456</li>
+						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>{{ $empresa->telefono1 }}</li>
 						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:{{ $empresa->correo }}">{{ $empresa->correo }}</a></li>
 					</ul>
 					<h3 class="connect">¡Seguinos en nuestras redes para informaciones y promociones!</h3>
@@ -85,14 +85,9 @@ y los servicios de cuidado de la piel se adaptarán a todas las necesidades de b
 							<input type="text" name="First Name" placeholder="Escriba su nombre" required="">
 						</div>
 						
-						<div class="f-control"> 
-							<label class="header">Correo Electrónico <span>:</span></label>
-							<input type="email" class="email" name="Email" placeholder="Escriba su correo electrónico" required="">
-						</div>
-						
 						<div class="f-control">
 							<label class="header">Celular <span>:</span></label>
-							<input type="text" name="Number" placeholder="Número de Celular" required="">
+							<input type="text" name="Number" placeholder="Número de Celular" required="" >
 						</div>	
 						<!-- <input type="text" class="email" name="Last Name" placeholder="Last Name" required=""> -->
 					</div> 
