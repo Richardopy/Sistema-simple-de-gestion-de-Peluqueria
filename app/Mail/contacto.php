@@ -19,7 +19,7 @@ class Contacto extends Mailable
 
     public $contacto;
 
-    public function __construct(ContactoController $contacto)
+     public function __construct($contacto)
     {
            $this->contacto = $contacto;
     }
@@ -31,6 +31,6 @@ class Contacto extends Mailable
      */
     public function build()
     {
-        return $this->view('frontend.contacto');
+        return $this->view('mail.contacto');
     }
 }

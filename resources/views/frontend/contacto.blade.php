@@ -77,28 +77,29 @@ y los servicios de cuidado de la piel se adaptarán a todas las necesidades de b
 					</ul>
 				</div>
 				<div class="col-md-8 contact-w3ls">
-					<form action="#" method="post">
-					<div class="col-md-5 col-sm-5 contact-left agileits-w3layouts">
-					
-						<div class="f-control"> 
-							<label class="header">Nombre Completo <span>:</span></label>
-							<input type="text" name="First Name" placeholder="Escriba su nombre" required="">
+					<form action="{{ route('enviarcorreo') }}" method="post">
+						@csrf
+						<div class="col-md-5 col-sm-5 contact-left agileits-w3layouts">
+						
+							<div class="f-control"> 
+								<label class="header">Nombre Completo <span>:</span></label>
+								<input type="text" name="nombre" placeholder="Escriba su nombre" required="">
+							</div>
+							
+							<div class="f-control">
+								<label class="header">Celular <span>:</span></label>
+								<input type="text" name="celular" placeholder="Número de Celular" required="" >
+							</div>	
+							<!-- <input type="text" class="email" name="Last Name" placeholder="Last Name" required=""> -->
+						</div> 
+						<div class="col-md-7 col-sm-7 contact-right agileits-w3layouts">
+							
+								<label class="header">Mensaje <span>:</span></label>
+								<textarea name="mensaje" placeholder="Escriba aquí su mensaje" required=""></textarea>
 						</div>
-						
-						<div class="f-control">
-							<label class="header">Celular <span>:</span></label>
-							<input type="text" name="Number" placeholder="Número de Celular" required="" >
-						</div>	
-						<!-- <input type="text" class="email" name="Last Name" placeholder="Last Name" required=""> -->
-					</div> 
-					<div class="col-md-7 col-sm-7 contact-right agileits-w3layouts">
-						
-							<label class="header">Mensaje <span>:</span></label>
-							<textarea name="Message" placeholder="Escriba aquí su mensaje" required=""></textarea>
-					</div>
-					<div class="clearfix"> </div> 
-					<input type="submit" value="Enviar">
-				</form>
+						<div class="clearfix"> </div> 
+						<input type="submit" value="Enviar">
+					</form>
 				</div>
 				<div class="clearfix"></div>
 			</div>

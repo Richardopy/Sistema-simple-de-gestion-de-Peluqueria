@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Empresa;
+use App\Mail\contacto;
 use Mail;
 
 
@@ -15,16 +16,16 @@ class ContactoController extends Controller{
     	$empresa=Empresa::findOrFail(1);
 
         return view("frontend.contacto",['empresa'=>$empresa]);
-<<<<<<< HEAD
-=======
-
->>>>>>> ae2a517e3c52e70242b3b29bb35d9457bb7f5df3
-
     }	
 
-    public function enviarcorreo(){
+    public function enviarcorreo(Request $request){
 
-    	Mail::to('peluqueria.tech.circle@gmail.com')->send(new Contacto($contacto));
+    	$contacto = new \stdClass();
+            $contacto->nombre = $request->get('nombre');
+            $contacto->celular = $request->get('celular');
+            $contacto->mensaje = $request->get('mensaje');
+
+    	Mail::to('peluqueria.tech.circle@gmail.com')->send(new contacto($contacto));
 
     }
 } 
