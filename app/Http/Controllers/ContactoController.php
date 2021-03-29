@@ -14,7 +14,14 @@ class ContactoController extends Controller{
 
     	$empresa=Empresa::findOrFail(1);
 
-        return view("frontend.contacto",['empresa'=>$empresa];
+        return view("frontend.contacto",['empresa'=>$empresa]);
+
 
     }	
+
+    public function enviarcorreo(){
+
+    	Mail::to('peluqueria.tech.circle@gmail.com')->send(new Contacto($contacto));
+
+    }
 } 
