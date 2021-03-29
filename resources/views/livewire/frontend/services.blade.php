@@ -38,7 +38,7 @@
 								<div style="position: absolute;bottom:10px;right:10px;"><button class="btn btn-warning">Solicitar cita</button></div>
 							</div>
 							<div class="col-md-6 portfolio-hover" style="min-height: 300px !important;">
-								<img src="/images/servicios/{{ $value->foto }}" height="300px" alt="">
+								<img src="/images/servicios/{{ $value->foto }}" class="zoom-img" height="300px" alt="">
 							</div>
 						</div>
 					</div>
@@ -46,7 +46,7 @@
 					<div class="col-md-6">
 						<div class="row">
 							<div class="col-md-6 portfolio-hover" style="min-height: 300px !important;">
-								<img src="/images/servicios/{{ $value->foto }}" height="300px" alt="">
+								<img src="/images/servicios/{{ $value->foto }}" class="zoom-img" height="300px" alt="">
 							</div>
 							<div class="p{{ $cont }} col-md-6" style="padding: 20px;min-height: 300px !important;">
 								<h3 align="center">{{$value->nombre }}</h3><hr>
