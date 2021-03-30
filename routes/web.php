@@ -31,7 +31,7 @@ Route::resource('/admin/productos', App\Http\Controllers\ProductoController::cla
 
 Route::resource('/admin/servicios', App\Http\Controllers\ServicioController::class)->middleware('auth');
 
-Route::resource('/admin/mensajes', App\Http\Controllers\MensajesController::class)->middleware('auth');
+Route::get('/admin/mensajes', [App\Http\Controllers\MensajesController::class, 'index'])->name('mensajes')->middleware('auth');
 
 Route::get('/contacto', [App\Http\Controllers\ContactoController::class, 'index'])->name('contacto');
 

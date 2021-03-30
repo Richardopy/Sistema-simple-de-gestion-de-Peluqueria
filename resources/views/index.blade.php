@@ -68,8 +68,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- counter -->
 		<livewire:statistics />
 		<!-- //counter -->
-		<!-- Clients -->
-		<livewire:customer-review />
 		
 		<livewire:footer />
 
