@@ -22,6 +22,8 @@ class Contacto extends Mailable
      public function __construct($contacto)
     {
            $this->contacto = $contacto;
+
+          
     }
 
     /**
@@ -32,5 +34,7 @@ class Contacto extends Mailable
     public function build()
     {
         return $this->view('mail.contacto');
+
     }
+
 }

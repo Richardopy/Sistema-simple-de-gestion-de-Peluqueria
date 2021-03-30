@@ -227,6 +227,9 @@ y los servicios de cuidado de la piel se adaptarán a todas las necesidades de b
             initMap(lat,lng,empresa,direccion);
         }        
     </script>
+    @if($errors->any())
+<h4>{{$errors->first()}}</h4>
+@endif
 	<!-- //for bootstrap working -->
 	@livewireScripts
 </body>

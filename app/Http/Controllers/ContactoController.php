@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Empresa;
 use App\Mail\contacto;
 use Mail;
+use Redirect;
 
 
 class ContactoController extends Controller{
@@ -25,7 +26,8 @@ class ContactoController extends Controller{
             $contacto->celular = $request->get('celular');
             $contacto->mensaje = $request->get('mensaje');
 
-    	Mail::to('peluqueria.tech.circle@gmail.com')->send(new contacto($contacto));
+    	Mail::to('tech.circle.peluqueria@gmail.com')->send(new contacto($contacto));
+    	return Redirect::back()->withErrors(['msg', 'Contacto no enviado']);
 
     }
 } 
