@@ -17,7 +17,7 @@ class CreateMensajesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nombre');
-            $table->integer('celular');
+            $table->string('celular');
             $table->longText('mensaje');
             $table->boolean('estado')->default(0);
         });

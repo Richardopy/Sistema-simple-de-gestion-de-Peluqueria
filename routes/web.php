@@ -31,6 +31,8 @@ Route::resource('/admin/productos', App\Http\Controllers\ProductoController::cla
 
 Route::resource('/admin/servicios', App\Http\Controllers\ServicioController::class)->middleware('auth');
 
+Route::resource('/admin/mensajes', App\Http\Controllers\MensajesController::class)->middleware('auth');
+
 Route::get('/contacto', [App\Http\Controllers\ContactoController::class, 'index'])->name('contacto');
 
 Route::post('/enviarcorreo', [App\Http\Controllers\ContactoController::class, 'enviarcorreo'])->name('enviarcorreo');

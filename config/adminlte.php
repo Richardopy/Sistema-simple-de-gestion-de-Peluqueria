@@ -251,6 +251,7 @@ return [
             'url'         => 'admin/categorias',
             'icon'        => 'fas fa-boxes'
         ],
+      
         [
             'text'        => 'Productos',
             'url'         => 'admin/productos',
@@ -266,6 +267,16 @@ return [
             'url'         => 'admin/servicios',
             'icon'        => 'fas fa-hand-holding',
             'active'      => ['admin/servicios', 'admin/servicios*', 'regex:@^content/[0-9]+$@'],
+        ],
+           [
+            'header' => 'CLIENTES',
+        ],
+        [
+            'text'        => 'Mensajes',
+            'url'         => 'admin/mensajes',
+            'icon'        => 'fas fa-inbox'
+
+
         ],
         [
             'header' => 'USUARIOS',
