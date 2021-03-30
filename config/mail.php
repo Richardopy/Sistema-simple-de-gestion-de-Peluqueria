@@ -84,14 +84,7 @@ return [
     |
     */
 
-<<<<<<< HEAD
     'from' => array('address' => 'techcirclepy@gmail.com', 'name' => 'Prueba Peluqueria'),
-=======
-    'from' => [
-        'address' => env('MAIL_FROM_ADDRESS'),
-        'name' => env("MAIL_FROM_NAME"),
-    ],
->>>>>>> 50c9a35329d62794401cab29c219d4f15a0e7ad6
 
     /*
     |--------------------------------------------------------------------------
