@@ -36,12 +36,20 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
+<<<<<<< HEAD
             'host' => env('MAIL_HOST', 'smtp.gmail.com'),
             'port' => env('MAIL_PORT', 465),
             'encryption' => env('MAIL_ENCRYPTION'),
             'username' => env('MAIL_USERNAME','tech.circle.peluqueria@gmail.com'),
             'password' => env('MAIL_PASSWORD','ptsmmbrpzevuxwcy
 '),
+=======
+            'host' => env('MAIL_HOST', 'stmp.gmail.com'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
+>>>>>>> 50c9a35329d62794401cab29c219d4f15a0e7ad6
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -85,7 +93,14 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'from' => array('address' => 'techcirclepy@gmail.com', 'name' => 'Prueba Peluqueria'),
+=======
+    'from' => [
+        'address' => env('MAIL_FROM_ADDRESS'),
+        'name' => env("MAIL_FROM_NAME"),
+    ],
+>>>>>>> 50c9a35329d62794401cab29c219d4f15a0e7ad6
 
     /*
     |--------------------------------------------------------------------------
