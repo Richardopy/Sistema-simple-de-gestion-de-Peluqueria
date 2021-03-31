@@ -14,9 +14,9 @@ class ContactoController extends Controller{
 
     public function index(){
 
-    	$empresa=Empresa::findOrFail(1);
+        $empresa=Empresa::findorFail(1);
 
-        return view("frontend.contacto",['empresa'=>$empresa]);
+        return view("frontend.contacto",["empresa"=>$empresa]);
     }	
 
     public function enviarcorreo(Request $request){

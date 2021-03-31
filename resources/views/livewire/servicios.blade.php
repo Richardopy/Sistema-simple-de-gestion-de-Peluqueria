@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
         <div class="col-md-12">
-              <input wire:model="search" class="form-control" type="search" placeholder="Buscar categoria">
+              <input wire:model="search" class="form-control" type="search" placeholder="Buscar servicios-">
         </div>
 	</div><br>
 	<div class="row">
