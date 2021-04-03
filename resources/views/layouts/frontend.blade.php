@@ -39,41 +39,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" type="text/css" media="all">
 
 	@livewireStyles
-
 </head>
+
 <body>
 	<!-- banner -->
-	<div class="banner jarallax" id="home">
+	<div class="banner-1 jarallax" id="home">
 		<img class="jarallax-img" src="{{ asset('frontend/images/22.jpg')}}" alt="">
 
 		<livewire:info />
 
 		<!-- navigation -->
 		<livewire:navbar />
-
-		<!-- /.navbar-collapse -->
-		<livewire:banners />
 	</div>
-		<!-- //navigation -->
-	    <!-- //banner -->
-		<!-- Latest News -->
-		<livewire:services />
-		<!-- //Latest News -->
-		<!-- wthree-mid -->
-	    <livewire:ad />
-		<!-- //wthree-mid -->
-		<!-- pricing -->
-		<livewire:pricing />
 
-		<!--End-slider-script-->
-		<!--//pricing-->
-		<!-- counter -->
-		<livewire:statistics />
-		<!-- //counter -->
-		
-		<livewire:footer />
+	@yield('contenido')
 
-	<!-- //footer -->
+	<livewire:footer />
 
 	<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 	<!-- //smooth scrolling -->
@@ -173,5 +154,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </script>
     @include('toastr.alertas')
 </body>
-
 </html>

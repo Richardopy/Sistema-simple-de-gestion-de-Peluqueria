@@ -12,9 +12,19 @@
 				<div class="nav-contact-w3ls">
 					<a href="https://wa.me/{{ $empresa->whatsapp }}"><p>{{ $empresa->whatsapp }}<span class="fa fa-whatsapp" aria-hidden="true"></span></p></a>
 					<p class="para-y"><a href="tel:{{ $empresa->telefono1 }}">{{ $empresa->telefono1 }}</a><span class="fa fa-phone" aria-hidden="true"></span></p>
+					<p>
+						<button class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter"><span class="fa fa-shopping-cart" aria-hidden="true"></span> 
+							@if (count(Cart::getContent()))
+								<span class="badge badge-pill badge-success">
+									{{ count(Cart::getContent()) }}
+								</span>
+							@endif
+						</button>
+					</p>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 		</div>
 	</header>
+	<!-- Modal -->
 </div>

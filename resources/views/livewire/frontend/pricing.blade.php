@@ -25,20 +25,30 @@
 		</div>
 		<div class="row">
 			@foreach ($productos as $value)
-				<div class="col-sm-4 d-flex pb-3">
+				<div class="col-sm-4 d-flex pb-3 team1">
 					<div class="card card-block" style="border-radius: 20px;margin-top:10px;box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);">
 						<div class="portfolio-hover2">
 							<img src="/images/productos/{{ $value->foto }}" class="zoom-img" alt="">
 						</div><br>
 						<h4 align="center">{{$value->nombre }}</h4><hr>
-						<h5 align="center">{{$value->precio }}<span class="sup">₲</span> </h5>
-						<div class="more" align="center">
-							<a href="{{ asset('frontend/contact.html')}}">Comprar</a>
-						</div><br>
+						@if ($value->oferta)
+							<h5 align="center"><strike style="color:red;">{{$value->precio }}</strike> | {{ $value->oferta }} <span class="sup">₲</span> </h5>
+						@else
+							<h5 align="center">{{$value->precio }}<span class="sup">₲</span> </h5>
+						@endif
+						<center><br>
+						@if (in_array($value->id, Cart::getContent()->pluck('id')->toArray()))
+							<button type="button" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i> Agregado al carrito</button>
+						@else
+							<button class="btn btn-warning" wire:click="addcarrito({{ $value->id }})"><i class="fa fa-shopping-cart"></i> Agregar al carrito</button>
+						@endif	
+						</center><br>
 					</div>
 				</div>
 			@endforeach	
 		</div>
+		
 		<div class="clearfix"> </div>
 	</div>
+
 </div>
