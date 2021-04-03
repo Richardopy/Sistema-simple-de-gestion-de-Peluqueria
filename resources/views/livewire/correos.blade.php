@@ -1,3 +1,13 @@
+@extends('adminlte::page')
+
+@section('title', 'Mensajes')
+
+@section('content_header')
+    <h1>Mensajes</h1>
+@stop
+
+@section('content')
+
 <div>
 	<!-- Main content -->
     <section class="content">
@@ -44,7 +54,7 @@
 
              		<div class="card-tools">
               			<div class="input-group input-group-sm">
-                  			<input type="text" class="form-control" placeholder="Buscar Correo">
+                  			<input wire:model="search" class="form-control" type="search" placeholder="Buscar correo">
                   	<div class="input-group-append">
                     	<div class="btn btn-primary">
                       		<i class="fas fa-search"></i>
@@ -87,33 +97,35 @@
 	    			
 	    			@if ($contacto->count())
 
+
 	    				@foreach ($contacto as $value)
-	    			
-  						
-		                	<table class="table table-hover table-striped">
-		                		<tbody>
-		                  			<tr>
-		                    			<td>
+	    				    			
+		                	<table class="table table-hover table-striped" >
+		                		<tbody >
+		                  			<tr >
+		                    			<td >
 		                    	<div class="icheck-primary">
-		                        	<input type="checkbox" value="" id="check{{ $value->id }}">
+		                        	<input type="checkbox" value="" id="check{{ $value->id }} ">
 		                        		<label for="check{{ $value->id }}"></label>
 		                     	</div>
 
 		                    			</td>
-			                    		<td class="mailbox-name"><a href="mensajes/{{ $value->id }}/read-mail">{{ $value->nombre }}</a>
+			                    		<td class="mailbox-name"><a href="{{URL('/admin/mensajes/leercorreo/'.$value->id)}}" >{{ $value->nombre }}</a>
 			                    		</td>
-		                    			<td class="mailbox-subject"><b>Nuevo mensaje de la web</b>
+		                    			<td class="mailbox-subject" ><b>Nuevo mensaje de la web</b>
 		                    			</td>
-		                    			<td class="mailbox-attachment"></td>
-		                    			<td class="mailbox-date">{{ $value->updated_at->format('D') }}</td>
+		                    			<td class="mailbox-attachment" ></td>
+		                    			<td class="mailbox-date" >{{ $value->updated_at->format('D') }}</td>
 		                  			</tr>
 		                  		</tbody>
 		                	</table>
+		                	
 		                @endforeach
-                	@endif
 
+                	@endif
+				</div>
                 <!-- /.table -->
-           		</div>
+           		
      		</div>
               <!-- /.mail-box-messages -->
             <!-- /.card-body -->
@@ -155,3 +167,8 @@
 	</section>
     <!-- /.content -->
 </div>
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop
