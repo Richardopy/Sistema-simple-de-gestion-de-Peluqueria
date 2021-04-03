@@ -22,6 +22,11 @@
 		<div class="wthree_head_section">
 			<h3 class="w3l_header">Productos <span>Disponibles</span></h3>
 			<p>Nuestros productos son de marcas reconocidas a nivel mundial por sus revolucionarias fórmulas aplicadas a la belleza corporal</p>
+			@if ($limite == 2)
+				<div class="col-md-12">
+		              <input wire:model="search" class="form-control" type="search" placeholder="Buscar producto" style="border: 1px solid #DCDCDC;">
+		        </div>
+			@endif
 		</div>
 		<div class="row">
 			@foreach ($productos as $value)
@@ -46,6 +51,13 @@
 					</div>
 				</div>
 			@endforeach	
+			@if ($limite == 1)
+				<div class="col-md-12" align="center">
+					<div class="more">
+						<a href="{{ url('/productos')}}">Ver más productos</a>
+					</div>
+				</div>
+			@endif
 		</div>
 		
 		<div class="clearfix"> </div>

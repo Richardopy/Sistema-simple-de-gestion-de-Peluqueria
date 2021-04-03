@@ -52,3 +52,7 @@ Route::get('/admin/clientes', function () {
 Route::get('/admin/colaboradores', function () {
     return view('admin.colaboradores.index');
 })->middleware('auth');
+
+Route::get('/productos', function () {
+    return view('frontend.productos');
+});
