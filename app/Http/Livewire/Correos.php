@@ -51,15 +51,9 @@ class Correos extends Component{
         $this->mensaje = $mensaje->mensaje;
         $this->celular = $mensaje->celular;
 
-    }
+        $mensaje->estado=1;
+        $mensaje->update();
 
-    public function cambiarestado($id,$estado)
-    {
-        if($id){
-            $mensaje = Mensaje::find($id);
-            $mensaje->$estado=$estado;
-            $mensaje->update();
-        }
     }
        
 }

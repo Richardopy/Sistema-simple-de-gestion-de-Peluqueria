@@ -45,7 +45,7 @@
                             		<label for="check{{ $value->id }}"></label>
                          	</div>
             			</td>
-                		<td class="mailbox-name"><a href="#" wire:click="leer({{ $value->id }}),cambiarestado({{$value->id,1}})">{{ $value->nombre }}</a>
+                		<td class="mailbox-name"><a href="#" wire:click="leer({{ $value->id }})">{{ $value->nombre }}</a>
                 		</td>
             			<td class="mailbox-subject" ><b>Nuevo mensaje de la web</b>
             			</td>
