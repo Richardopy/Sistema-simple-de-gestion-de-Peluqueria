@@ -4,17 +4,28 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Producto;
+use Livewire\WithPagination;
 use Cart;
-use Session;
 
-class Pricing extends Component
-{
+class Pricing extends Component{
 
     protected $listeners = ['cartDelete' => 'render'];
 
-    public function render()
-    {
-        $productos = Producto::where('estado',1)->get();
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+    
+    public $search='';
+
+    public $limite;
+
+    public function render(){
+        if ($this->limite == 1) {
+            $productos = Producto::where('estado',1)->limit(9)->get();
+        }else{
+            $productos = Producto::where('estado',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
+        }
+        
         return view('livewire.frontend.pricing',["productos"=>$productos]);
     }
 

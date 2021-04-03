@@ -63,7 +63,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    <livewire:ad />
 		<!-- //wthree-mid -->
 		<!-- pricing -->
-		<livewire:pricing />
+		@livewire('pricing', ['limite' => 1])
 
 		<!--End-slider-script-->
 		<!--//pricing-->
