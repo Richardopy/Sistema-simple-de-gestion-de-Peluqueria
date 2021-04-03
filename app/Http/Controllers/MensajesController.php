@@ -25,16 +25,16 @@ class MensajesController extends Controller{
 
 	public function leidos() {
 
-        $contacto=Mensaje::where("estado",1)->get();  
+        $contacto=Mensaje::where("estado",0)->get();  
         
-        return view('admin.mensajes.leercorreo',["contacto"=>$contacto]);
+        return view('admin.mensajes.leidos',["contacto"=>$contacto]);
 	}
 
 	public function borrados() {
 
-        $contacto=Mensaje::where("estado",2)->get();  
+        $contacto=Mensaje::where("estado",0)->get();  
         
-        return view('admin.mensajes.leercorreo',["contacto"=>$contacto]);
+        return view('admin.mensajes.borrados',["contacto"=>$contacto]);
 	}
 
 	public function delete($id)

@@ -26,18 +26,18 @@
             <div class="card-body p-0">
             	<ul class="nav nav-pills flex-column">
                 	<li class="nav-item active">
-                  		<a href="#" class="nav-link">
+                  		<a href="{{URL('/admin/mensajes/')}}" class="nav-link">
                     		<i class="far fa-envelope"></i> Recibidos
                     		<span class="badge bg-primary float-right">12</span>
                   		</a>
                 	</li>
                 	<li class="nav-item">
-                  		<a href="#" class="nav-link">
-                    		<i class="far fa-envelope-open"></i> Abiertos
+                  		<a href="{{URL('/admin/mensajes/leidos')}}" class="nav-link">
+                    		<i class="far fa-envelope-open"></i> Leidos
                   		</a>
                 	</li>
                 	<li class="nav-item">
-                  		<a href="#" class="nav-link">
+                  		<a href="{{URL('/admin/mensajes/borrados')}}" class="nav-link">
                     		<i class="far fa-trash-alt"></i> Papelera
                   		</a>
                 	</li>
