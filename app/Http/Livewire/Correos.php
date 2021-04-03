@@ -23,8 +23,6 @@ class Correos extends Component{
     public function render(){
 
     	if ($this->mensajeestado == 0) {
-            $this->LeerMode = false;
-
     		$contacto = Mensaje::where('estado',0)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
     	}elseif ($this->mensajeestado == 1) {
     		$contacto = Mensaje::where('estado',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
@@ -40,6 +38,7 @@ class Correos extends Component{
 
     public function estado($estado){
     	$this->mensajeestado=$estado;
+        $this->LeerMode = false;
     }
 
     public function leer($id){
