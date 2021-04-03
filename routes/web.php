@@ -31,13 +31,9 @@ Route::resource('/admin/productos', App\Http\Controllers\ProductoController::cla
 
 Route::resource('/admin/servicios', App\Http\Controllers\ServicioController::class)->middleware('auth');
 
-Route::get('/admin/mensajes', [App\Http\Controllers\MensajesController::class, 'index'])->name('mensajes')->middleware('auth');
-
-Route::get('/admin/mensajes/leercorreo/{id}', [App\Http\Controllers\MensajesController::class, 'leercorreo'])->name('leercorreo')->middleware('auth');
-
-Route::get('/admin/mensajes/leidos', [App\Http\Controllers\MensajesController::class, 'leidos'])->name('leidos')->middleware('auth');
-
-Route::get('/admin/mensajes/borrados', [App\Http\Controllers\MensajesController::class, 'borrados'])->name('borrados')->middleware('auth');
+Route::get('/admin/mensajes', function () {
+    return view('admin.mensajes.index');
+})->middleware('auth');
 
 Route::get('/contacto', [App\Http\Controllers\ContactoController::class, 'index'])->name('contacto');
 
