@@ -56,3 +56,7 @@ Route::get('/admin/colaboradores', function () {
 Route::get('/productos', function () {
     return view('frontend.productos');
 });
+
+Route::get('/carrito', function () {
+    return view('frontend.carrito');
+});

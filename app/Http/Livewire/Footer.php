@@ -7,7 +7,7 @@ use Cart;
 
 class Footer extends Component{
 
-	protected $listeners = ['cartAdded' => 'render'];
+	protected $listeners = ['cartAdded' => 'render','cartDelete' => 'render'];
 
     public function render()
     {

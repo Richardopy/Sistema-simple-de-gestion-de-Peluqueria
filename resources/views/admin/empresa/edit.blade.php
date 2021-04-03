@@ -268,6 +268,49 @@
 						</div>
 		            </div>
 		        </div>
+		        <div class="row" id="pagodelivery">
+		        	<div class="col-12" align="center">
+		        		<label>Selecciona tu forma de pago para delivery</label>
+		        	</div>
+		            <div class="col-3">
+		            	<label>Gratis</label>
+					  	<div class="input-group-prepend">
+					    	<div class="input-group-text">
+					      		<input type="checkbox" name="forma" aria-label="Checkbox for following text input">
+					    	</div>
+					  	</div>
+		            </div>
+		            <div class="col-3">
+		            	<label>Costo fijo</label>
+		            	<div class="input-group mb-3">
+						  	<div class="input-group-prepend">
+						    	<div class="input-group-text">
+						      		<input type="checkbox" name="delivery"  aria-label="Checkbox for following text input">
+						    	</div>
+						  	</div>
+						  	<input type="number" min="0" class="form-control"  name="limitedelivery" aria-label="Text input with checkbox" value="" placeholder="Agregar kilometros de alcance"> 
+						</div>
+		            </div>
+		            <div class="col-3">
+		            	<label>Cobro por kilometro</label>
+		            	<div class="input-group mb-3">
+						  	<div class="input-group-prepend">
+						    	<div class="input-group-text">
+						      		<input type="checkbox" name="delivery" aria-label="Checkbox for following text input">
+						    	</div>
+						  	</div>
+						  	<input type="number" min="0" class="form-control" name="limitedelivery" aria-label="Text input with checkbox" value="" placeholder="Agregar kilometros de alcance">
+						</div>
+		            </div>
+		            <div class="col-3">
+		            	<label>A cotizar</label>
+		            	<div class="input-group-prepend">
+					    	<div class="input-group-text">
+					      		<input type="checkbox" name="forma" aria-label="Checkbox for following text input">
+					    	</div>
+					  	</div>
+		            </div>
+		        </div>
 		        <div class="row">
 		        	<div class="col-md-12" align="center">
 		        		<b>Horario de atención</b><hr>
@@ -510,10 +553,12 @@
 		  	if(checked){
 		    	$("#deliverykm").attr("readonly", false); 
 		    	$("#deliverykm").attr("required", true);
+		    	$("#pagodelivery").show();
 		  	}else{
 		  		$("#deliverykm").attr("readonly", true);
 		  		$("#deliverykm").attr("required", false);
 		  		$("#deliverykm").val("");
+		  		$("#pagodelivery").attr( "style", "display: none !important;" );
 		  	}
 		}
     </script>

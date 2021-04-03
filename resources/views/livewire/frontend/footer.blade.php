@@ -156,7 +156,7 @@
 											<td data-label="Acciones"><button class="btn btn-danger" wire:click="deletecarrito({{ $value->id }})"><i class="fa fa-times-circle"></i></button></td>
 										</tr>
 										@php
-											$total+=$value->price;
+											$total+=$value->price*$value->quantity;
 										@endphp
 									@endforeach
 									<tr>
@@ -172,7 +172,7 @@
 		      	</div>
 		      	<div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Seguir comprando</button>
-			        <button type="button" class="btn btn-primary">Ver Carrito</button>
+			        <a href="{{ url('/carrito') }}"><button type="button" class="btn btn-primary">Ver Carrito</button></a>
 		      	</div>
 		    </div>
 	  	</div>

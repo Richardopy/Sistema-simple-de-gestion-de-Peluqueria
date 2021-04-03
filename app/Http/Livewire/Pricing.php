@@ -11,6 +11,8 @@ class Pricing extends Component{
 
     protected $listeners = ['cartDelete' => 'render'];
 
+    protected $queryString = ['search' => ['except' => '']];
+
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
