@@ -34,7 +34,7 @@
         <div class="table-responsive mailbox-messages">
             @if ($contacto->count())
                 @foreach ($contacto as $value)  
-        
+
 		    			
             <table class="table table-hover table-striped" >
         		<tbody >
@@ -45,12 +45,12 @@
                             		<label for="check{{ $value->id }}"></label>
                          	</div>
             			</td>
-                		<td class="mailbox-name"><a href="#" wire:click="leer({{ $value->id }})">{{ $value->nombre }}</a>
+                		<td class="mailbox-name"><a href="#" wire:click="leer({{ $value->id }}),cambiarestado({{$value->id,1}})">{{ $value->nombre }}</a>
                 		</td>
             			<td class="mailbox-subject" ><b>Nuevo mensaje de la web</b>
             			</td>
             			<td class="mailbox-attachment" ></td>
-            			<td class="mailbox-date" >{{ $value->updated_at->format('D') }}</td>
+            			<td class="mailbox-date" >{{ $value->updated_at->locale('es')->getTranslatedDayName('[в] dddd') }}</td>
           			</tr>
           		</tbody>
     	   </table>
