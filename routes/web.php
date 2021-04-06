@@ -64,3 +64,7 @@ Route::get('/carrito', function () {
 Route::get('/comprar', function () {
     return view('frontend.comprar');
 })->middleware('auth');
+
+Route::get('/quienessomos', function () {
+    return view('frontend.acerca');
+});
