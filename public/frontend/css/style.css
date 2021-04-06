@@ -3386,3 +3386,19 @@ p.copyright {
 }
 }
 /*--responsive--*/
+.modoretiro{
+	padding: 20px;
+	background-color: #ffcc54;
+	border-radius: 10px;
+	text-align: center;
+	color: white;
+}
+.modoretiro .glyphicon{
+	color: white;
+	font-size: 3vw;
+}
+.modoretiro:hover {
+	-webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4); 
+	box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4);
+	cursor: pointer;
+}

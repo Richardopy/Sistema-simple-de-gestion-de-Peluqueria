@@ -268,27 +268,30 @@
 						</div>
 		            </div>
 		        </div>
-		        <div class="row" id="pagodelivery">
+		        <div class="row" id="pagodelivery" style="{{ ($empresa->delivery) ? "" : "display: none !important;" }}">
 		        	<div class="col-12" align="center">
 		        		<label>Selecciona tu forma de pago para delivery</label>
 		        	</div>
 		            <div class="col-3">
 		            	<label>Gratis</label>
-					  	<div class="input-group-prepend">
-					    	<div class="input-group-text">
-					      		<input type="checkbox" name="forma" aria-label="Checkbox for following text input">
-					    	</div>
-					  	</div>
+					  	<div class="input-group mb-3">
+						  	<div class="input-group-prepend">
+						    	<div class="input-group-text">
+						      		<input type="radio" {{ ($empresa->costodelivery == "gratis") ? "checked" : "" }} value="gratis" name="forma" >
+						    	</div>
+						  	</div>
+						  	<input type="text" id="gratis" class="form-control" value="{{ ($empresa->costodelivery == "gratis") ? "Gratis" : "" }}" readonly> 
+						</div>
 		            </div>
 		            <div class="col-3">
 		            	<label>Costo fijo</label>
 		            	<div class="input-group mb-3">
 						  	<div class="input-group-prepend">
 						    	<div class="input-group-text">
-						      		<input type="checkbox" name="delivery"  aria-label="Checkbox for following text input">
+						      		<input type="radio" value="fijo" name="forma" {{ ($empresa->costodelivery == "fijo") ? "checked" : "" }}>
 						    	</div>
 						  	</div>
-						  	<input type="number" min="0" class="form-control"  name="limitedelivery" aria-label="Text input with checkbox" value="" placeholder="Agregar kilometros de alcance"> 
+						  	<input type="number" min="0" class="form-control" id="fijo" name="costofijo" value="{{ ($empresa->costodelivery == "fijo") ? "$empresa->cotizaciondelivery" : "" }}" placeholder="Agregar costo fijo" {{ ($empresa->costodelivery == "fijo") ? "" : "readonly" }}> 
 						</div>
 		            </div>
 		            <div class="col-3">
@@ -296,19 +299,22 @@
 		            	<div class="input-group mb-3">
 						  	<div class="input-group-prepend">
 						    	<div class="input-group-text">
-						      		<input type="checkbox" name="delivery" aria-label="Checkbox for following text input">
+						      		<input type="radio" value="kilometro" name="forma" {{ ($empresa->costodelivery == "kilometro") ? "checked" : "" }}>
 						    	</div>
 						  	</div>
-						  	<input type="number" min="0" class="form-control" name="limitedelivery" aria-label="Text input with checkbox" value="" placeholder="Agregar kilometros de alcance">
+						  	<input type="number" min="0" class="form-control" name="costokilometro" id="kilometro" value="{{ ($empresa->costodelivery == "kilometro") ? "$empresa->cotizaciondelivery" : "" }}" placeholder="Agregar costo por kilometro" {{ ($empresa->costodelivery == "kilometro") ? "" : "readonly" }}>
 						</div>
 		            </div>
 		            <div class="col-3">
 		            	<label>A cotizar</label>
-		            	<div class="input-group-prepend">
-					    	<div class="input-group-text">
-					      		<input type="checkbox" name="forma" aria-label="Checkbox for following text input">
-					    	</div>
-					  	</div>
+		            	<div class="input-group mb-3">
+						  	<div class="input-group-prepend">
+						    	<div class="input-group-text">
+						      		<input type="radio" value="cotizar" name="forma" {{ ($empresa->costodelivery == "cotizar") ? "checked" : "" }}>
+						    	</div>
+						  	</div>
+						  	<input type="text" id="cotizar" class="form-control" value="{{ ($empresa->costodelivery == "cotizar") ? "a cotizar" : "" }}" readonly> 
+						</div>
 		            </div>
 		        </div>
 		        <div class="row">
@@ -559,11 +565,16 @@
 		  		$("#deliverykm").attr("required", false);
 		  		$("#deliverykm").val("");
 		  		$("#pagodelivery").attr( "style", "display: none !important;" );
+		  		$("#gratis").val("");
+        		$("#fijo").attr("readonly", true);
+        		$("#kilometro").attr("readonly", true);
+        		$("#cotizar").val("");
 		  	}
 		}
+		
     </script>
 @stop
-
+ 
 @section('js')
     <script> console.log('Hi!'); </script>
     <!--js para editar o marcar ubicación google maps -->
@@ -578,6 +589,30 @@
                 height: '100%',
             });
         });
+        $(':radio').change(function() {
+        	if(this.value == "gratis"){
+        		$("#gratis").val("Gratis");
+        		$("#fijo").attr("readonly", true);
+        		$("#kilometro").attr("readonly", true);
+        		$("#cotizar").val("");
+        	}else if(this.value == "fijo"){
+        		$("#gratis").val("");
+        		$("#fijo").attr("readonly", false);
+        		$("#kilometro").attr("readonly", true);
+        		$("#cotizar").val("");
+        	}else if(this.value == "kilometro"){
+        		$("#gratis").val("");
+        		$("#fijo").attr("readonly", true);
+        		$("#kilometro").attr("readonly", false);
+        		$("#cotizar").val("");
+        	}else if(this.value == "cotizar"){
+        		$("#gratis").val("");
+        		$("#fijo").attr("readonly", true);
+        		$("#kilometro").attr("readonly", true);
+        		$("#cotizar").val("a cotizar");
+        	}
+	    });
     </script>
+
 @stop
 

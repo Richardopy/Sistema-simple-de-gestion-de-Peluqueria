@@ -60,3 +60,7 @@ Route::get('/productos', function () {
 Route::get('/carrito', function () {
     return view('frontend.carrito');
 });
+
+Route::get('/comprar', function () {
+    return view('frontend.comprar');
+})->middleware('auth');

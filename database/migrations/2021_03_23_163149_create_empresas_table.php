@@ -47,6 +47,8 @@ class CreateEmpresasTable extends Migration
             $table->time('domingosalida')->nullable();
             $table->boolean('delivery')->default(0);
             $table->integer('limitedelivery')->nullable();
+            $table->string('costodelivery')->nullable();
+            $table->integer('cotizaciondelivery')->nullable();
 
             $table->timestamps();
         });

@@ -77,6 +77,12 @@ class EmpresaController extends Controller{
         $empresa->domingosalida=$request->get('domingosalida');
         if ($request->get('delivery') == 'on') {
             $empresa->delivery=1;
+            $empresa->costodelivery=$request->get('forma');
+            if ($request->get('forma') == 'fijo') {
+                $empresa->cotizaciondelivery=$request->get('costofijo');
+            }else{
+                $empresa->cotizaciondelivery=$request->get('costokilometro');
+            }
         }else{
             $empresa->delivery=0;
         }

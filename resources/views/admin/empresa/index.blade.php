@@ -154,13 +154,30 @@
 	                </div>
 	            </div>
 	            @if ($empresa->delivery == 1)
-	            	<div class="col-md-12">
+	            	<div class="col-md-6">
 		                <label>Limite de delivery:</label>
 		                <div class="input-group mb-3">
 		                    <div class="input-group-prepend">
 		                        <span class="input-group-text"><i class="fas fa-shipping-fast"></i></span>
 		                    </div>
 		                    <input type="text" class="form-control" value="{{ $empresa->limitedelivery }} Km." readonly>
+		                </div>
+		            </div>
+		            <div class="col-md-6">
+		                <label>Costo del delivery:</label>
+		                <div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                        <span class="input-group-text"><i class="fas fa-shipping-fast"></i></span>
+		                    </div>
+		                    @if ($empresa->costodelivery == "gratis")
+		                    	<input type="text" class="form-control" value="Gratis" readonly>
+		                    @elseif ($empresa->costodelivery == "fijo")
+		                    	<input type="text" class="form-control" value="{{ $empresa->cotizaciondelivery }} ₲" readonly>
+		                    @elseif ($empresa->costodelivery == "kilometro")
+		                    	<input type="text" class="form-control" value="{{ $empresa->cotizaciondelivery }} ₲ por kilometro" readonly>
+		                    @elseif ($empresa->costodelivery == "cotizar")
+		                    	<input type="text" class="form-control" value="a cotizar" readonly>
+		                    @endif
 		                </div>
 		            </div>
 	            @endif

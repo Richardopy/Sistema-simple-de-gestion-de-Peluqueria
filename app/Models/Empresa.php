@@ -47,5 +47,7 @@ class Empresa extends Model{
         'domingosalida',
         'delivery',
         'limitedelivery',
+        'costodelivery',
+        'cotizaciondelivery',
     ];
 }

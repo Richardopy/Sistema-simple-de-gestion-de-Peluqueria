@@ -1,4 +1,5 @@
-<div>
+@extends('layouts.frontend')
+@section('contenido')
 	<style>
 		table {
 		  border: 1px solid #ccc;
@@ -83,7 +84,7 @@
 	</style>
     <div class="container mt-3"><br>
 		<div class="wthree_head_section">
-			<h3 class="w3l_header">Carrito <span>de Compras</span></h3>
+			<h3 class="w3l_header">Finalizar <span>Compra</span></h3>
 		</div>
     	@if (count(Cart::getContent()))
     		<div class="row">
@@ -94,7 +95,6 @@
 					      	<th scope="col">Precio</th>
 					      	<th scope="col">Cantidad</th>
 					      	<th scope="col">Subtotal</th>
-					      	<th scope="col">Acciones</th>
 					    </tr>
 					</thead>
 					<tbody>
@@ -107,31 +107,69 @@
 							<tr>
 								<td scope="row" data-label="Producto"><img src="{{ asset('/images/productos/'.$value->attributes->urlfoto) }}" style="width: 30px;border-radius: 10px;">{{ $value->name }}</td>
 								<td data-label="Precio">{{ $value->price }}</td>
-								<td data-label="Cantidad">
-									<button class="btn btn-success" wire:click="cantidad({{ $value->id }}, -1)"><i class="fa fa-minus-circle"></i></button>
-									<b style="padding: 5px">{{ $value->quantity }}</b>
-									<button class="btn btn-success" wire:click="cantidad({{ $value->id }}, 1)"><i class="fa fa-plus-square"></i></button></td>
+								<td data-label="Cantidad">{{ $value->quantity }}</td>
 								<td data-label="Subtotal">{{ $value->price*$value->quantity }}</td>
-								<td data-label="Acciones"><button class="btn btn-danger" wire:click="deletecarrito({{ $value->id }})"><i class="fa fa-times-circle"></i></button></td>
 							</tr>
 							@php
 								$total+=$value->price*$value->quantity;
 							@endphp
 						@endforeach
 						<tr>
-							<td colspan="4" style="text-align: left !important;"><b>Total:</b></td>
-							<td>{{ $total }} ₲</td>
+							<td colspan="4" style="text-align: left !important;"><b>Total:</b> <span style="float: right">{{ $total }} ₲</span></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			<div class="row">
 		      	<div class="col-12" align="center">
-			        <a href="{{ url('comprar') }}"><button type="button" class="btn btn-success"><span class="fa fa-shopping-cart" aria-hidden="true"></span> Confirmar datos para comprar</button></a><br><br>
+			        <button type="button" class="btn btn-success"><span class="fa fa-shopping-cart" aria-hidden="true"></span> Comprar</button><br><br>
 		      	</div>
 	      	</div>
 		@else
 			El carrito está vacío <br><br><br>
 		@endif
     </div>
-</div>
+    <div class="modal fade" id="modoentrega" tabindex="-1" role="dialog" aria-labelledby="modoentrega" aria-hidden="true">
+	  	<div class="modal-dialog modal-dialog-centered" role="document">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<h5 class="modal-title" id="exampleModalLongTitle">Seleccione método de entrega <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          		<span aria-hidden="true">&times;</span>
+		        	</button></h5>
+		      	</div>
+		      	<div class="modal-body">
+		        	<div class="row">
+		        		<div class="col-md-6" align="center">
+		        			<div class="modoretiro">
+								<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+								<br><br>
+								<h3>Retirar de la tienda</h3>
+							</div>
+						</div>
+						<div class="col-md-6" align="center">
+							<div class="modoretiro">
+								<span class="glyphicon glyphicon-road" aria-hidden="true"></span>
+								<br><br>
+								<h3>Delivery</h3>
+							</div>
+						</div>
+		        	</div>	
+		      	</div>
+		      	<div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Seguir comprando</button>
+			        <a href="{{ url('/carrito') }}"><button type="button" class="btn btn-primary">Ver Carrito</button></a>
+		      	</div>
+		    </div>
+	  	</div>
+	</div>
+
+	<script>
+		if (document.addEventListener) {
+		   document.addEventListener("DOMContentLoaded", inicializar, false);
+		}
+
+		function inicializar(){
+		   $('#modoentrega').modal('show');
+		}  
+	</script>
+@stop
