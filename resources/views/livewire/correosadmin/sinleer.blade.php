@@ -16,35 +16,16 @@
     <div class="card-body p-0">
         <div class="mailbox-controls">
         <!-- Check all button -->
-            <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
-            </button>
-        <div class="btn-group">
-            <button type="button" class="btn btn-default btn-sm">
-                <i class="far fa-trash-alt"></i>
-            </button>
-        </div>
-        <button type="button" class="btn btn-default btn-sm">
-            <i class="fas fa-sync-alt"></i>
-        </button>
-
         <div class="float-right">
             {{ $contacto->links() }}
         </div>
         </div>
         <div class="table-responsive mailbox-messages">
             @if ($contacto->count())
-                @foreach ($contacto as $value)  
-
-		    			
+                @foreach ($contacto as $value)  	    			
             <table class="table table-hover table-striped" >
         		<tbody >
           			<tr >
-            			<td >
-                        	<div class="icheck-primary">
-                            	<input type="checkbox" value="" id="check{{ $value->id }} ">
-                            		<label for="check{{ $value->id }}"></label>
-                         	</div>
-            			</td>
                 		<td class="mailbox-name"><a href="#" wire:click="leer({{ $value->id }})">{{ $value->nombre }}</a>
                 		</td>
             			<td class="mailbox-subject" ><b>Nuevo mensaje de la web</b>
@@ -71,18 +52,7 @@
         </div>    
         <div class="card-footer p-0">
             <div class="mailbox-controls">
-                <button type="button" class="btn btn-default btn-sm checkbox-toggle">
-                    <i class="far fa-square"></i>
-                </button>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm">
-                        <i class="far fa-trash-alt"></i>
-                    </button>
-                </div>
-                <!-- /.btn-group -->
-                <button type="button" class="btn btn-default btn-sm">
-                  <i class="fas fa-sync-alt"></i>
-                </button>
+               
                 <div class="float-right">
                     {{ $contacto->links() }}
                 </div>
