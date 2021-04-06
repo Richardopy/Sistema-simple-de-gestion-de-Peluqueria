@@ -27,6 +27,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::resource('/admin/categorias', App\Http\Controllers\CategoriaController::class)->middleware('auth');
 
+Route::resource('/admin/proveedores', App\Http\Controllers\ProveedorController::class)->middleware('auth');
+
 Route::resource('/admin/productos', App\Http\Controllers\ProductoController::class)->middleware('auth');
 
 Route::resource('/admin/servicios', App\Http\Controllers\ServicioController::class)->middleware('auth');

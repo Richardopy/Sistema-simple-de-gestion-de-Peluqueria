@@ -279,6 +279,15 @@ return [
 
         ],
         [
+            'header' => 'PROVEEDORES',
+        ],
+        [
+            'text'        => 'Proveedores',
+            'url'         => 'admin/proveedores',
+            'icon'        => 'fas fa-people-carry'
+
+        ],
+        [
             'header' => 'USUARIOS',
         ],
         [
