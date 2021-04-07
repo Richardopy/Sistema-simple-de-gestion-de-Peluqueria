@@ -288,6 +288,15 @@ return [
 
         ],
         [
+            'header' => 'GASTOS',
+        ],
+        [
+            'text'        => 'Gastos Varios',
+            'url'         => 'admin/categoriagastos',
+            'icon'        => 'fas fa-file-invoice-dollar'
+
+        ],
+        [
             'header' => 'USUARIOS',
         ],
         [
