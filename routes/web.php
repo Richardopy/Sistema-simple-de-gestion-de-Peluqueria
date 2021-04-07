@@ -63,16 +63,10 @@ Route::get('/carrito', function () {
     return view('frontend.carrito');
 });
 
-<<<<<<< HEAD
 Route::get('/comprar', [App\Http\Controllers\ComprarController::class, 'index'])->name('comprar')->middleware('auth');
 
 Route::post('/enviarpedido', [App\Http\Controllers\ComprarController::class, 'enviarpedido'])->name('enviarpedido');
-=======
-Route::get('/comprar', function () {
-    return view('frontend.comprar');
-})->middleware('auth');
 
 Route::get('/quienessomos', function () {
     return view('frontend.acerca');
 });
->>>>>>> 7cfd27994b116bcdd60b24cf69a249a88a5fae7b
