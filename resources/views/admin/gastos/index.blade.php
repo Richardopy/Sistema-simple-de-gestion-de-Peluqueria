@@ -9,7 +9,7 @@
 @section('content')
 
 
-    <livewire:add-gasto/>
+    @livewire('add-gasto', ['categoria_id' => 1])
 
 @stop
 

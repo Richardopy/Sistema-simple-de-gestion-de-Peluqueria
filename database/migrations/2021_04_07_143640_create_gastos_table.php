@@ -18,8 +18,8 @@ class CreateGastosTable extends Migration
             $table->timestamps();
             $table->string('nombre');
             $table->string('costo');
-            $table->string('observacion');
-            $table->boolean('estado')->default(1);
+            $table->unsignedBigInteger('gastocategoria_id');
+            $table->foreign('gastocategoria_id')->references('id')->on('categoria_gastos');
         });
     }
 

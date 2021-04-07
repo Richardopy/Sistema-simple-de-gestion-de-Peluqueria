@@ -18,7 +18,6 @@ class Gastos extends Model
     protected $fillable=[
     	 'nombre',
          'costo',
-         'observacion',
-         'estado',
+         'gastocategoria_id',
     ];
 }

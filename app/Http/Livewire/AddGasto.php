@@ -14,13 +14,13 @@ class AddGasto extends Component
     
     public $search='';
     
-    public $nombre, $costos_id, $costo, $observacion;
+    public $nombre, $costos_id, $costo, $categoria_id;
     
     public $updateMode = false;
     
     public function render(){
 
-        $costos = Gastos::where('estado',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
+        $costos = Gastos::where('gastocategoria_id',$this->categoria_id)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
         
         return view('livewire.gastos.index',["costos"=>$costos]);
 
@@ -29,7 +29,6 @@ class AddGasto extends Component
     private function resetInputFields(){
         $this->nombre = '';
         $this->costo = '';
-        $this->observacion = '';
 
     }
 
@@ -38,15 +37,13 @@ class AddGasto extends Component
         $validatedDate = $this->validate([
             'nombre' => 'required',
             'costo' => 'required',
-            'observacion' => 'required',
         ]);
 
 
         Gastos::create([
             'nombre' => $this->nombre,
             'costo' => $this->costo,
-            'observacion' => $this->observacion,
-
+            'gastocategoria_id' => $this->categoria_id,
         ]);
 
         session()->flash('message', 'Gasto agregado correctamente!');
@@ -60,7 +57,6 @@ class AddGasto extends Component
         $gastos = Gastos::where('id',$id)->first();
         $this->nombre = $gastos->nombre;
         $this->costo = $gastos->costo;    
-        $this->observacion = $gastos->observacion; 
  
     }
 
@@ -75,7 +71,6 @@ class AddGasto extends Component
         $validatedDate = $this->validate([
             'nombre' => 'required',
             'costo' => 'required',
-            'observacion' => 'required',
         ]);
 
         if ($this->costos_id) {
@@ -83,7 +78,6 @@ class AddGasto extends Component
             $gastos->update([
                 'nombre' => $this->nombre,
                 'costo' => $this->costo,
-                'observacion' => $this->observacion,
 
             ]);
             $this->updateMode = false;
@@ -97,8 +91,7 @@ class AddGasto extends Component
     {
         if($id){
             $costos = Gastos::find($id);
-            $costos->estado=0;
-            $costos->update();
+            $costos->delete();
             session()->flash('message', 'Gasto eliminado correctamente');
         }
     }

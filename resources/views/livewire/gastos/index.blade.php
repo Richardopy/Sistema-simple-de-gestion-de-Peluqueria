@@ -20,19 +20,21 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Categorias</th>
-                    <th>Observaciones</th>
+                    <th>Gasto</th>
+                    <th>Monto</th>
                     <th>Acciones</th>
 
                 </tr>
             </thead>
             <tbody>
-
+                @php
+                    $total=0;
+                @endphp
                 @foreach ($costos as $cat)
                     <tr>
                         <td>{{ $cat->id }}</td>
                         <td>{{ $cat->nombre }}</td>
-                        <td>{{ $cat->observacion }}</td>
+                        <td>{{ $cat->costo }}</td>
                         <td>
                         
                         <button wire:click="edit({{ $cat->id }})" class="btn btn-sm btn-info">Editar</button>
@@ -60,8 +62,14 @@
 							</div>
                         </td>
                     </tr>
+                    @php
+                        $total+=$cat->costo;
+                    @endphp
                 @endforeach
-
+                <tr>
+                    <td colspan="3"><b>Total</b></td>
+                    <td>{{ $total }} Gs.</td>
+                </tr>
             </tbody>
         </table>
         @else
