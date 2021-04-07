@@ -8,7 +8,7 @@
 						<div class="banner-text-w3-agileits">
 							<h5>Estilistas experimentadas </h5>
 							<h2>¡Disfrute de nuestros servicios profesionales!</h2>
-							<p>Brindamos servicios y asesoramiento, utilizando productos de alta gama para satisfacer sus necesidad.</p>
+							<p>Brindamos servicios y asesoramiento, utilizando productos de alta gama para satisfacer sus necesidades.</p>
 							<div class="botton">
 								<a href="{{ url('/servicios')}}">Ver Servicios</a>
 							</div>
