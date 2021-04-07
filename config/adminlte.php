@@ -291,7 +291,7 @@ return [
             'header' => 'GASTOS',
         ],
         [
-            'text'        => 'Gastos Varios',
+            'text'        => 'Gastos',
             'url'         => 'admin/categoriagastos',
             'icon'        => 'fas fa-file-invoice-dollar'
 

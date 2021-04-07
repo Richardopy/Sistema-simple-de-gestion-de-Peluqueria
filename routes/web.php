@@ -37,6 +37,10 @@ Route::get('/admin/mensajes', function () {
     return view('admin.mensajes.index');
 })->middleware('auth');
 
+Route::get('/admin/gastos', function () {
+    return view('admin.gastos.index');
+})->middleware('auth');
+
 Route::get('/admin/categoriagastos', function () {
     return view('admin.categoriagastos.index');
 })->middleware('auth');

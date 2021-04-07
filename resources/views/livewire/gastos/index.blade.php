@@ -3,9 +3,9 @@
 <div class="row">
         <div class="col-md-12"> 
             @if($updateMode)
-                @include('livewire.categoriagastos.update')
+                @include('livewire.gastos.update')
             @else
-                @include('livewire.categoriagastos.create')
+                @include('livewire.gastos.create')
             @endif
         </div>
         <div class="col-md-12">
@@ -15,7 +15,7 @@
   
     <br>
     <div class="row">
-        @if ($categorias->count())
+        @if ($costos->count())
         <table class="table">
             <thead>
                 <tr>
@@ -28,14 +28,13 @@
             </thead>
             <tbody>
 
-                @foreach ($categorias as $cat)
+                @foreach ($costos as $cat)
                     <tr>
                         <td>{{ $cat->id }}</td>
                         <td>{{ $cat->nombre }}</td>
                         <td>{{ $cat->observacion }}</td>
                         <td>
-                        <a href="{{URL('/admin/gastos')}}?id={{ $cat->id }}"><button  class="btn btn-sm btn-success">Cargar gasto</button>
-                        </a>
+                        
                         <button wire:click="edit({{ $cat->id }})" class="btn btn-sm btn-info">Editar</button>
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal{{ $cat->id }}"><i class="far fa-trash-alt"></i></button>
 
