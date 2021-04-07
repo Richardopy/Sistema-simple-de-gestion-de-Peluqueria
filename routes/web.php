@@ -29,14 +29,16 @@ Route::resource('/admin/categorias', App\Http\Controllers\CategoriaController::c
 
 Route::resource('/admin/proveedores', App\Http\Controllers\ProveedorController::class)->middleware('auth');
 
-Route::resource('/admin/categoriagastos', App\Http\Controllers\CategoriaGastosController::class)->middleware('auth');
-
 Route::resource('/admin/productos', App\Http\Controllers\ProductoController::class)->middleware('auth');
 
 Route::resource('/admin/servicios', App\Http\Controllers\ServicioController::class)->middleware('auth');
 
 Route::get('/admin/mensajes', function () {
     return view('admin.mensajes.index');
+})->middleware('auth');
+
+Route::get('/admin/categoriagastos', function () {
+    return view('admin.categoriagastos.index');
 })->middleware('auth');
 
 Route::get('/contacto', [App\Http\Controllers\ContactoController::class, 'index'])->name('contacto');

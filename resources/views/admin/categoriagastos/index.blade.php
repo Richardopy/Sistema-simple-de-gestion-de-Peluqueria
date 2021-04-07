@@ -9,7 +9,7 @@
 @section('content')
 
 
-    <livewire:categoriagastos />
+    <livewire:cat-gastos />
 
 @stop
 

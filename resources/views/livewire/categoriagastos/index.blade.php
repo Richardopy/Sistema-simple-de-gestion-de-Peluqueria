@@ -20,7 +20,8 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>categorias</th>
+                    <th>Categorias</th>
+                    <th>Observaciones</th>
                     <th>Acciones</th>
 
                 </tr>
@@ -31,6 +32,7 @@
                     <tr>
                         <td>{{ $cat->id }}</td>
                         <td>{{ $cat->nombre }}</td>
+                        <td>{{ $cat->observacion }}</td>
                         <td>
                         <button wire:click="edit({{ $cat->id }})" class="btn btn-sm btn-info">Editar</button>
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal{{ $cat->id }}"><i class="far fa-trash-alt"></i></button>
