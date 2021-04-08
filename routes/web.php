@@ -78,3 +78,7 @@ Route::post('/enviarpedido', [App\Http\Controllers\ComprarController::class, 'en
 Route::get('/quienessomos', function () {
     return view('frontend.acerca');
 });
+
+Route::get('/servicios', function () {
+    return view('frontend.servicios');
+});

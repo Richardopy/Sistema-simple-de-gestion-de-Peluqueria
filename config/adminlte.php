@@ -224,10 +224,16 @@ return [
     */
 
     'menu' => [
+          
         [
             'text'        => 'Panel de Control',
             'url'         => 'admin/panel',
             'icon'        => 'fas fa-tachometer-alt'
+        ],
+        [
+            'text'        => 'Ir a página principal',
+            'url'         => '/',
+            'icon'        => 'fas fa-arrow-alt-circle-left'
         ],
         [
             'header' => 'account_settings'
