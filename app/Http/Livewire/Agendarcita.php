@@ -5,10 +5,14 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Servicio;
 use Livewire\WithPagination;
+use App\Models\Empresa;
+use App\Models\Citas;
 
-class Serviciosfrontend extends Component{
 
 
+class Agendarcita extends Component
+{
+    
     protected $listeners = ['cartDelete' => 'render'];
 
     protected $queryString = ['search' => ['except' => '']];
@@ -27,10 +31,11 @@ class Serviciosfrontend extends Component{
         }else{
             $servicios = Servicio::where('estado',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
         }
-        
-        return view('livewire.frontend.serviciosfrontend',["servicios"=>$servicios]);
-    }
+        	$empresa = Empresa::findorFail(1);
+        	$citas = Citas::get();
 
+        return view('livewire.frontend.agendarcita',["servicios"=>$servicios, "empresa"=>$empresa, "citas"=>$citas]);
+    }
 
     public function addcita($id){
 
@@ -41,12 +46,5 @@ class Serviciosfrontend extends Component{
         }else{
          	$precio = $servicios->precio;
         }
-
-         
-    }
-
-
+	}
 }
-
-
-

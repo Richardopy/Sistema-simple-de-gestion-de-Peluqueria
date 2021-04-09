@@ -45,7 +45,7 @@
 							@if (in_array($value->id, Cart::getContent()->pluck('id')->toArray()))
 								<button type="button" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i> Agregado al carrito</button>
 							@else
-								<button class="btn btn-warning" wire:click="addcarrito({{ $value->id }})"><i class="fa fa-shopping-cart"></i> Agregar al carrito</button>
+								<button class="btn btn-warning" wire:click="addcita({{ $value->id }})"><i class="fa-book"></i>Agendar Cita</button>
 							@endif	
 							</center><br>
 						</div>

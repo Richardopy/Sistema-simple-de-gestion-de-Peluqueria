@@ -82,3 +82,7 @@ Route::get('/quienessomos', function () {
 Route::get('/servicios', function () {
     return view('frontend.servicios');
 });
+
+Route::get('/agendarcita', function () {
+    return view('frontend.agendarcita');
+});
