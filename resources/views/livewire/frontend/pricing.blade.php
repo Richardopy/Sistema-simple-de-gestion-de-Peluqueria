@@ -42,7 +42,7 @@
 								<h5 align="center">{{$value->precio }}<span class="sup">₲</span> </h5>
 							@endif
 							<center><br>
-							@if (in_array($value->id, Cart::getContent()->pluck('id')->toArray()))
+							@if (in_array("pro_id".$value->id, Cart::getContent()->pluck('id')->toArray()))
 								<button type="button" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i> Agregado al carrito</button>
 							@else
 								<button class="btn btn-warning" wire:click="addcarrito({{ $value->id }})"><i class="fa fa-shopping-cart"></i> Agregar al carrito</button>

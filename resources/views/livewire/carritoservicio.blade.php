@@ -83,16 +83,15 @@
 	</style>
     <div class="container mt-3"><br>
 		<div class="wthree_head_section">
-			<h3 class="w3l_header">Carrito <span>de Servicios</span></h3>
+			<h3 class="w3l_header">Cita <span>para Servicios</span></h3>
 		</div>
     	@if (count(Cart::getContent()))
     		<div class="row">
 					<table class="table table-striped table-hover">
 						<thead>
 					    <tr>
-					      	<th scope="col">Producto</th>
+					      	<th scope="col">Servicio</th>
 					      	<th scope="col">Precio</th>
-					      	<th scope="col">Cantidad</th>
 					      	<th scope="col">Subtotal</th>
 					      	<th scope="col">Acciones</th>
 					    </tr>
@@ -100,26 +99,22 @@
 					<tbody>
 						@php
 							$total=0;
-							$cartCollection = Cart::session($sesionservicio)->getContent();
-        					$cart = $cartCollection->sort();
 						@endphp 
-						@foreach ($cart as $value)
-							<tr>
-								<td scope="row" data-label="Producto"><img src="{{ asset('/images/servicios/'.$value->attributes->urlfoto) }}" style="width: 30px;border-radius: 10px;">{{ $value->name }}</td>
-								<td data-label="Precio">{{ $value->price }}</td>
-								<td data-label="Cantidad">
-									<button class="btn btn-success" wire:click="cantidad({{ $value->id }}, -1)"><i class="fa fa-minus-circle"></i></button>
-									<b style="padding: 5px">{{ $value->quantity }}</b>
-									<button class="btn btn-success" wire:click="cantidad({{ $value->id }}, 1)"><i class="fa fa-plus-square"></i></button></td>
-								<td data-label="Subtotal">{{ $value->price*$value->quantity }}</td>
-								<td data-label="Acciones"><button class="btn btn-danger" wire:click="deletecarrito({{ $value->id }})"><i class="fa fa-times-circle"></i></button></td>
-							</tr>
-							@php
-								$total+=$value->price*$value->quantity;
-							@endphp
+						@foreach (Cart::getContent() as $value)
+							@if ($value->attributes->tipo == "servicio")
+								<tr>
+									<td scope="row" data-label="Producto" style="text-align: left !important"><img src="{{ asset('/images/servicios/'.$value->attributes->urlfoto) }}" style="width: 30px;border-radius: 10px;"> {{ $value->name }}</td>
+									<td data-label="Precio">{{ $value->price }}</td>
+									<td data-label="Subtotal">{{ $value->price*$value->quantity }}</td>
+									<td data-label="Acciones"><button class="btn btn-danger" wire:click="deletecarritoservicio('{{ $value->id }}')"><i class="fa fa-times-circle"></i></button></td>
+								</tr>
+								@php
+									$total+=$value->price*$value->quantity;
+								@endphp
+							@endif
 						@endforeach
 						<tr>
-							<td colspan="4" style="text-align: left !important;"><b>Total:</b></td>
+							<td colspan="3" style="text-align: left !important;"><b>Total:</b></td>
 							<td>{{ $total }} ₲</td>
 						</tr>
 					</tbody>
@@ -127,7 +122,7 @@
 			</div>
 			<div class="row">
 		      	<div class="col-12" align="center">
-			        <a href="{{ url('comprar') }}"><button type="button" class="btn btn-success"><span class="fa fa-shopping-cart" aria-hidden="true"></span> Confirmar datos para comprar servicio</button></a><br><br>
+			        <a href="{{ url('agendarcita') }}"><button type="button" class="btn btn-success"><span class="fa fa-shopping-cart" aria-hidden="true"></span> Confirmar datos para solicitar servicios</button></a><br><br>
 		      	</div>
 	      	</div>
 		@else

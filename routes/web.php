@@ -72,7 +72,7 @@ Route::get('/carrito', function () {
 });
 
 Route::get('/carritoservicio', function () {
-    return view('frontend.carrito');
+    return view('frontend.carritoservicio');
 });
 
 Route::get('/comprar', [App\Http\Controllers\ComprarController::class, 'index'])->name('comprar')->middleware('auth');

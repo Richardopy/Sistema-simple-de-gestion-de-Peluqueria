@@ -6,9 +6,6 @@ use Livewire\Component;
 use App\Models\Servicio;
 use Livewire\WithPagination;
 use App\Models\Empresa;
-use App\Models\Citas;
-
-
 
 class Agendarcita extends Component
 {
@@ -32,9 +29,8 @@ class Agendarcita extends Component
             $servicios = Servicio::where('estado',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
         }
         	$empresa = Empresa::findorFail(1);
-        	$citas = Citas::get();
 
-        return view('livewire.frontend.agendarcita',["servicios"=>$servicios, "empresa"=>$empresa, "citas"=>$citas]);
+        return view('livewire.frontend.agendarcita',["servicios"=>$servicios, "empresa"=>$empresa]);
     }
 
     public function addcita($id){

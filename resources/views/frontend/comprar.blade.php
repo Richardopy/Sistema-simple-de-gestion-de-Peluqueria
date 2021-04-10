@@ -87,7 +87,10 @@
 		<div class="wthree_head_section">
 			<h3 class="w3l_header">Finalizar <span>Compra</span></h3>
 		</div>
-    	@if (count(Cart::getContent()))
+		@php
+			$carro="producto";
+		@endphp
+    	@if (count(Cart::session($carro)->getContent()))
     		{!! Form::open(array('url'=>'enviarpedido','method'=>'POST','autocomplete'=>'off')) !!}
     		{{Form::token()}}
     		<div class="row">
@@ -103,22 +106,24 @@
 					<tbody>
 						@php
 							$total=0;
-							$cartCollection = Cart::getContent();
+							$cartCollection = Cart::session($carro)->getContent();
         					$cart = $cartCollection->sort();
 						@endphp 
 						@foreach ($cart as $value)
-							<input type="hidden" name="producto_id[]" value="{{ $value->id }}">
-							<input type="hidden" name="cantidad[]" value="{{ $value->quantity }}">
-							<input type="hidden" name="precio[]" value="{{ $value->price }}">
-							<tr>
-								<td scope="row" data-label="Producto"><img src="{{ asset('/images/productos/'.$value->attributes->urlfoto) }}" style="width: 30px;border-radius: 10px;">{{ $value->name }}</td>
-								<td data-label="Precio">{{ $value->price }}</td>
-								<td data-label="Cantidad">{{ $value->quantity }}</td>
-								<td data-label="Subtotal">{{ $value->price*$value->quantity }}</td>
-							</tr>
-							@php
-								$total+=$value->price*$value->quantity;
-							@endphp
+							@if ($value->attributes->tipo == "producto")
+								<input type="hidden" name="producto_id[]" value="{{ $value->id }}">
+								<input type="hidden" name="cantidad[]" value="{{ $value->quantity }}">
+								<input type="hidden" name="precio[]" value="{{ $value->price }}">
+								<tr>
+									<td scope="row" data-label="Producto"><img src="{{ asset('/images/productos/'.$value->attributes->urlfoto) }}" style="width: 30px;border-radius: 10px;">{{ $value->name }}</td>
+									<td data-label="Precio">{{ $value->price }}</td>
+									<td data-label="Cantidad">{{ $value->quantity }}</td>
+									<td data-label="Subtotal">{{ $value->price*$value->quantity }}</td>
+								</tr>
+								@php
+									$total+=$value->price*$value->quantity;
+								@endphp
+							@endif
 						@endforeach
 						<tr>
 							<td colspan="4">

@@ -99,15 +99,7 @@
 
 	        		<div class="col-md-6">
 		        		<div class="input-group mb-6">
-		                    <div class="input-group-prepend">
-		                        <span class="input-group-text">Hora de cita</span>
-		                    </div>
-		                    <input type="time" class="form-control @error('cita_hora') is-invalid @enderror" value="{{ $citas->cita_hora }}" name="cita_hora">
-	                        @error('cita_hora')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+		                    
 		                </div>
 					</div>
 			</div>

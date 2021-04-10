@@ -14,9 +14,19 @@
 					<p class="para-y"><a href="tel:{{ $empresa->telefono1 }}">{{ $empresa->telefono1 }}</a><span class="fa fa-phone" aria-hidden="true"></span></p>
 					<p>
 						<button class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter"><span class="fa fa-shopping-cart" aria-hidden="true"></span> 
-							@if (count(Cart::getContent()))
+							@php
+								$contador=0;
+							@endphp
+							@foreach (Cart::getContent() as $value)
+								@if ($value->attributes->tipo == "producto")
+									@php
+										$contador+=1;
+									@endphp
+								@endif
+							@endforeach
+							@if ($contador > 0)
 								<span class="badge badge-pill badge-success">
-									{{ count(Cart::getContent()) }}
+									{{ $contador }}
 								</span>
 							@endif
 						</button>

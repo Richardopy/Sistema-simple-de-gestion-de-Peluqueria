@@ -42,12 +42,14 @@ class Pricing extends Component{
          	$precio = $producto->precio;
         }
 
+        $pro_id="pro_id".$producto->id;
+
         Cart::add(
-        	$producto->id,
+        	$pro_id,
         	$producto->nombre,
         	$precio,
         	1,
-        	array("urlfoto"=>$producto->foto),
+        	array("urlfoto"=>$producto->foto,"tipo"=>"producto"),
         );
 
         $this->emit('alert', ['type' => 'success', 'message' => 'Producto agregado correctamente.']);

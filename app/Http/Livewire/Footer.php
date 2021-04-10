@@ -19,7 +19,6 @@ class Footer extends Component{
  	}
 
  	public function deletecarrito($id){ 
-
         Cart::remove([
         	
         	'id' => $id,

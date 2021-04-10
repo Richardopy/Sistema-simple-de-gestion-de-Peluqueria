@@ -104,19 +104,21 @@
         					$cart = $cartCollection->sort();
 						@endphp 
 						@foreach ($cart as $value)
-							<tr>
-								<td scope="row" data-label="Producto"><img src="{{ asset('/images/productos/'.$value->attributes->urlfoto) }}" style="width: 30px;border-radius: 10px;">{{ $value->name }}</td>
-								<td data-label="Precio">{{ $value->price }}</td>
-								<td data-label="Cantidad">
-									<button class="btn btn-success" wire:click="cantidad({{ $value->id }}, -1)"><i class="fa fa-minus-circle"></i></button>
-									<b style="padding: 5px">{{ $value->quantity }}</b>
-									<button class="btn btn-success" wire:click="cantidad({{ $value->id }}, 1)"><i class="fa fa-plus-square"></i></button></td>
-								<td data-label="Subtotal">{{ $value->price*$value->quantity }}</td>
-								<td data-label="Acciones"><button class="btn btn-danger" wire:click="deletecarrito({{ $value->id }})"><i class="fa fa-times-circle"></i></button></td>
-							</tr>
-							@php
-								$total+=$value->price*$value->quantity;
-							@endphp
+							@if ($value->attributes->tipo == "producto")
+								<tr>
+									<td scope="row" data-label="Producto"><img src="{{ asset('/images/productos/'.$value->attributes->urlfoto) }}" style="width: 30px;border-radius: 10px;">{{ $value->name }}</td>
+									<td data-label="Precio">{{ $value->price }}</td>
+									<td data-label="Cantidad">
+										<button class="btn btn-success" wire:click="cantidad('{{ $value->id }}', -1)"><i class="fa fa-minus-circle"></i></button>
+										<b style="padding: 5px">{{ $value->quantity }}</b>
+										<button class="btn btn-success" wire:click="cantidad('{{ $value->id }}', 1)"><i class="fa fa-plus-square"></i></button></td>
+									<td data-label="Subtotal">{{ $value->price*$value->quantity }}</td>
+									<td data-label="Acciones"><button class="btn btn-danger" wire:click="deletecarrito('{{ $value->id }}')"><i class="fa fa-times-circle"></i></button></td>
+								</tr>
+								@php
+									$total+=$value->price*$value->quantity;
+								@endphp
+							@endif
 						@endforeach
 						<tr>
 							<td colspan="4" style="text-align: left !important;"><b>Total:</b></td>

@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @section('contenido')
 
-	@livewire('serviciosfrontend', ['limite' => 2])
+	@livewire('services', ['limite' => 2])
+	
 @stop
