@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire; 
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -9,7 +9,7 @@ use App\Models\Mensaje;
 
 class Correos extends Component{
 
-	 use WithPagination;
+	 use WithPagination; 
 
     protected $paginationTheme = 'bootstrap';
     
@@ -19,7 +19,7 @@ class Correos extends Component{
 
 	public $LeerMode = false;
 
-	public $nombre,$update_at,$mensaje,$celular;
+	public $nombre,$update_at,$mensaje,$celular,$mensaje_id,$msmstate;
 
     public function render(){
 
@@ -45,15 +45,26 @@ class Correos extends Component{
     public function leer($id){
     	$this->LeerMode = true;
 
-    	$mensaje = Mensaje::where('id',$id)->first();
+    	$mensaje = Mensaje::find($id);
         
-        $this->nombre = $mensaje->nombre;
-        $this->update_at = $mensaje->update_at;
-        $this->mensaje = $mensaje->mensaje;
-        $this->celular = $mensaje->celular;
+            $this->nombre = $mensaje->nombre;
+            $this->update_at = $mensaje->update_at;
+            $this->mensaje = $mensaje->mensaje;
+            $this->celular = $mensaje->celular;
+            $this->mensaje_id = $mensaje->id;
+            $this->msmstate = $mensaje->estado;
 
-        $mensaje->estado=1;
+        if ($mensaje->estado == 0) {
+            $mensaje->estado=1;
+            $mensaje->update();
+        }
+    }
+    public function delete($id){
+
+        $mensaje = Mensaje::find($id);
+        $mensaje->estado=2;
         $mensaje->update();
+        $this->LeerMode = false;
 
     }
        
