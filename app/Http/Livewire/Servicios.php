@@ -19,7 +19,10 @@ class Servicios extends Component{
 
     	$servicios = Servicio::where('estado',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
 
-        return view('livewire.servicios',["servicios"=>$servicios]);
+
+        $contadorservicios = Servicio::where('estado',0)->count();
+
+        return view('livewire.servicios',["servicios"=>$servicios,"contadorservicios"=>$contadorservicios]);
     }
 
     public function delete($id)

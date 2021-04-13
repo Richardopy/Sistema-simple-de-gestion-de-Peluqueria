@@ -4,8 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Mensaje;
-
+use App\Models\Servicio;
 
 class Correos extends Component{
 
@@ -15,25 +14,25 @@ class Correos extends Component{
     
     public $search='';
 
-	public $mensajeestado=0;
+	public $servicioeestado=0;
 
 	public $LeerMode = false;
 
-	public $nombre,$update_at,$mensaje,$celular;
+	public $nombre,$precio,$oferta,$estado;
 
     public function render(){
 
     	if ($this->mensajeestado == 0) {
-    		$contacto = Mensaje::where('estado',0)->where('nombre','LIKE','%'.$this->search.'%')->paginate(10);
+    		$servicio = Servicio::where('estado',0)->where('nombre','LIKE','%'.$this->search.'%')->paginate(10);
     	}elseif ($this->mensajeestado == 1) {
-    		$contacto = Mensaje::where('estado',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(10);
+    		$servicio = Servicio::where('estado',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(10);
     	}else{
-    		$contacto = Mensaje::where('estado',2)->where('nombre','LIKE','%'.$this->search.'%')->paginate(10);
+    		$servicio = Servicio::where('estado',2)->where('nombre','LIKE','%'.$this->search.'%')->paginate(10);
     	}
 
-    	$contador = Mensaje::where('estado',0)->count();
+    	$contadorservicio = Servicio::where('estado',0)->count();
 
-        return view('livewire.correosadmin.correos',["contacto"=>$contacto,"contador"=>$contador]);
+        return view('livewire.serviciosrecepcion.correos',["servicio"=>$servicio,"contador"=>$contador]);
     
     }
 

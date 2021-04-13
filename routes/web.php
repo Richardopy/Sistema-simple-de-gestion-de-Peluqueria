@@ -37,6 +37,14 @@ Route::get('/admin/mensajes', function () {
     return view('admin.mensajes.index');
 })->middleware('auth');
 
+Route::get('/admin/mensajesproductos', function () {
+    return view('admin.mensajesproductos.index');
+})->middleware('auth');
+
+Route::get('/admin/mensajesservicios', function () {
+    return view('admin.mensajesservicios.index');
+})->middleware('auth');
+
 Route::get('/admin/gastos', function () {
     return view('admin.gastos.index');
 })->middleware('auth');

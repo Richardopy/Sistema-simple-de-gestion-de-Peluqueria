@@ -26,7 +26,7 @@
               <div>
               <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
              <td>      
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal{{ $contacto->id }}"><i class="far fa-trash-alt"></i></button>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal{{ $cat->id }}"><i class="far fa-trash-alt"></i></button>
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -43,7 +43,7 @@
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="button" wire:click="delete({{ $contacto->id }})" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
+                                    <button type="button" wire:click="delete({{ $cat->id }})" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
                                   </div>
                                 </div>
                               </div>

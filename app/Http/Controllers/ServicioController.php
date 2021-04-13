@@ -102,21 +102,19 @@ class ServicioController extends Controller
 
     public function enviarsolicitud(Request $request){
 
-        $fecha = strtotime($request->get('cita_dia'));
-
-        if (date("N", $fecha) == 1){
+        if ($request->get('cita_dia') == 'lunes'){
             $date = new Carbon('next monday');
-        }elseif (date("N", $fecha) == 2){
+        }elseif ($request->get('cita_dia') == 'martes'){
             $date = new Carbon('next tuesday');
-        }elseif (date("N", $fecha) == 3){
+        }elseif ($request->get('cita_dia') == 'miercoles'){
             $date = new Carbon('next wednesday');
-        }elseif (date("N", $fecha) == 4){
+        }elseif ($request->get('cita_dia') == 'jueves'){
             $date = new Carbon('next thursday');
-        }elseif (date("N", $fecha) == 5){
+        }elseif ($request->get('cita_dia') == 'viernes'){
             $date = new Carbon('next friday');
-        }elseif (date("N", $fecha) == 6){
+        }elseif ($request->get('cita_dia') == 'sabado'){
             $date = new Carbon('next saturday');
-        }elseif (date("N", $fecha) == 7){
+        }elseif ($request->get('cita_dia') == 'domingo'){
             $date = new Carbon('next sunday');
         }
 

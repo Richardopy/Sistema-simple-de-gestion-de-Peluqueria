@@ -286,6 +286,22 @@ return [
             'label_color' => 'success',
         ],
         [
+            'text'        => 'Servicios',
+            'url'         => 'admin/mensajesservicios',
+            'icon'        => 'fas fa-inbox',
+            'classes'     => 'servicios',
+            'label'       => 0,
+            'label_color' => 'success',
+        ],
+           [
+            'text'        => 'Productos',
+            'url'         => 'admin/mensajesproductos',
+            'icon'        => 'fas fa-inbox',
+            'classes'     => 'productos',
+            'label'       => 0,
+            'label_color' => 'success',
+        ],
+        [
             'header' => 'PROVEEDORES',
         ],
         [

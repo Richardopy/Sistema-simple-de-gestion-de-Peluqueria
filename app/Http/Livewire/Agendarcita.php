@@ -20,7 +20,7 @@ class Agendarcita extends Component
     
     public $search='';
 
-    public $minimo = '00:00:00', $maximo = '', $dia = '';
+    public $minimo,$maximo,$dia;
 
     public function render(){
         
