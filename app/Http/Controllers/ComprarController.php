@@ -38,15 +38,17 @@ class ComprarController extends Controller{
         		$pedido=new Pedido;
 
         		$pedido->cabecera_id=$cabecera->id;
-        		$pedido->producto_id=$request->get('producto_id')[$i];
+                $porciones = explode("id", $request->get('producto_id')[$i]);
+        		$pedido->producto_id=$porciones[1];
         		$pedido->cantidad=$request->get('cantidad')[$i];
         		$pedido->precio=$request->get('precio')[$i];
 
         		$pedido->save();
+                Cart::remove([
+                    'id' => $request->get('producto_id')[$i],
+                ]);
         	}
         }
-
-        Cart::clear();
 
         Session::flash('success', '¡Su pedido se realizo correctamente correctamente!');
 
