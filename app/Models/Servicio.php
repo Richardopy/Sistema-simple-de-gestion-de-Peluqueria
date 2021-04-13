@@ -8,20 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Servicio extends Model
 {
     use HasFactory;
-protected $table='servicios';
+    
+    protected $table='servicios';
 
     protected $primaryKey='id';
 
     public $timestamps='true';
 
     protected $fillable=[
-            'nombre',
-            'description',
-            'precio',
-            'oferta',
-            'estado',
-            'foto',
-];
+        'nombre',
+        'description',
+        'precio',
+        'oferta',
+        'estado',
+        'foto',
+    ];
 
 
 }

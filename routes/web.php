@@ -89,4 +89,6 @@ Route::get('/servicios', function () {
 
 Route::get('/agendarcita', function () {
     return view('frontend.agendarcita');
-});
+})->middleware('auth');
+
+Route::post('/enviarsolicitud', [App\Http\Controllers\ServicioController::class, 'enviarsolicitud'])->name('enviarsolicitud');

@@ -20,27 +20,40 @@ class Agendarcita extends Component
     
     public $search='';
 
-    public $limite;
+    public $minimo = '00:00:00', $maximo = '', $dia = '';
 
     public function render(){
-        if ($this->limite == 1) {
-            $servicios = Servicio::where('estado',1)->limit(9)->get();
-        }else{
-            $servicios = Servicio::where('estado',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
-        }
-        	$empresa = Empresa::findorFail(1);
+        
+        $empresa = Empresa::findorFail(1);
 
-        return view('livewire.frontend.agendarcita',["servicios"=>$servicios, "empresa"=>$empresa]);
+        return view('livewire.frontend.agendarcita',["empresa"=>$empresa]);
     }
 
-    public function addcita($id){
+    public function changeEvent(){
 
-        $servicios = Servicio::find($id);  
+        $empresa = Empresa::findorFail(1);
 
-        if ($servicios->oferta) {
-         	$precio = $servicios->oferta;
-        }else{
-         	$precio = $servicios->precio;
+        if ($this->dia == "lunes") {
+            $this->minimo=$empresa->lunesingreso;
+            $this->maximo=$empresa->lunessalida;
+        }elseif ($this->dia == "martes"){
+            $this->minimo=$empresa->martesingreso;
+            $this->maximo=$empresa->martessalida;
+        }elseif ($this->dia == "miercoles"){
+            $this->minimo=$empresa->miercolesingreso;
+            $this->maximo=$empresa->miercolessalida;    
+        }elseif ($this->dia == "jueves"){
+            $this->minimo=$empresa->juevesingreso;
+            $this->maximo=$empresa->juevessalida;
+        }elseif ($this->dia == "viernes"){
+            $this->minimo=$empresa->viernesingreso;
+            $this->maximo=$empresa->viernessalida;
+        }elseif ($this->dia == "sabado"){
+            $this->minimo=$empresa->sabadoingreso;
+            $this->maximo=$empresa->sabadosalida;
+        }elseif ($this->dia == "domingo"){
+            $this->minimo=$empresa->domingoingreso;
+            $this->maximo=$empresa->domingosalida;
         }
-	}
+    }
 }

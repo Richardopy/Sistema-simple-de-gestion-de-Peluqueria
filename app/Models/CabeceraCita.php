@@ -9,7 +9,7 @@ class CabeceraCita extends Model{
 
     use HasFactory;
 
-    protected $table='cabecera_pedidos';
+    protected $table='cabecera_citas';
 
     protected $primaryKey='id';
 
