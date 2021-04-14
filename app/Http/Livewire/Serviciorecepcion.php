@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\CabeceraCita;
 use DB;
+use Carbon\Carbon;
 
 class Serviciorecepcion extends Component{
 
@@ -20,6 +21,8 @@ class Serviciorecepcion extends Component{
 	public $LeerMode = false;
 
 	public $usuario_id,$cabecera_id=0;
+
+    public $msmstate;
 
     public function render(){
 
@@ -48,6 +51,9 @@ class Serviciorecepcion extends Component{
     	}
 
         $contadorservicio = CabeceraCita::where('estado',0)->count();
+        $contadorservicioagendado = CabeceraCita::where('estado',1)->count();
+
+
 
         if ($this->cabecera_id != 0) {
             $cabecera = DB::table('cabecera_citas as ca')
@@ -61,9 +67,9 @@ class Serviciorecepcion extends Component{
                 ->where('se.cabecera_id',$this->cabecera_id)
                 ->get();
 
-            return view('livewire.serviciosrecepcion.serviciosrecepcion',["servicio"=>$servicio,"contadorservicio"=>$contadorservicio,"cabecera"=>$cabecera,"servicios"=>$servicios]);
+            return view('livewire.serviciosrecepcion.serviciosrecepcion',["servicio"=>$servicio,"contadorservicio"=>$contadorservicio,"cabecera"=>$cabecera,"servicios"=>$servicios,"contadorservicioagendado"=>$contadorservicioagendado]);
         }else{
-            return view('livewire.serviciosrecepcion.serviciosrecepcion',["servicio"=>$servicio,"contadorservicio"=>$contadorservicio]);
+            return view('livewire.serviciosrecepcion.serviciosrecepcion',["servicio"=>$servicio,"contadorservicio"=>$contadorservicio,"contadorservicioagendado"=>$contadorservicioagendado]);
         }
     
     }
@@ -72,11 +78,22 @@ class Serviciorecepcion extends Component{
     	$this->mensajeestado=$estado;
         $this->cabecera_id=0;
         $this->LeerMode = false;
+        $this->msmstate = $estado;
+
     }
 
     public function leer($id){
     	$this->LeerMode = true;
         $this->cabecera_id=$id;
+
     }
-       
+    
+     public function agendado($id){
+
+        $mensaje = CabeceraCita::find($id);
+        $mensaje->estado=1;
+        $mensaje->update();
+        $this->LeerMode = false;
+
+    }
 }
