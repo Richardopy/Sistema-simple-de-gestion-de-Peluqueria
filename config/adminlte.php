@@ -236,45 +236,6 @@ return [
             'icon'        => 'fas fa-arrow-alt-circle-left'
         ],
         [
-            'header' => 'account_settings'
-        ],
-        [
-            'text' => 'profile',
-            'url'  => 'user/profile',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'Perfil Empresa',
-            'url'  => 'admin/empresa',
-            'icon' => 'fas fa-briefcase',
-            'active' => ['admin/empresa', 'admin/empresa*', 'regex:@^content/[0-9]+$@'],
-        ],
-        [
-            'header' => 'PRODUCTOS',
-        ],
-        [
-            'text'        => 'Categorias',
-            'url'         => 'admin/categorias',
-            'icon'        => 'fas fa-boxes'
-        ],
-      
-        [
-            'text'        => 'Productos',
-            'url'         => 'admin/productos',
-            'icon'        => 'fas fa-shopping-basket',
-            'active'      => ['admin/productos', 'admin/productos*', 'regex:@^content/[0-9]+$@'],
-        ],
-
-        [
-            'header' => 'SERVICIOS',
-        ],
-        [
-            'text'        => 'Servicios',
-            'url'         => 'admin/servicios',
-            'icon'        => 'fas fa-hand-holding',
-            'active'      => ['admin/servicios', 'admin/servicios*', 'regex:@^content/[0-9]+$@'],
-        ],
-           [
             'header' => 'CLIENTES',
         ],
         [
@@ -301,6 +262,33 @@ return [
             'label'       => 0,
             'label_color' => 'success',
         ],
+        
+        [
+            'header' => 'PRODUCTOS',
+        ],
+        [
+            'text'        => 'Categorias',
+            'url'         => 'admin/categorias',
+            'icon'        => 'fas fa-boxes'
+        ],
+      
+        [
+            'text'        => 'Productos',
+            'url'         => 'admin/productos',
+            'icon'        => 'fas fa-shopping-basket',
+            'active'      => ['admin/productos', 'admin/productos*', 'regex:@^content/[0-9]+$@'],
+        ],
+
+        [
+            'header' => 'SERVICIOS',
+        ],
+        [
+            'text'        => 'Servicios',
+            'url'         => 'admin/servicios',
+            'icon'        => 'fas fa-hand-holding',
+            'active'      => ['admin/servicios', 'admin/servicios*', 'regex:@^content/[0-9]+$@'],
+        ],
+        
         [
             'header' => 'PROVEEDORES',
         ],
@@ -334,6 +322,21 @@ return [
             'icon'        => 'fas fa-users',
             'active'      => ['admin/colaboradores', 'admin/colaboradores*', 'regex:@^content/[0-9]+$@'],
         ],
+        [
+            'header' => 'account_settings'
+        ],
+        [
+            'text' => 'profile',
+            'url'  => 'user/profile',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Perfil Empresa',
+            'url'  => 'admin/empresa',
+            'icon' => 'fas fa-briefcase',
+            'active' => ['admin/empresa', 'admin/empresa*', 'regex:@^content/[0-9]+$@'],
+        ],
+
     ],
 
     /*
