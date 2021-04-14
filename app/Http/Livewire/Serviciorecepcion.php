@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\CabeceraCita;
+use DB;
 
 class Serviciorecepcion extends Component{
 
@@ -18,42 +19,64 @@ class Serviciorecepcion extends Component{
 
 	public $LeerMode = false;
 
-	public $usuario_id,$precio,$oferta,$estado;
+	public $usuario_id,$cabecera_id=0;
 
     public function render(){
 
     	if ($this->mensajeestado == 0) {
-    		$servicio = CabeceraCita::where('estado',0)->where('usuario_id','LIKE','%'.$this->search.'%')->paginate(10);
+            $servicio=DB::table('cabecera_citas as ca')
+                ->join('users as u','ca.usuario_id','u.id')
+                ->select('ca.*','u.name')
+                ->where('ca.estado',0)
+                ->where('u.name','LIKE','%'.$this->search.'%')
+                ->paginate(10);
+
     	}elseif ($this->mensajeestado == 1) {
-    		$servicio = CabeceraCita::where('estado',1)->where('usuario_id','LIKE','%'.$this->search.'%')->paginate(10);
+    		$servicio=DB::table('cabecera_citas as ca')
+                ->join('users as u','ca.usuario_id','u.id')
+                ->select('ca.*','u.name')
+                ->where('ca.estado',1)
+                ->where('u.name','LIKE','%'.$this->search.'%')
+                ->paginate(10);
     	}else{
-    		$servicio = CabeceraCita::where('estado',2)->where('usuario_id','LIKE','%'.$this->search.'%')->paginate(10);
+    		$servicio=DB::table('cabecera_citas as ca')
+                ->join('users as u','ca.usuario_id','u.id')
+                ->select('ca.*','u.name')
+                ->where('ca.estado',2)
+                ->where('u.name','LIKE','%'.$this->search.'%')
+                ->paginate(10);
     	}
 
-    	$contadorservicio = CabeceraCita::where('estado',0)->count();
+        $contadorservicio = CabeceraCita::where('estado',0)->count();
 
-        return view('livewire.serviciosrecepcion.serviciosrecepcion',["servicio"=>$servicio,"contadorservicio"=>$contadorservicio]);
+        if ($this->cabecera_id != 0) {
+            $cabecera = DB::table('cabecera_citas as ca')
+                ->join('users as u','ca.usuario_id','u.id')
+                ->select('ca.*','u.name')
+                ->where('ca.id',$this->cabecera_id)->first();
+
+            $servicios = DB::table('servicio_citas as se')
+                ->join('servicios as s','se.servicio_id','s.id')
+                ->select('se.*','s.nombre','s.foto')
+                ->where('se.cabecera_id',$this->cabecera_id)
+                ->get();
+
+            return view('livewire.serviciosrecepcion.serviciosrecepcion',["servicio"=>$servicio,"contadorservicio"=>$contadorservicio,"cabecera"=>$cabecera,"servicios"=>$servicios]);
+        }else{
+            return view('livewire.serviciosrecepcion.serviciosrecepcion',["servicio"=>$servicio,"contadorservicio"=>$contadorservicio]);
+        }
     
     }
 
     public function estado($estado){
     	$this->mensajeestado=$estado;
+        $this->cabecera_id=0;
         $this->LeerMode = false;
     }
 
     public function leer($id){
     	$this->LeerMode = true;
-
-    	$mensaje = CabeceraCita::where('id',$id)->first();
-        
-        $this->usuario_id = $mensaje->usuario_id;
-        $this->update_at = $mensaje->update_at;
-        $this->cita_dia = $mensaje->cita_dia;
-        $this->cita_hora = $mensaje->cita_hora;
-
-        $mensaje->estado=1;
-        $mensaje->update();
-
+        $this->cabecera_id=$id;
     }
        
 }

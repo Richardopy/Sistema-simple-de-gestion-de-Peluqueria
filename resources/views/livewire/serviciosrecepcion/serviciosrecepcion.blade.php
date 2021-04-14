@@ -22,12 +22,12 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" wire:click="estado('1')">
-                            <i class="far fa-envelope-open"></i> Leidos
+                            <i class="far fa-envelope-open"></i> Agendado
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" wire:click="estado(2)">
-                            <i class="far fa-trash-alt"></i> Papelera
+                            <i class="far fa-trash-alt"></i> Realizados
                         </a>
                     </li>
                 </ul>
