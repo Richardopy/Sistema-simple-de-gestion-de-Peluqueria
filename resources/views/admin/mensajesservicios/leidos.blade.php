@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Mensajes leidos')
+@section('title', 'Servicios Recepcionados')
 
 @section('content_header')
-    <h1>Mensajes</h1>
+    <h1>Servicios</h1>
 @stop
 
 @section('content')
@@ -26,18 +26,18 @@
               <ul class="nav nav-pills flex-column">
                   <li class="nav-item active">
                       <a href="#" class="nav-link">
-                        <i class="far fa-envelope"></i> Recibidos
+                        <i class="far fa-envelope"></i> Servicios Recibidos
                         <span class="badge bg-primary float-right">12</span>
                       </a>
                   </li>
                   <li class="nav-item">
                       <a href="#" class="nav-link">
-                        <i class="far fa-envelope-open"></i> Leidos
+                        <i class="far fa-envelope-open"></i> Servicios Revisados
                       </a>
                   </li>
                   <li class="nav-item">
                       <a href="#" class="nav-link">
-                        <i class="far fa-trash-alt"></i> Papelera
+                        <i class="far fa-trash-alt"></i> Servicios concluidos
                       </a>
                   </li>
                 </ul>
@@ -53,17 +53,17 @@
             <!-- /.card-header -->
             <div class="card-body p-0">
               <div class="mailbox-read-info">
-                <h5>Nuevo Mensaje desde la web</h5>
-                <h6>Remitente: {{ $contacto->nombre }}
-                  <span class="mailbox-read-time float-right">{{ $contacto->update_at }}</span></h6>
+                <h5>Solicitud de agendamiento de Servicio</h5>
+                <h6>Remitente: {{ $servicio->usuario_id }}
+                  <span class="mailbox-read-time float-right">{{ $servicio->update_at }}</span></h6>
               </div>
            
               <!-- /.mailbox-controls -->
               <div class="mailbox-read-message">
-                <p>{{ $contacto->mensaje }}</p>
+                <p>{{ $servicio->cita_dia }}</p>
 
-                <p>Número de celular:</p>
-                <p>{{ $contacto->celular }}</p>
+                <p>Horario de Cita propuesto:</p>
+                <p>{{ $servicio->cita_hora }}</p>
               </div>
               <!-- /.mailbox-read-message -->
             </div>

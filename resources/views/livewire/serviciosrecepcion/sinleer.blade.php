@@ -17,18 +17,18 @@
         <div class="mailbox-controls">
         <!-- Check all button -->
         <div class="float-right">
-            {{ $contacto->links() }}
+            {{ $servicio->links() }}
         </div>
         </div>
         <div class="table-responsive mailbox-messages">
-            @if ($contacto->count())
-                @foreach ($contacto as $value)  	    			
+            @if ($servicio->count())
+                @foreach ($servicio as $value)  	    			
             <table class="table table-hover table-striped" >
         		<tbody >
           			<tr >
-                		<td class="mailbox-name"><a href="#" wire:click="leer({{ $value->id }})">{{ $value->nombre }}</a>
+                		<td class="mailbox-name"><a href="#" wire:click="leer({{ $value->id }})">{{ $value->usuario_id }}</a>
                 		</td>
-            			<td class="mailbox-subject" ><b>Nuevo mensaje de la web</b>
+            			<td class="mailbox-subject" ><b>Nueva Solicitud de Agendamiento de Servicio</b>
             			</td>
             			<td class="mailbox-attachment" ></td>
             			<td class="mailbox-date" >{{ $value->updated_at->locale('es')->getTranslatedDayName('[в] dddd') }}</td>
@@ -54,7 +54,7 @@
             <div class="mailbox-controls">
                
                 <div class="float-right">
-                    {{ $contacto->links() }}
+                    {{ $servicio->links() }}
                 </div>
                 <!-- /.float-right -->
             </div>

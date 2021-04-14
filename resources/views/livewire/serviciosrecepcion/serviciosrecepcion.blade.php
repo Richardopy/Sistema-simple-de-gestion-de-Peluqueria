@@ -17,7 +17,7 @@
                     <li class="nav-item active">
                         <a href="#" class="nav-link" wire:click="estado(0)">
                             <i class="far fa-envelope"></i> Recibidos
-                            <span class="badge bg-primary float-right">{{ $contador }}</span>
+                            <span class="badge bg-primary float-right">{{ $contadorservicio }}</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -36,9 +36,9 @@
         	</div>
         	
     @if ($LeerMode)
-        @include('livewire.correosadmin.leer')
+        @include('livewire.serviciosrecepcion.leer')
     @else
-        @include('livewire.correosadmin.sinleer')
+        @include('livewire.serviciosrecepcion.sinleer')
     @endif
 
         </div>

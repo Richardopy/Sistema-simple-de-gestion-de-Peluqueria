@@ -8,7 +8,7 @@
 
 @section('content')
 
-<livewire:correos />
+<livewire:serviciorecepcion />
 
 @stop
 
