@@ -28,10 +28,10 @@
                   			<tr >
                         		<td class="mailbox-name"><a href="#" wire:click="leer({{ $value->id }})">{{ $value->name }}</a>
                         		</td>
-                    			<td class="mailbox-subject" ><b>Nueva Solicitud de Agendamiento de Servicio</b>
+                    			<td class="mailbox-subject" ><b>Solicitud de Agendamiento de Servicio</b>
                     			</td>
                     			<td class="mailbox-attachment" ></td>
-                    			<td class="mailbox-date" >{{ $value->updated_at }}</td>
+                    			<td class="mailbox-date" >{{ date('d-m-Y', strtotime($cabecera->cita_dia)) }}</td>
                   			</tr>
                   		</tbody>
             	   </table>

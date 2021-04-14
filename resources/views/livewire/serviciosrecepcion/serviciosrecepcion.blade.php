@@ -22,12 +22,12 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" wire:click="estado('1')">
-                            <i class="far fa-envelope-open"></i> Agendado
+                            <i class="far fa-envelope-open"></i> Agendado<span class="badge bg-primary float-right">{{ $contadorservicioagendado }}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" wire:click="estado(2)">
-                            <i class="far fa-trash-alt"></i> Realizados
+                            <i class="far fa-check-circle"></i> Realizados
                         </a>
                     </li>
                 </ul>
