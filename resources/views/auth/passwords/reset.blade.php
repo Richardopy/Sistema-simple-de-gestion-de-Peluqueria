@@ -1,65 +1,70 @@
-@extends('layouts.app')
+<x-guest-layout>
+    <x-jet-authentication-card>
+        <x-slot name="logo">
+            <h1 style="font-size: 24px;"><b>{{ __('Reset Password') }}</b></h1>
+        </x-slot>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+        <div class="container">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
+            <div class="row justify-content-center">
+                <div class="col-md-8">
 
-                        <input type="hidden" name="token" value="{{ $token }}">
+                    <div class="card">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('password.update') }}">
+                                @csrf
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+                                <input type="hidden" name="token" value="{{ $token }}">
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                                <div class="form-group row">
+                                    <x-jet-label for="email" value="{{ __('E-Mail Address') }}" />
+
+                                    <div class="col-md-12">
+                                        <x-jet-input id="email" type="email" class="block mt-1 w-full @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" />
+
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <x-jet-label for="password" value="{{ __('Password') }}" />
+
+                                    <div class="col-md-12">
+                                        <x-jet-input id="password" type="password" class="block mt-1 w-full @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" autofocus />
+
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <x-jet-label for="password-confirm" value="{{ __('Confirm Password') }}" />
+
+                                    <div class="col-md-6">
+                                        <x-jet-input id="password-confirm" type="password" class="block mt-1 w-full" name="password_confirmation" required autocomplete="new-password" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-0">
+                                    <div class="flex items-center justify-end mt-4">
+                                        <x-jet-button>
+                                            {{ __('Reset Password') }}
+                                        </x-jet-button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-@endsection
+    </x-jet-authentication-card>
+</x-guest-layout>
