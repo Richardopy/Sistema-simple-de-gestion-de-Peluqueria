@@ -31,7 +31,7 @@
                     			<td class="mailbox-subject" ><b>Solicitud de Agendamiento de Servicio</b>
                     			</td>
                     			<td class="mailbox-attachment" ></td>
-                    			<td class="mailbox-date" >{{ date('d-m-Y', strtotime($cabecera->cita_dia)) }}</td>
+                    			<td class="mailbox-date" >{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
                   			</tr>
                   		</tbody>
             	   </table>
