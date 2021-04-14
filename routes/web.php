@@ -100,3 +100,5 @@ Route::get('/agendarcita', function () {
 })->middleware('auth');
 
 Route::post('/enviarsolicitud', [App\Http\Controllers\ServicioController::class, 'enviarsolicitud'])->name('enviarsolicitud');
+
+Route::resource('/admin/facturacion', App\Http\Controllers\FacturacionController::class)->middleware('auth');

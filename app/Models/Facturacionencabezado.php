@@ -5,24 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Producto extends Model{
+class Facturacionencabezado extends Model{
 
     use HasFactory;
-    
-    protected $table='productos';
+
+    protected $table='facturacionencabezados';
 
     protected $primaryKey='id';
 
     public $timestamps='true';
 
     protected $fillable=[
-        'nombre',
-        'description',
-        'codigo',
-        'precio',
-        'stock',
-        'oferta',
-        'estado',
-        'foto',
+        'cliente_id',
+        'vendedor_id'
+	    'descuento',
+	    'estado',
     ];
+
 }

@@ -236,6 +236,14 @@ return [
             'icon'        => 'fas fa-arrow-alt-circle-left'
         ],
         [
+            'header' => 'FACTURACION',
+        ],
+        [
+            'text'        => 'Crear comprobante',
+            'url'         => 'admin/facturacion',
+            'icon'        => 'fas fa-cash-register',
+        ],
+        [
             'header' => 'CLIENTES',
         ],
         [

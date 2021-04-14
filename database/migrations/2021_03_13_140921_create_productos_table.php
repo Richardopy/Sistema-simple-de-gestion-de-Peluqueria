@@ -18,6 +18,7 @@ class CreateProductosTable extends Migration
             $table->string('nombre');
             $table->string('codigo')->nullable();
             $table->longText('description');
+            $table->integer('stock');
             $table->integer('precio');
             $table->integer('oferta')->nullable();
             $table->boolean('estado')->default(1);
