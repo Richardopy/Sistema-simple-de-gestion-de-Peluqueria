@@ -1,5 +1,5 @@
 <div>
-    <section class="content">
+    <section class="content"> 
     	<div class="row">
             <div class="col-md-3">
           		<div class="card">

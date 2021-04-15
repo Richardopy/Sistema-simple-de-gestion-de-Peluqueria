@@ -13,7 +13,7 @@
         </div>
         </div>
       
-    <div class="card-body p-0">
+    <div class="card-body p-0"> 
         <div class="mailbox-controls">
         <!-- Check all button -->
         <div class="float-right">
