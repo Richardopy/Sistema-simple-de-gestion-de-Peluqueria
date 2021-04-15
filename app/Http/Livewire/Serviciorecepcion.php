@@ -5,8 +5,10 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\CabeceraCita;
+use App\Models\Empresa;
 use DB;
 use Carbon\Carbon;
+
 
 class Serviciorecepcion extends Component{
 
@@ -25,6 +27,9 @@ class Serviciorecepcion extends Component{
     public $msmstate;
 
     public function render(){
+
+        $empresa = Empresa::findorFail(1);
+
 
     	if ($this->mensajeestado == 0) {
             $servicio=DB::table('cabecera_citas as ca')
@@ -67,9 +72,9 @@ class Serviciorecepcion extends Component{
                 ->where('se.cabecera_id',$this->cabecera_id)
                 ->get();
 
-            return view('livewire.serviciosrecepcion.serviciosrecepcion',["servicio"=>$servicio,"contadorservicio"=>$contadorservicio,"cabecera"=>$cabecera,"servicios"=>$servicios,"contadorservicioagendado"=>$contadorservicioagendado]);
+            return view('livewire.serviciosrecepcion.serviciosrecepcion',["servicio"=>$servicio,"contadorservicio"=>$contadorservicio,"cabecera"=>$cabecera,"servicios"=>$servicios,"contadorservicioagendado"=>$contadorservicioagendado,"empresa"=>$empresa]);
         }else{
-            return view('livewire.serviciosrecepcion.serviciosrecepcion',["servicio"=>$servicio,"contadorservicio"=>$contadorservicio,"contadorservicioagendado"=>$contadorservicioagendado]);
+            return view('livewire.serviciosrecepcion.serviciosrecepcion',["servicio"=>$servicio,"contadorservicio"=>$contadorservicio,"contadorservicioagendado"=>$contadorservicioagendado,"empresa"=>$empresa]);
         }
     
     }

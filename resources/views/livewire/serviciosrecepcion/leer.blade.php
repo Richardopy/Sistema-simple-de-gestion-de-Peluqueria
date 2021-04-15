@@ -1,3 +1,5 @@
+@include('livewire.frontend.agendarcita')
+
 <style>
     table {
       border: 1px solid #ccc;
@@ -142,6 +144,30 @@
                 <div>
                 @if ($msmstate == 0  )
               <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal{{ $cabecera->id }}"><i class="far fa-check-circle"></i>Confirmar Reserva</button>
+
+                        <div class="clearfix"> </div><br>
+            <h3 class="w3l_header"></h3><br>
+            <p align="center">Dejanos saber tu horario disponible y nos comunicamos contigo para confirmar la reserva.</p>
+            <div class="row">
+                {!! Form::open(array('url'=>'enviarsolicitud','method'=>'POST','autocomplete'=>'off')) !!}
+                {{Form::token()}}
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="dia">Día de cita</label><br>
+                            <select class="form-control" aria-label="dia" name="cita_dia" wire:model="dia" wire:click="changeEvent($event.target.value)" style="text-transform: uppercase;border:1px solid black" required>
+                                <option value="" selected>Seleccione un día</option>
+                                @foreach ($dias as $element)
+                                    <option value="{{ $element }}">{{ $element }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="dia">Ingrese su horario disponible</label><br>
+                            <input type="time" class="form-control" name="cita_hora" min="{{ $minimo }}" max="{{ $maximo }}" style="border:1px solid black" placeholder="Ingrese su horario disponible" required>
+                        </div>
+                    </div>
              <td>      
                 <div class="modal fade" id="exampleModal{{$cabecera->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
