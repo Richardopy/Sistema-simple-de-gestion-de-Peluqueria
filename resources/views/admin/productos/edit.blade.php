@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6"><br>
+                    <div class="col-md-4"><br>
                         <label>Precio de venta:</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -108,7 +108,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6"><br>
+                    <div class="col-md-4"><br>
                         <label>Precio de oferta:</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -116,6 +116,20 @@
                             </div>
                             <input type="number" id="oferta" value="{{ $producto->oferta }}" name="oferta" class="form-control @error('oferta') is-invalid @enderror" placeholder="Precio de oferta">
                             @error('oferta')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4"><br>
+                        <label>Stock disponible:</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-layer-group"></i></span>
+                            </div>
+                            <input type="number" id="stock" value="{{ $producto->stock }}" name="stock" class="form-control @error('stock') is-invalid @enderror" placeholder="Stock disponible">
+                            @error('stock')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

@@ -50,6 +50,7 @@ class ProductoController extends Controller
 		$producto->codigo=$request->get('codigo');
 		$producto->precio=$request->get('precio');
 		$producto->oferta=$request->get('oferta');
+        $producto->stock=$request->get('stock');
 
         if ($producto->save()){
             
@@ -114,6 +115,8 @@ class ProductoController extends Controller
         $producto->codigo=$request->get('codigo');
         $producto->precio=$request->get('precio');
         $producto->oferta=$request->get('oferta');
+        $producto->stock=$request->get('stock');
+
 
         if ($producto->update()){
             
