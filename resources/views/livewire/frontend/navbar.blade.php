@@ -31,6 +31,11 @@
 								@if (Auth::user()->nivel == 1)
 									<li><a href="{{ url('/admin/panel') }}">Panel de Control</a></li>
 								@endif
+								@if (Auth::user()->nivel == 3)
+									<li><a href="{{ url('/perfil') }}">Perfil</a></li>
+								@endif
+
+
 								<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">Cerrar sesión</a></li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

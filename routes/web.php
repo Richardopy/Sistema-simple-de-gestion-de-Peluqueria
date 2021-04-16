@@ -49,6 +49,10 @@ Route::get('/admin/gastos', function () {
     return view('admin.gastos.index');
 })->middleware('auth');
 
+Route::get('/perfil', function () {
+    return view('frontend.perfil');
+})->middleware('auth');
+
 Route::get('/admin/categoriagastos', function () {
     return view('admin.categoriagastos.index');
 })->middleware('auth');
