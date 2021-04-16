@@ -1,9 +1,7 @@
-@include('livewire.frontend.agendarcita')
-
 <style>
     table {
       border: 1px solid #ccc;
-      border-collapse: collapse;
+      border-collapse: collapse; 
       margin: 0;
       padding: 0;
       width: 100%;
@@ -86,135 +84,115 @@
     <div class="card card-primary card-outline">
         <div class="card-header">
              <div class="mailbox-controls with-border">
-               
                 <div class="btn-group" >
                     <h5 align="left">Detalle del Servicio</h5>
                 </div>
             </div>
-        <!-- /.card-header -->
-        <div class="card-body p-0">
-            <div class="mailbox-read-info">
-               
-                <h6> Cliente : {{ $cabecera->name }}</h6>
-            </div>
-            <div class="mailbox-read-info">
-
-                <h6>Fecha tentativa para la cita :{{ date('d-m-Y', strtotime($cabecera->cita_dia)) }}
-                </h6>
-                <h6>Hora tentativa para la cita : {{ $cabecera->cita_hora }} </h6>
-            </div>
-       
-                <!-- /.mailbox-controls -->
-            <div class="mailbox-read-message">
-                <p>Pedidos:</p>
-                <div class="row">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Servicio</th>
-                                <th scope="col">Precio</th>
-                                <th scope="col">Subtotal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php
-                                $total=0;
-                            @endphp 
-                            @foreach ($servicios as $value)
+            <div class="card-body p-0">
+                <div class="mailbox-read-info">
+                    <h6> Cliente : {{ $cabecera->name }}</h6>
+                    <h6> Contacto : {{ $cabecera->contacto }}</h6>
+                </div>
+                <div class="mailbox-read-info">
+                    <h6>Fecha tentativa para la cita :{{ date('d-m-Y', strtotime($cabecera->cita_dia)) }}</h6>
+                    <h6>Hora tentativa para la cita : {{ $cabecera->cita_hora }} </h6>
+                </div>
+                <div class="mailbox-read-message">
+                    <p>Pedidos:</p>
+                    <div class="row">
+                        <table class="table table-striped table-hover">
+                            <thead>
                                 <tr>
-                                    <td scope="row" data-label="Servicio" style="text-align: left !important"><img src="{{ asset('/images/servicios/'.$value->foto) }}" style="width: 30px;border-radius: 10px;"> {{ $value->nombre }}</td>
-                                    <td data-label="Precio">{{ $value->precio }}</td>
-                                    <td data-label="Subtotal">{{ $value->precio }}</td>
+                                    <th scope="col">Servicio</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Subtotal</th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 @php
-                                    $total+=$value->precio;
-                                @endphp
-                            @endforeach
-                            <tr>
-                                <td colspan="2" style="text-align: left !important;"><b>Total:</b></td>
-                                <td>{{ $total }} ₲</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    $total=0;
+                                @endphp 
+                                @foreach ($servicios as $value)
+                                    <tr>
+                                        <td scope="row" data-label="Servicio" style="text-align: left !important"><img src="{{ asset('/images/servicios/'.$value->foto) }}" style="width: 30px;border-radius: 10px;"> {{ $value->nombre }}</td>
+                                        <td data-label="Precio">{{ $value->precio }}</td>
+                                        <td data-label="Subtotal">{{ $value->precio }}</td>
+                                    </tr>
+                                    @php
+                                        $total+=$value->precio;
+                                    @endphp
+                                @endforeach
+                                <tr>
+                                    <td colspan="2" style="text-align: left !important;"><b>Total:</b></td>
+                                    <td>{{ $total }} ₲</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-          <!-- /.mailbox-read-message -->
-        </div>
-         <div class="card-footer">
+            <div class="card-footer">
                 <div>
-                @if ($msmstate == 0  )
-              <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal{{ $cabecera->id }}"><i class="far fa-check-circle"></i>Confirmar Reserva</button>
-
-                        <div class="clearfix"> </div><br>
-            <h3 class="w3l_header"></h3><br>
-            <p align="center">Dejanos saber tu horario disponible y nos comunicamos contigo para confirmar la reserva.</p>
-            <div class="row">
-                {!! Form::open(array('url'=>'enviarsolicitud','method'=>'POST','autocomplete'=>'off')) !!}
-                {{Form::token()}}
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="dia">Día de cita</label><br>
-                            <select class="form-control" aria-label="dia" name="cita_dia" wire:model="dia" wire:click="changeEvent($event.target.value)" style="text-transform: uppercase;border:1px solid black" required>
-                                <option value="" selected>Seleccione un día</option>
-                                @foreach ($dias as $element)
-                                    <option value="{{ $element }}">{{ $element }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="dia">Ingrese su horario disponible</label><br>
-                            <input type="time" class="form-control" name="cita_hora" min="{{ $minimo }}" max="{{ $maximo }}" style="border:1px solid black" placeholder="Ingrese su horario disponible" required>
-                        </div>
-                    </div>
-             <td>      
-                <div class="modal fade" id="exampleModal{{$cabecera->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                        <p>¿Realmente quiere confirmar la reserva para {{ $cabecera->name }} el dia {{ date('d-m-Y', strtotime($cabecera->cita_dia)) }} a las {{ ($cabecera->cita_hora  )
-                         }}?</p>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="button" wire:click="agendado({{ $cabecera->id }})" class="btn btn-success" data-dismiss="modal">Confirmar</button>
-                                  </div>
+                    @if ($msmstate == 0)
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModalCenter"><i class="far fa-check-circle"></i>Confirmar Reserva</button>
+                        <div class="modal fade" wire:init="openModal" wire:ignore.self id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Confirmar reserva <</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>¿Realmente quiere confirmar la reserva para {{ $cabecera->name }} el dia {{ date('d-m-Y', strtotime($cabecera->cita_dia)) }} a las {{$cabecera->cita_hora}}? o tambien puede cambiar la fecha y horade la cita</p>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Fecha</label>
+                                                    <input type="date" class="form-control" wire:model="dia" value="{{ $cabecera->cita_dia }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Hora</label>
+                                                    <input type="time" class="form-control" wire:model="hora" value="{{ $cabecera->cita_hora }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" wire:click="agendado({{ $cabecera->id }})" class="btn btn-success" data-dismiss="modal">Confirmar</button>
+                                    </div>
                                 </div>
-                              </div>
                             </div>
-                    @endif
-                @if ($msmstate == 1  )
-              <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal{{ $cabecera->id }}"><i class="far fa-check-circle"></i>Marcar cita como finalizada</button>
-             <td>      
-                <div class="modal fade" id="exampleModal{{$cabecera->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
                         </div>
-                        <div class="modal-body">
-                        <p>¿Realmente quiere confirmar la cita actual como ya realizada?</p>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="button" wire:click="agendado({{ $cabecera->id }})" class="btn btn-success" data-dismiss="modal">Confirmar</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
                     @endif
-
-                        </td>
+                    @if ($msmstate == 1  )
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal{{ $cabecera->id }}"><i class="far fa-check-circle"></i>Marcar cita como finalizada</button>
+                        <div class="modal fade" id="exampleModal{{$cabecera->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>¿Realmente quiere confirmar la cita actual como ya realizada?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" wire:click="realizado({{ $cabecera->id }})" class="btn btn-success" data-dismiss="modal">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                </div>
             </div>
+        </div>
     </div>
 </div>
