@@ -13,6 +13,12 @@
 @section('adminlte_js')
     <script>
         $('.js-example-basic-multiple').select2();
+        document.addEventListener("livewire:load", () => {
+			Livewire.hook('message.processed', (message, component) => {
+				$('.js-example-basic-multiple').select2()
+		    
+			}); 
+		});
     </script>
 
 @stop
