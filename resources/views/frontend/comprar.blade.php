@@ -87,10 +87,7 @@
 		<div class="wthree_head_section">
 			<h3 class="w3l_header">Finalizar <span>Compra</span></h3>
 		</div>
-		@php
-			$carro="producto";
-		@endphp
-    	@if (count(Cart::session($carro)->getContent()))
+    	@if (count(Cart::getContent()))
     		{!! Form::open(array('url'=>'enviarpedido','method'=>'POST','autocomplete'=>'off')) !!}
     		{{Form::token()}}
     		<div class="row">
@@ -106,10 +103,8 @@
 					<tbody>
 						@php
 							$total=0;
-							$cartCollection = Cart::session($carro)->getContent();
-        					$cart = $cartCollection->sort();
 						@endphp 
-						@foreach ($cart as $value)
+						@foreach (Cart::getContent() as $value)
 							@if ($value->attributes->tipo == "producto")
 								<input type="hidden" name="producto_id[]" value="{{ $value->id }}">
 								<input type="hidden" name="cantidad[]" value="{{ $value->quantity }}">
