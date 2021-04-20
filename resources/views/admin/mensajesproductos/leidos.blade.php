@@ -32,12 +32,12 @@
                   </li>
                   <li class="nav-item">
                       <a href="#" class="nav-link">
-                        <i class="far fa-envelope-open"></i> Servicios Revisados
+                        <i class="far fa-envelope-open"></i> Productos en proceso
                       </a>
                   </li>
                   <li class="nav-item">
                       <a href="#" class="nav-link">
-                        <i class="far fa-trash-alt"></i> Servicios concluidos
+                        <i class="far fa-trash-alt"></i> Productos entregados
                       </a>
                   </li>
                 </ul>
@@ -53,17 +53,17 @@
             <!-- /.card-header -->
             <div class="card-body p-0">
               <div class="mailbox-read-info">
-                <h5>Solicitud de agendamiento de Servicio</h5>
-                <h6>Remitente: {{ $servicio->usuario_id }}
-                  <span class="mailbox-read-time float-right">{{ $servicio->update_at }}</span></h6>
+                <h5>Solicitud de compra de productos:</h5>
+                <h6>Remitente: {{ $producto->usuario_id }}
+                  <span class="mailbox-read-time float-right">{{ $producto->update_at }}</span></h6>
               </div>
            
               <!-- /.mailbox-controls -->
               <div class="mailbox-read-message">
-                <p>{{ $servicio->cita_dia }}</p>
+                <p>{{ $producto->nombre }}</p>
 
                 <p>Horario de Cita propuesto:</p>
-                <p>{{ $servicio->cita_hora }}</p>
+                <p>{{ $producto->nombre }}</p>
               </div>
               <!-- /.mailbox-read-message -->
             </div>
