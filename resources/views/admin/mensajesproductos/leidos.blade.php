@@ -27,7 +27,7 @@
                   <li class="nav-item active">
                       <a href="#" class="nav-link">
                         <i class="far fa-envelope"></i> Productos Recibidos
-                        <span class="badge bg-primary float-right">12</span>
+                        <span class="badge bg-primary float-right">11</span>
                       </a>
                   </li>
                   <li class="nav-item">

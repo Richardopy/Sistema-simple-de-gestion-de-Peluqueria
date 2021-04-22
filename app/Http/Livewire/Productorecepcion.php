@@ -29,7 +29,6 @@ class Productorecepcion extends Component{
 
         $empresa = Empresa::findorFail(1);
 
-
     	if ($this->pedidoestado == 0) {
             $producto=DB::table('cabecera_pedidos as ca')
                 ->join('users as u','ca.usuario_id','u.id')
@@ -63,6 +62,9 @@ class Productorecepcion extends Component{
                 ->select('ca.*','u.name','u.contacto')
                 ->where('ca.id',$this->cabecera_id)->first();
 
+
+//Unir esto // productos se manda como un simple cita al final//
+                
             $productos = DB::table('servicio_citas as se')
                 ->join('servicios as s','se.servicio_id','s.id')
                 ->select('se.*','s.nombre','s.foto')
@@ -91,18 +93,12 @@ class Productorecepcion extends Component{
             ->join('users as u','ca.usuario_id','u.id')
             ->select('ca.*','u.name','u.contacto')
             ->where('ca.id',$id)->first();
-
-       // $this->dia=$cabecera->cita_dia;
-       // $this->hora=$cabecera->cita_hora;
-
     }
     
     public function procesando($id){
 
         $pedido = CabeceraPedido::find($id);
             $pedido->estado=1;
-            $pedido->cita_dia=$this->dia;
-            $pedido->cita_hora=$this->hora;
         $pedido->update();
         $this->LeerMode = false;
 
@@ -120,5 +116,4 @@ class Productorecepcion extends Component{
     public function openModal(){
         $this->emit('show');
     }
-
 }

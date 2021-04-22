@@ -15,9 +15,9 @@
             <div class="card-body p-0">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item active">
-                        <a href="#" class="nav-link" wire:click="estado(0)">
+                        <a href="#"class="nav-link" wire:click="estado(0)">
                             <i class="far fa-envelope">Recibidos</i>     
-                            <span class="badge bg-primary float-right">{{ $contadorproducto }}</span>
+                            <span class="badge bg-primary float-right">{{ $contadorproducto }}</span> 
                         </a>
                     </li>
                     <li class="nav-item">

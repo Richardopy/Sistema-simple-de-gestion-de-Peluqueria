@@ -145,7 +145,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>¿Realmente quiere confirmar la reserva para {{ $cabecera->name }} el dia {{ date('d-m-Y', strtotime($cabecera->cita_dia)) }} a las {{$cabecera->cita_hora}}? o tambien puede cambiar la fecha y horade la cita</p>
+                                        <p>¿Realmente quiere confirmar la reserva para {{ $cabecera->name }} el dia {{ date('d-m-Y', strtotime($cabecera->cita_dia)) }} a las {{$cabecera->cita_hora}}? o tambien puede cambiar la fecha y hora de la cita</p>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">

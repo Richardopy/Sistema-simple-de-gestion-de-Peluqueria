@@ -20,7 +20,7 @@
               <button type="button" class="btn btn-tool" data-card-widget="collapse">
                   <i class="fas fa-minus"></i>
                 </button>
-            </div>
+            </div> 
                 </div>
             <div class="card-body p-0">
               <ul class="nav nav-pills flex-column">
