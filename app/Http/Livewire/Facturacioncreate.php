@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class Facturacioncreate extends Component{
 
-	public $cliente_id,$descuento,$name,$email,$ci;
+	public $cliente_id,$descuento=0,$name,$email,$ci,$selectpro;
 
 	public $selecciones = '';
 
@@ -52,10 +52,18 @@ class Facturacioncreate extends Component{
 
         $usuario->save();
 
+        $this->emit('usuario', $usuario);
+
         $this->cliente_id = $usuario->id;
 
         $this->resetInputFields();
 
+    }
+
+    public function changeEvent(){
+        $producto=Producto::where('codigo',$this->selectpro)->first();
+        $this->selectpro = "";
+        $this->emit('producto', $producto);
     }
 
     public function openModal(){
