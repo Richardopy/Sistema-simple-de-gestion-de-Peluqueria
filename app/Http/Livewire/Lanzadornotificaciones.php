@@ -6,6 +6,8 @@ use Livewire\Component;
 use App\Models\Mensaje;
 use App\Models\Servicio;
 use App\Models\Producto;
+use App\Models\CabeceraPedido;
+use App\Models\CabeceraCita;
 
 
 class Lanzadornotificaciones extends Component
@@ -15,8 +17,10 @@ class Lanzadornotificaciones extends Component
     	$contador = Mensaje::where('estado',0)->count();
     	$contadorservicio = Servicio::where('estado',0)->count();
     	$contadorproducto = Producto::where('estado',0)->count();
+    	$contadorproductosolicitud = CabeceraPedido::where('estado',0)->count();
+    	$contadorserviciosolicitud = CabeceraCita::where('estado',0)->count();
 
-        return view('livewire.lanzadornotificaciones',["contador"=>$contador,"contadorservicio"=>$contadorservicio,"contadorproducto"=>$contadorproducto]);
+        return view('livewire.lanzadornotificaciones',["contador"=>$contador,"contadorservicio"=>$contadorservicio,"contadorproducto"=>$contadorproducto,"contadorproductosolicitud"=>$contadorproductosolicitud,"contadorserviciosolicitud"=>$contadorserviciosolicitud]);
 
     }
 }

@@ -91,7 +91,7 @@ class EmpresaController extends Controller{
 
         if ($empresa->update()){
 
-            Session::flash('success', '¡El empresa se creo correctamente!');
+            Session::flash('success', '¡La empresa se creo correctamente!');
         }
 
         return Redirect::to('admin/empresa');

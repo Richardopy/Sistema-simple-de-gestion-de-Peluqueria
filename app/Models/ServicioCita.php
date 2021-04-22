@@ -21,7 +21,4 @@ class ServicioCita extends Model{
         'precio', 
     ];
 
-    
-
-
 }

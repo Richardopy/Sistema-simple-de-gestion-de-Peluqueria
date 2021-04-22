@@ -33,7 +33,7 @@ class Correos extends Component{
 
     	$contador = Mensaje::where('estado',0)->count();
 
-        return view('livewire.correosadmin.correos',["contacto"=>$contacto,"contador"=>$contador]);
+        return view('livewire.correosadmin.correos',["contacto"=>$contacto,"contador"=>$contador]); 
     
     }
 

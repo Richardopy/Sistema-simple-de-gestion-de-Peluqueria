@@ -94,8 +94,7 @@
                     <h6> Contacto : {{ $cabecera->contacto }}</h6>
                 </div>
                 <div class="mailbox-read-info">
-                    <h6>Fecha tentativa para la cita :{{ date('d-m-Y', strtotime($cabecera->name)) }}</h6>
-                    <h6>Hora tentativa para la cita : {{ $cabecera->name }} </h6>
+                    <h6>Fecha del pedido :{{ date('d-m-Y', strtotime($cabecera->name)) }}</h6>  
                 </div>
                 <div class="mailbox-read-message">
                     <p>Pedidos:</p>
@@ -103,12 +102,14 @@
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Servicio</th>
+                                    <th scope="col">Producto</th>
                                     <th scope="col">Precio</th>
                                     <th scope="col">Subtotal</th>
                                 </tr>
                             </thead>
                             <tbody>
+
+
                                 @php
                                     $total=0;
                                 @endphp 
@@ -129,48 +130,42 @@
                             </tbody>
                         </table>
                     </div>
+                   <div class="frame">
+                                <style type="text/css">
+                                    #mapa{border:0px solid #999;height:400px; border-radius: 10px;}
+                                </style>
+                                <div id="mapa" class="shadow"></div>
+                                <div id="tiempo"><br><button class="btn btn-outline-success" onclick="calculartiempo({{$cabecera->latitud}},{{$cabecera->longitud}},'{{$cabecera->usuario_id}}')" style="width: 100%">Calcular distancia y tiempo de llegada</button></div>
+                                <br><p align="center">Abrir en Google Maps <a href="https://maps.google.com/?q={{$cabecera->latitud}},{{$cabecera->longitud}}">Ver Instrucciones</a></p>
+                    </div>
                 </div>
             </div>
             <div class="card-footer">
                 <div>
                     @if ($msmstate == 0)
-                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModalCenter"><i class="far fa-check-circle"></i>Confirmar Reserva</button>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModalCenter"><i class="far fa-check-circle"></i>Confirmar Pedido</button>
                         <div class="modal fade" wire:init="openModal" wire:ignore.self id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Confirmar reserva <</h5>
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Confirmar Pedido </h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>¿Realmente quiere confirmar la reserva para  el dia?</p>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Fecha</label>
-                                                    <input type="date" class="form-control" wire:model="dia" value="{{ $cabecera->name }}">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Hora</label>
-                                                    <input type="time" class="form-control" wire:model="hora" value="{{ $cabecera->name }}">
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <p>¿Realmente quiere confirmar el pedido actual? </p>
                                     </div>
                                     <div class="modal-footer">
                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                        <button type="button" wire:click="agendado({{ $cabecera->id }})" class="btn btn-success" data-dismiss="modal">Confirmar</button>
-                                    </div>
+                                        <button type="button" wire:click="procesando({{ $cabecera->id }})" class="btn btn-success" data-dismiss="modal">Confirmar</button>
+                                    </div> 
                                 </div>
                             </div>
                         </div>
                     @endif
                     @if ($msmstate == 1  )
-                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal{{ $cabecera->id }}"><i class="far fa-check-circle"></i>Marcar producto como entregado</button>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal{{ $cabecera->id }}"><i class="far fa-check-circle"></i>Marcar pedido de producto como entregado</button>
                         <div class="modal fade" id="exampleModal{{$cabecera->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -185,7 +180,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                        <button type="button" wire:click="realizado({{ $cabecera->id }})" class="btn btn-success" data-dismiss="modal">Confirmar</button>
+                                        <button type="button" wire:click="entregado({{ $cabecera->id }})" class="btn btn-success" data-dismiss="modal">Confirmar</button>
                                     </div>
                                 </div>
                             </div>
@@ -196,3 +191,14 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="{{ asset('frontend/js/maps.js')}}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHcQT0yBuaLXWdx6Mv_hAroOB0HLmNp5g&callback=Maps" async defer></script>
+<script>
+    function Maps(){
+        let lat = {{$cabecera->latitud}};
+        let lng = {{$cabecera->longitud}};
+        let empresa = '{{$empresa->nombre}}';
+        let direccion = '{{$empresa->direccion}}';
+        initMap(lat,lng,empresa,direccion);
+    }        
+</script>
