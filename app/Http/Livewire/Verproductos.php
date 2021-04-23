@@ -13,15 +13,12 @@ use App\Models\Producto;
 class Verproductos extends Component{
 
     protected $paginationTheme = 'bootstrap';
-    
-    public $search='';
-
-	public $LeerMode = false;
 
 	public $usuario_id,$cabecera_id=0;
 
     public function render(){    
 
+<<<<<<< HEAD
         $producto=DB::table('cabecera_pedidos as ca')
             ->join('users as u','ca.usuario_id','u.id')
             ->select('ca.*','u.name','u.contacto')
@@ -42,7 +39,11 @@ class Verproductos extends Component{
         $this->cabecera_id=0;
         $this->LeerMode = false;
         $this->msmstate = $estado;
+=======
+        $cabecera=CabeceraPedido::where('usuario_id',Auth::user()->id)->paginate('20');
+>>>>>>> refs/remotes/origin/master
 
+        return view('livewire.verproductos',["cabecera"=>$cabecera]);
     }
 
     public function leer($id){
