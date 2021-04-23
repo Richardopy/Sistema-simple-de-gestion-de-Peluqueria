@@ -16,6 +16,8 @@ class Verproductos extends Component{
 
 	public $usuario_id,$cabecera_id=0;
 
+    public $productos;
+
     public function render(){    
 
         $cabecera=CabeceraPedido::where('usuario_id',Auth::user()->id)->paginate('20');
@@ -24,12 +26,12 @@ class Verproductos extends Component{
     }
 
     public function leer($id){
-    	$this->LeerMode = true;
-        $this->cabecera_id=$id;
-        $cabecera = DB::table('cabecera_pedidos as ca')
-            ->join('users as u','ca.usuario_id','u.id')
-            ->select('ca.*','u.name','u.contacto')
-            ->where('ca.id',$id)->first();
+    	
+        $this->productos = DB::table('pedidos as pe')
+            ->join('productos as p','pe.producto_id','p.id')
+            ->select('pe.*','p.nombre')
+            ->where('pe.cabecera_id',$id)->get();
+    
     }
 
     public function openModal(){
