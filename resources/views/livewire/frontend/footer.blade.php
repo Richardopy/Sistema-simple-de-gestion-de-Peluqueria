@@ -83,48 +83,49 @@
 	</style>
 	<div class="container">
 		<div class="f-bg-w3l">
-			<div class="col-md-4 w3layouts_footer_grid">
-				<h2>Contact <span>Information</span></h2>
+			<div class="col-md-6 w3layouts_footer_grid">
+				<h2>Información de <span>Contacto</span></h2>
 				<ul class="con_inner_text">
-					<li><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, 4th block, <label> New York City.</label></li>
-					<li><span class="fa fa-envelope-o" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
-					<li><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
+					<li><span class="fa fa-map-marker" aria-hidden="true"></span>{{ $empresa->direccion }}</li>
+					<li><span class="fa fa-envelope-o" aria-hidden="true"></span> <a href="mailto:{{ $empresa->correo }}">{{ $empresa->correo }}</a></li>
+					<li><span class="fa fa-phone" aria-hidden="true"></span> {{ $empresa->telefono1 }}</li>
 				</ul>
 
 				<ul class="social_agileinfo">
-					<li><a href="#" class="w3_facebook"><i class="fa fa-facebook"></i></a></li>
-					<li><a href="#" class="w3_twitter"><i class="fa fa-twitter"></i></a></li>
-					<li><a href="#" class="w3_instagram"><i class="fa fa-instagram"></i></a></li>
-					<li><a href="#" class="w3_google"><i class="fa fa-google-plus"></i></a></li>
+
+					@if (isset($empresa->facebook))
+
+					<li><a href="{{ $empresa->facebook }}" class="w3_facebook"><i class="fa fa-facebook"></i></a></li>
+					@else
+					@endif
+
+					@if (isset($empresa->twitter))
+
+					<li><a href="{{ $empresa->twitter }}" class="w3_twitter"><i class="fa fa-twitter"></i></a></li>
+					@else
+					@endif
+
+					@if (isset($empresa->instagram))
+
+					<li><a href="{{ $empresa->instagram }}" class="w3_instagram"><i class="fa fa-instagram"></i></a></li>
+					@else
+					@endif
+
 				</ul>
 			</div>
-			<div class="col-md-4 w3layouts_footer_grid">
-				<h2>Subscribe <span>Newsletter</span></h2>
-				<p>By subscribing to our mailing list you will always get latest news from us.</p>
-				<form action="#" method="post">
-					<input type="email" name="Email" placeholder="Enter your email..." required="">
-					<button class="btn1"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
-					<div class="clearfix"> </div>
-				</form>
-			</div>
-			<div class="col-md-4 w3layouts_footer_grid">
-				<h3>Recent <span>Works</span></h3>
-				<ul class="con_inner_text midimg">
-					<li><a href="#"><img src="{{asset('frontend/images/p2.jpg')}}" alt="" class="img-responsive" /></a></li>
-					<li><a href="#"><img src="{{asset('frontend/images/p3.jpg')}}" alt="" class="img-responsive" /></a></li>
-					<li><a href="#"><img src="{{asset('frontend/images/p4.jpg')}}" alt="" class="img-responsive" /></a></li>
-					<li><a href="#"><img src="{{asset('frontend/images/p5.jpg')}}" alt="" class="img-responsive" /></a></li>
-					<li><a href="#"><img src="{{asset('frontend/images/p6.jpg')}}" alt="" class="img-responsive" /></a></li>
-					<li><a href="#"><img src="{{asset('frontend/images/p7.jpg')}}" alt="" class="img-responsive" /></a></li>
-					<li><a href="#"><img src="{{asset('frontend/images/p8.jpg')}}" alt="" class="img-responsive" /></a></li>
-					<li><a href="#"><img src="{{asset('frontend/images/p9.jpg')}}" alt="" class="img-responsive" /></a></li>
-				</ul>
+				<div class="col-md-6 w3layouts_footer_grid btn-group-vertical" role="group" aria-label="Vertical button group">
+
+				<h2>Enlaces <span>Importantes</span></h2>
+					<li><a href="{{ url('/quienessomos') }} " style="text-decoration: none !important ;">Quienes Somos</a></li>
+					<li><a href="{{ url('/productos') }}">Productos</a></li>
+					<li><a href="{{ url('/servicios') }}">Servicios</a></li>
+					<li><a href="{{ url('/contacto') }}">Contacto</a></li>
 
 			</div>
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-	<p class="copyright">© 2017 Beauty Salon. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
+	<p class="copyright">© 2021 {{ $empresa->nombre }}. Todos los derechos reservados | Desarrollado por <a href="http://techcirclepy.com/" target="_blank">TechCircle</a></p>
 	<!-- Modal Carrito -->
 	<div class="modal fade" wire:init="openModal" wire:ignore.self id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	  	<div class="modal-dialog modal-dialog-centered" role="document">

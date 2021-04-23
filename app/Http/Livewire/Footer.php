@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Cart;
+use App\Models\Empresa;
 
 class Footer extends Component{
 
@@ -11,7 +12,10 @@ class Footer extends Component{
 
     public function render()
     {
-        return view('livewire.frontend.footer');
+
+        $empresa=Empresa::findOrFail(1); 
+
+        return view('livewire.frontend.footer',['empresa'=>$empresa]);
     }
 
     public function openModal(){

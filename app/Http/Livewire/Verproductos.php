@@ -18,7 +18,7 @@ class Verproductos extends Component{
 
     public function render(){    
 
-
+    	
         $cabecera=CabeceraPedido::where('usuario_id',Auth::user()->id)->paginate('20');
 
         return view('livewire.verproductos',["cabecera"=>$cabecera]);
