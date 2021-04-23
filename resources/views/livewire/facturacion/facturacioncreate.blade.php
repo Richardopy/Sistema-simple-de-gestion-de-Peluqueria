@@ -35,7 +35,7 @@
 		</div>
 	</div>
     <div class="row">
-        <div class="col-md-12" wire:ignore>
+        <div class="col-md-12 table-responsive" wire:ignore>
             <table class="table">
                 <thead>
                     <tr>
@@ -50,12 +50,19 @@
                 <tbody id="addproductos">
                     
                 </tbody>
-            </table>
-        </div>
-        <div class="col-md-12" align="right">
+            </table><hr>
+        </div> 
+        <div class="col-md-9"></div>
+        <div class="col-md-3">
             <p wire:ignore><b style="font-size: 26px;">SubTotal: </b><span id="subtotal" style="font-size: 26px;">0</span></p>
             <p><b style="font-size: 26px;">Descuento: </b><span id="descuento" style="font-size: 26px;">{{ $descuento }}</span></p>
             <p wire:ignore><b style="font-size: 26px;">Total: </b><span id="total" style="font-size: 26px;">0</span></p>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2">Efectivo</span>
+                <div class="input-group-append">
+                    <input type="number" class="form-control" placeholder="Ingrese efectivo">
+                </div>
+            </div>
         </div>
     </div>
 

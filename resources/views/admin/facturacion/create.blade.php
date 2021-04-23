@@ -28,9 +28,9 @@
 				cambiar(product['id']);
 			}else{
 				if(product['oferta']){
-					$("#addproductos").before("<tr id='item"+product['id']+"'><td>"+product['codigo']+"</td><td>"+product['nombre']+"</td><td><input type='number' class='form-control cantidad' onclick='cambiar("+product['id']+")' min='1' max='"+product['stock']+"' value='1' /></td><td class='precio'>"+product['oferta']+"</td><td class='sumar'>"+product['oferta']+"</td><td><button class='btn btn-danger' onclick='eliminar(item"+product['id']+")'><i class='fas fa-trash-alt'></i></button></td></tr>");
+					$("#addproductos").before("<tr id='item"+product['id']+"'><td>"+product['codigo']+"</td><td>"+product['nombre']+"</td><td><input type='number' class='form-control cantidad' oninput='cambiar("+product['id']+")' min='1' max='"+product['stock']+"' value='1' /></td><td class='precio'>"+product['oferta']+"</td><td class='sumar'>"+product['oferta']+"</td><td><button class='btn btn-danger' onclick='eliminar(item"+product['id']+")'><i class='fas fa-trash-alt'></i></button></td></tr>");
 				}else{
-					$("#addproductos").before("<tr id='item"+product['id']+"'><td>"+product['codigo']+"</td><td>"+product['nombre']+"</td><td><input type='number' class='form-control cantidad' onclick='cambiar("+product['id']+")' min='1' max='"+product['stock']+"' value='1' /></td><td class='precio'>"+product['precio']+"</td><td class='sumar'>"+product['precio']+"</td><td><button class='btn btn-danger' onclick='eliminar(item"+product['id']+")'><i class='fas fa-trash-alt'></i></button></td></tr>");
+					$("#addproductos").before("<tr id='item"+product['id']+"'><td>"+product['codigo']+"</td><td>"+product['nombre']+"</td><td><input type='number' class='form-control cantidad' oninput='cambiar("+product['id']+")' min='1' max='"+product['stock']+"' value='1' /></td><td class='precio'>"+product['precio']+"</td><td class='sumar'>"+product['precio']+"</td><td><button class='btn btn-danger' onclick='eliminar(item"+product['id']+")'><i class='fas fa-trash-alt'></i></button></td></tr>");
 				}
         		productos.push(product['id']);
 			}
