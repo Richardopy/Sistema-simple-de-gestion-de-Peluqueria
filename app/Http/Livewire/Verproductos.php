@@ -18,44 +18,11 @@ class Verproductos extends Component{
 
     public function render(){    
 
-<<<<<<< HEAD
-        $producto=DB::table('cabecera_pedidos as ca')
-            ->join('users as u','ca.usuario_id','u.id')
-            ->select('ca.*','u.name','u.contacto')
-            ->get()
-            ->where('u.name','LIKE','%'.$this->search.'%');
 
-        $productos = DB::table('pedidos as cp')
-            ->join('productos as p','cp.producto_id','p.id')
-            ->select('cp.*','p.nombre','p.foto')
-            ->where('cp.cabecera_id',$this->cabecera_id)
-            ->get();
-
-        return view('livewire.verproductos',["producto"=>$producto,"productos"=>$productos]);
-    }
-
-    public function estado($estado){
-    	$this->pedidoestado=$estado;
-        $this->cabecera_id=0;
-        $this->LeerMode = false;
-        $this->msmstate = $estado;
-=======
         $cabecera=CabeceraPedido::where('usuario_id',Auth::user()->id)->paginate('20');
->>>>>>> refs/remotes/origin/master
 
         return view('livewire.verproductos',["cabecera"=>$cabecera]);
     }
 
-    public function leer($id){
-    	$this->LeerMode = true;
-        $this->cabecera_id=$id;
-        $cabecera = DB::table('cabecera_pedidos as ca')
-            ->join('users as u','ca.usuario_id','u.id')
-            ->select('ca.*','u.name','u.contacto')
-            ->where('ca.id',$id)->first();
-    }
-
-    public function openModal(){
-        $this->emit('show');
-    }
+    
 }
