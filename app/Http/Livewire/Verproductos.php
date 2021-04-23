@@ -16,6 +16,8 @@ class Verproductos extends Component{
 
 	public $usuario_id,$cabecera_id=0;
 
+    public $productos;
+
     public function render(){    
 
     	
@@ -23,6 +25,17 @@ class Verproductos extends Component{
 
         return view('livewire.verproductos',["cabecera"=>$cabecera]);
     }
-
     
+    public function leer($id){
+    	
+        $this->productos = DB::table('pedidos as pe')
+            ->join('productos as p','pe.producto_id','p.id')
+            ->select('pe.*','p.nombre')
+            ->where('pe.cabecera_id',$id)->get();
+    
+    }
+
+    public function openModal(){
+        $this->emit('show');
+    }
 }
