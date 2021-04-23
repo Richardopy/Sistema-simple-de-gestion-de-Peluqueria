@@ -12,7 +12,7 @@
 				</div>	
 				<div class="clearfix"></div>
 					<div class="row">
-	    @if ($misproductos->count())
+	    @if ($productos->count())
 		    <table class="table">
 		        <thead>
 		            <tr>
@@ -21,7 +21,7 @@
 		            
 		        </thead>
 		        <tbody>
-		            @foreach ($misproductos as $value)
+		            @foreach ($productos as $value)
 		                <tr>
 		                	<td>{{ $value->nombre }}</td>
 		                </tr>
