@@ -1,4 +1,23 @@
 <?php
+namespace App\Http\Livewire;
+use Livewire\Component;
+use App\Models\Empresa;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Producto;
+
+
+class Verproductos extends Component{
+    public function render()
+    {
+
+    	$misproductos=Producto::where('estado',1)->count();
+
+        return view('livewire.verproductos',['misproductos'=>$misproductos]);
+    }
+}
+
+<?php
 
 namespace App\Http\Livewire;
 
@@ -33,28 +52,9 @@ class Productorecepcion extends Component{
             $producto=DB::table('cabecera_pedidos as ca')
                 ->join('users as u','ca.usuario_id','u.id')
                 ->select('ca.*','u.name','u.contacto')
-                ->where('ca.estado',0)
+                ->get()
                 ->where('u.name','LIKE','%'.$this->search.'%')
-                ->paginate(10);
-
-    	}elseif ($this->pedidoestado == 1) {
-    		$producto=DB::table('cabecera_pedidos as ca')
-                ->join('users as u','ca.usuario_id','u.id')
-                ->select('ca.*','u.name','u.contacto')
-                ->where('ca.estado',1)
-                ->where('u.name','LIKE','%'.$this->search.'%')
-                ->paginate(10);
-    	}else{
-    		$producto=DB::table('cabecera_pedidos as ca')
-                ->join('users as u','ca.usuario_id','u.id')
-                ->select('ca.*','u.name','u.contacto')
-                ->where('ca.estado',2)
-                ->where('u.name','LIKE','%'.$this->search.'%')
-                ->paginate(10);
-    	}
-
-        $contadorproducto = CabeceraPedido::where('estado',0)->count();
-        $contadorproductoprocesando = CabeceraPedido::where('estado',1)->count();
+                ->paginate(20);
 
         if ($this->cabecera_id != 0) {
             $cabecera = DB::table('cabecera_pedidos as ca')
@@ -92,23 +92,6 @@ class Productorecepcion extends Component{
             ->where('ca.id',$id)->first();
     }
     
-    public function procesando($id){
-
-        $pedido = CabeceraPedido::find($id);
-            $pedido->estado=1;
-        $pedido->update();
-        $this->LeerMode = false;
-
-    }
-
-    public function entregado($id){
-
-        $pedido = CabeceraPedido::find($id);
-            $pedido->estado=2;
-        $pedido->update();
-        $this->LeerMode = false;
-
-    }
 
     public function openModal(){
         $this->emit('show');

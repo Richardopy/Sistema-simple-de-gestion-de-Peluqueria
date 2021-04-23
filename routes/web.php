@@ -87,6 +87,15 @@ Route::get('/carritoservicio', function () {
     return view('frontend.carritoservicio');
 });
 
+Route::get('/verproductos', function () {
+    return view('frontend.verproductos');
+});
+
+Route::get('/verservicios', function () {
+    return view('frontend.verservicios');
+});
+
+
 Route::get('/comprar', [App\Http\Controllers\ComprarController::class, 'index'])->name('comprar')->middleware('auth');
 
 Route::post('/enviarpedido', [App\Http\Controllers\ComprarController::class, 'enviarpedido'])->name('enviarpedido');

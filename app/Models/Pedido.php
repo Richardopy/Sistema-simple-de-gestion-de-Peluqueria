@@ -22,3 +22,4 @@ class Pedido extends Model
         'precio',
     ];
 }
+ 

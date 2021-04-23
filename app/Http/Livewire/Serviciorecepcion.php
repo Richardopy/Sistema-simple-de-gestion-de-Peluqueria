@@ -8,7 +8,7 @@ use App\Models\CabeceraCita;
 use App\Models\Empresa;
 use DB;
 use Carbon\Carbon;
-
+ 
 
 class Serviciorecepcion extends Component{
 

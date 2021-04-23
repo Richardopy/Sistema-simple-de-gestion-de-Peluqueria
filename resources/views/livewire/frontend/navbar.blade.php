@@ -33,6 +33,8 @@
 								@endif
 								@if (Auth::user()->nivel == 3)
 									<li><a href="{{ url('/perfil') }}">Perfil</a></li>
+									<li><a href="{{ url('/verproductos') }}">Mis Productos</a></li>
+									<li><a href="{{ url('/verservicios') }}">Mis Servicios</a></li>
 								@endif
 
 
