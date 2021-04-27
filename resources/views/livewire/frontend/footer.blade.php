@@ -116,16 +116,20 @@
 				<div class="col-md-6 w3layouts_footer_grid btn-group-vertical" role="group" aria-label="Vertical button group">
 
 				<h2>Enlaces <span>Importantes</span></h2>
-					<li><a href="{{ url('/quienessomos') }} " style="text-decoration: none !important ;">Quienes Somos</a></li>
-					<li><a href="{{ url('/productos') }}">Productos</a></li>
-					<li><a href="{{ url('/servicios') }}">Servicios</a></li>
-					<li><a href="{{ url('/contacto') }}">Contacto</a></li>
+					<li style="color:#ffcc54;"><a href="{{ url('/quienessomos') }}" style="text-decoration: none !important;color:white !important;">Quienes Somos</a></li>
+					<li style="color:#ffcc54;"><a href="{{ url('/productos') }}" style="text-decoration: none !important;color:white;">Productos</a></li>
+					<li style="color:#ffcc54;"><a href="{{ url('/servicios') }}" style="text-decoration: none !important;color:white;">Servicios</a></li>
+					<li style="color:#ffcc54;"><a href="{{ url('/contacto') }}" style="text-decoration: none !important;color:white;">Contacto</a></li>
 
 			</div>
 			<div class="clearfix"> </div>
 		</div>
 	</div>
+<<<<<<< HEAD
 	<p class="copyright">© 2021 {{ $empresa->nombre }} | Desarrollado por <a href="http://techcirclepy.com/" target="_blank">TechCircle</a></p>
+=======
+	<p class="copyright">{{ $empresa->nombre }} | Desarrollado por <a href="http://techcirclepy.com/" target="_blank">TechCircle</a></p>
+>>>>>>> fb61040c85ee9be74a042257f794c5c350732b3f
 	<!-- Modal Carrito -->
 	<div class="modal fade" wire:init="openModal" wire:ignore.self id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	  	<div class="modal-dialog modal-dialog-centered" role="document">

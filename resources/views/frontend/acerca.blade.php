@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @section('contenido')
 
-<livewire:acerca />
+	<livewire:acerca />
 
 @stop
