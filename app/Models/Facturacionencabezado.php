@@ -17,7 +17,7 @@ class Facturacionencabezado extends Model{
 
     protected $fillable=[
         'cliente_id',
-        'vendedor_id'
+        'vendedor_id',
 	    'descuento',
 	    'estado',
     ];
