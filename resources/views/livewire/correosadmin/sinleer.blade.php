@@ -21,6 +21,7 @@
                 </div>
             </div>
             <div class="table-responsive mailbox-messages">
+                
                 @if ($contacto->count())
                     @foreach ($contacto as $value)  	    			
                         <table class="table table-hover table-striped" >
