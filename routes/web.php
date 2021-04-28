@@ -95,6 +95,9 @@ Route::get('/verservicios', function () {
     return view('frontend.verservicios');
 });
 
+Route::get('/admin/compras', function () {
+    return view('admin.compras.index');
+})->middleware('auth');
 
 Route::get('/comprar', [App\Http\Controllers\ComprarController::class, 'index'])->name('comprar')->middleware('auth');
 

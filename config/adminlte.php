@@ -307,6 +307,12 @@ return [
 
         ],
         [
+            'text'        => 'Compras',
+            'url'         => 'admin/compras',
+            'icon'        => 'fas fa-compress-arrows-alt'
+
+        ],
+        [
             'header' => 'GASTOS',
         ],
         [
