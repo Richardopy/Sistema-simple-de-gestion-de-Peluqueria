@@ -3,10 +3,13 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use WithPagination;
+use App\Models\Gastos; 
+use App\Models\Producto; 
+use App\Models\Proveedor; 
+
 
 class Compras extends Component{
-
-    use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
     
@@ -18,9 +21,10 @@ class Compras extends Component{
     
     public function render(){
 
-        $costos = Gastos::where('gastocategoria_id',$this->categoria_id)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
+        $productos=Producto::where('estado',1)->where('stock','>',1)->get();
+        $proveedores=Proveedor::where('estado',1)->get();
         
-        return view('livewire.gastos.index',["costos"=>$costos]);
+        return view('livewire.compras.index',["productos"=>$productos,"proveedores"=>$proveedores]);
     }
     
     private function resetInputFields(){
@@ -41,7 +45,7 @@ class Compras extends Component{
             'gastocategoria_id' => $this->categoria_id,
         ]);
 
-        session()->flash('message', 'Gasto agregado correctamente!');
+        session()->flash('message', 'Compra agregada correctamente!');
 
         $this->resetInputFields();
 

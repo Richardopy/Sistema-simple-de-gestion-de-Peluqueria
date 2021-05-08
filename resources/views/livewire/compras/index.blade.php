@@ -2,12 +2,9 @@
 <div class="container">
 <div class="row">
         <div class="col-md-12"> 
-            @if($updateMode)
-                @include('livewire.gastos.update')
-            @else
-                @include('livewire.gastos.create')
-            @endif
         </div>
+
+
         <div class="col-md-12">
               <input wire:model="search" class="form-control" type="search" placeholder="Buscar algo ">
         </div>
@@ -15,7 +12,7 @@
   
     <br>
     <div class="row">
-        @if ($costos->count())
+        @if ($productos->count())
         <table class="table">
             <thead>
                 <tr>
@@ -30,7 +27,7 @@
                 @php
                     $total=0;
                 @endphp
-                @foreach ($costos as $cat)
+                @foreach ($productos as $cat)
                     <tr>
                         <td>{{ $cat->id }}</td>
                         <td>{{ $cat->nombre }}</td>
@@ -51,7 +48,7 @@
 							        </button>
 							      </div>
 							      <div class="modal-body">
-							        <p>¿Realmente quiere eliminar la categoria {{ $cat->nombre }}?</p>
+							        <p>¿Realmente quiere eliminar la compras {{ $cat->nombre }}?</p>
 							      </div>
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -63,7 +60,7 @@
                         </td>
                     </tr>
                     @php
-                        $total+=$cat->costo;
+                        $total+=$cat->compra;
                     @endphp
                 @endforeach
                 <tr>
