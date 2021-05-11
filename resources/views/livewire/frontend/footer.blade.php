@@ -125,11 +125,7 @@
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-<<<<<<< HEAD
 	<p class="copyright">© 2021 {{ $empresa->nombre }} | Desarrollado por <a href="http://techcirclepy.com/" target="_blank">TechCircle</a></p>
-=======
-	<p class="copyright">{{ $empresa->nombre }} | Desarrollado por <a href="http://techcirclepy.com/" target="_blank">TechCircle</a></p>
->>>>>>> fb61040c85ee9be74a042257f794c5c350732b3f
 	<!-- Modal Carrito -->
 	<div class="modal fade" wire:init="openModal" wire:ignore.self id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	  	<div class="modal-dialog modal-dialog-centered" role="document">
