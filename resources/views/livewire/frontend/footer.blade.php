@@ -113,6 +113,7 @@
 				<div class="clearfix"> </div>
 			</div>
 		</div>
+<<<<<<< HEAD
 		<p class="copyright">{{ $empresa->nombre }} | Desarrollado por <a href="http://techcirclepy.com/" target="_blank">TechCircle</a></p>
 		<!-- Modal Carrito -->
 		<div class="modal fade" wire:init="openModal" wire:ignore.self id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -178,6 +179,55 @@
 						@php
 							$contador+=1;
 						@endphp
+=======
+	</div>
+	<p class="copyright">© 2021 {{ $empresa->nombre }} | Desarrollado por <a href="http://techcirclepy.com/" target="_blank">TechCircle</a></p>
+	<!-- Modal Carrito -->
+	<div class="modal fade" wire:init="openModal" wire:ignore.self id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  	<div class="modal-dialog modal-dialog-centered" role="document">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<h5 class="modal-title" id="exampleModalLongTitle">Carrito de Compras <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          		<span aria-hidden="true">&times;</span>
+		        	</button></h5>
+		      	</div>
+		      	<div class="modal-body">
+		        	@if (count(Cart::getContent()))
+		        		<div class="row">
+  							<table class="table table-striped table-hover">
+  								<thead>
+								    <tr>
+								      	<th scope="col">Producto</th>
+								      	<th scope="col">Precio</th>
+								      	<th scope="col">Acciones</th>
+								    </tr>
+								</thead>
+								<tbody>
+									@php
+										$total=0;
+									@endphp
+									@foreach (Cart::getContent() as $value)
+										@if ($value->attributes->tipo == "producto")
+											<tr>
+												<td scope="row" data-label="Producto"><img src="{{ asset('/images/productos/'.$value->attributes->urlfoto) }}" style="width: 30px;border-radius: 10px;">{{ $value->name }}</td>
+												<td data-label="Precio">{{ $value->price }}</td>
+												<td data-label="Acciones"><button class="btn btn-danger" wire:click="deletecarrito('{{ $value->id }}')"><i class="fa fa-times-circle"></i></button></td>
+											</tr>
+											@php
+												$total+=$value->price*$value->quantity;
+											@endphp
+										@endif
+									@endforeach
+									<tr>
+										<td colspan="2"><b>Total:</b></td>
+										<td>{{ $total }} ₲</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					@else
+						El carrito está vacío
+>>>>>>> 83a83cc26c228c94a921b9d0e6aa5ebe2ba2511e
 					@endif
 				@endforeach
 				@if ($contador > 0)

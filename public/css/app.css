@@ -475,6 +475,12 @@ h6 {
   font-size: inherit;
   font-weight: inherit;
 }
+helipse{
+  width: 230px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+}
 
 /**
  * Reset links to optimize for opt-in styling instead of
