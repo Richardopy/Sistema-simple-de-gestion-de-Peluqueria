@@ -17,9 +17,9 @@ class Productos extends Component{
 
     public function render(){
 
-    	$productos = Producto::where('estado',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
+    	$productos = Producto::where('estado',1)->where('tipo',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
 
-        $contadorproductos = Producto::where('estado',0)->count();
+        $contadorproductos = Producto::where('estado',0)->where('tipo',1)->count();
 
         return view('livewire.productos',["productos"=>$productos,"contadorproductos"=>$contadorproductos]);
     }

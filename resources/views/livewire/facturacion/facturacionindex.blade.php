@@ -13,6 +13,7 @@
 		                    <th>ID</th>
 		                    <th>Cliente</th>
 		                    <th>Fecha</th>
+		                    <th>Vendedor</th>
 		                    <th>Acciones</th>
 
 		                </tr>
@@ -24,6 +25,7 @@
 		                        <td>{{ $value->id }}</td>
 		                        <td>{{ $value->name }}</td>
 		                        <td>{{ $value->created_at }}</td>
+		                        <td>{{ $value->vendedor }}</td>
 		                        <td>
 			                        <button class="btn btn-sm btn-info" wire:click="leer({{ $value->id }})" data-toggle="modal" data-target="#exampleModalleer"><i class="fas fa-eye"></i></button>
 			                        <button class="btn btn-sm btn-success" wire:click="leer({{ $value->id }})" onclick="printer();"><i class="fas fa-print"></i></button> 
@@ -74,7 +76,7 @@
 	<div class="modal fade" id="exampleModalleer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  	<div class="modal-dialog modal-lg" role="document">
 	    	<div class="modal-content">
-	    		@if(isset($comprobante))
+	    		@if(isset($comprobante) && isset($productos))
 		      		<div class="modal-header">
 		        		<h5 class="modal-title" id="exampleModalLabel">Comprobante Nº {{ $comprobante->id }}</h5>
 		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">

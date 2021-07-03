@@ -289,6 +289,7 @@ ul.dropdown-menu.agile_short_dropdown li{
 .nav-bg {
 	background: rgba(4, 4, 4, 0.44);
 	padding: 0.5em 0;
+	z-index: 5;
 }
 /*-- //header --*/
 .banner-1{
@@ -411,7 +412,6 @@ h5.title-w3 {
     font-size: 3em;
     color: #262c38;
     letter-spacing: 1px;
-    position: relative;
     font-weight: 600;
     text-align: center;
 }
@@ -1116,7 +1116,19 @@ span.fa.fa-trophy{
 	text-indent: 100%;
 	background: url(../images/arr1.png) no-repeat 0px 0px;
 }
-
+#carrito {
+	text-decoration: none;
+	position: fixed;
+	width: 55px;
+	height: 45px;
+	bottom: 35px;
+	left: 2%;
+	overflow: hidden;
+	z-index: 999;
+	border: none;
+}
+.carritocontenido{
+}
 #toTopHover {
 	width: 32px;
 	height: 32x;

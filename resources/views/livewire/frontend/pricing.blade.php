@@ -4,7 +4,6 @@
 			.portfolio-hover2{
 		        height: 300px;
 		        background: #FFF;
-		        overflow: hidden;
 		    }
 		    .portfolio-hover2 img{
 		        width: 100%;
@@ -19,7 +18,7 @@
 		    }
 	    </style>
 		<div class="container mt-3">
-			<div class="wthree_head_section">
+			<div class="wthree_head_section" >
 				<h3 class="w3l_header">Productos <span>Disponibles</span></h3>
 				<p>Nuestros productos son de marcas reconocidas a nivel mundial por sus revolucionarias fórmulas aplicadas a la belleza corporal</p>
 				@if ($limite == 2)
@@ -30,8 +29,8 @@
 			</div>
 			<div class="row">
 				@foreach ($productos as $value)
-					<div class="col-sm-4 d-flex pb-3 team1">
-						<div class="card card-block" style="border-radius: 20px;margin-top:10px;box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);">
+					<div class="col-sm-4">
+						<div class="card" style="border-radius: 20px;margin-top:10px;box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);">
 							<div class="portfolio-hover2">
 								<img src="/images/productos/{{ $value->foto }}" class="zoom-img" alt="">
 							</div><br>
@@ -45,13 +44,13 @@
 							@if (in_array("pro_id".$value->id, Cart::getContent()->pluck('id')->toArray()))
 								<button type="button" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i> Agregado al carrito</button>
 							@else
-								<button class="btn btn-warning" wire:click="addcarrito({{ $value->id }})"><i class="fa fa-shopping-cart"></i> Agregar al carrito</button>
+								<button class="btn btn-warning more" wire:click="addcarrito({{ $value->id }})"><i class="fa fa-shopping-cart"></i> Agregar al carrito</button>
 							@endif	
 							</center><br>
 						</div>
 					</div>
 				@endforeach	
-				@if ($limite == 1)
+				@if($limite == 1)
 					<div class="col-md-12" align="center">
 						<div class="more">
 							<a href="{{ url('/productos')}}">Ver más productos</a>
@@ -66,7 +65,5 @@
 			
 			<div class="clearfix"> </div>
 		</div>
-
 	</div>
 </div>
-

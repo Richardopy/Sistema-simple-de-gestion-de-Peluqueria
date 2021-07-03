@@ -51,6 +51,7 @@ class ProductoController extends Controller
 		$producto->precio=$request->get('precio');
 		$producto->oferta=$request->get('oferta');
         $producto->stock=$request->get('stock');
+        $producto->tipo=1;
 
         if ($producto->save()){
             

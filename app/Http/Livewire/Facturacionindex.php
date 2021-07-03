@@ -27,7 +27,8 @@ class Facturacionindex extends Component{
 
     	$encabezado = DB::table('facturacionencabezados as f')
     		->join('users as u','f.cliente_id','u.id')
-    		->select('f.*','u.name')
+            ->join('users as us','f.vendedor_id','us.id')
+    		->select('f.*','u.name','us.name as vendedor')
     		->where('u.name','LIKE','%'.$this->search.'%')->orderBy('id','desc')->paginate(20);
 
         return view('livewire.facturacion.facturacionindex',["encabezado"=>$encabezado,"empresa"=>$empresa]);

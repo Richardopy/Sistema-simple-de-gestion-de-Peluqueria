@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Servicio;
+use App\Models\Producto;
 use Image, file;
 use Illuminate\Support\Facades\Redirect;
 use Session;
@@ -26,7 +26,7 @@ class ServicioController extends Controller
 
     public function store(Request $request) {
 
-        $servicio=new Servicio;
+        $servicio=new Producto;
 
         $servicio->nombre=$request->get('nombre');
 
@@ -49,6 +49,7 @@ class ServicioController extends Controller
 		$servicio->description=$request->get('description');
 		$servicio->precio=$request->get('precio');
 		$servicio->oferta=$request->get('oferta');
+        $servicio->tipo=2;
 
         if($servicio->save()){
             Session::flash('success', '¡El servicio se creo correctamente!');
@@ -58,19 +59,19 @@ class ServicioController extends Controller
 	}	
 
     public function show($id) {
-        $servicio=Servicio::findOrFail($id);  
+        $servicio=Producto::findOrFail($id);  
         return view('admin.servicios.show',["servicio"=>$servicio]);  
     }
 
     public function edit($id) {
-        $servicio=Servicio::findOrFail($id);  
+        $servicio=Producto::findOrFail($id);  
 
         return view('admin.servicios.edit',["servicio"=>$servicio]);
     }
 
     public function update(Request $request,$id) {
 
-        $servicio=Servicio::findOrFail($id); 
+        $servicio=Producto::findOrFail($id); 
 
         $servicio->nombre=$request->get('nombre');
 

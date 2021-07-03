@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Servicio;
+use App\Models\Producto;
 
 class Servicios extends Component{
 
@@ -17,10 +17,10 @@ class Servicios extends Component{
 
     public function render(){
 
-    	$servicios = Servicio::where('estado',1)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
+    	$servicios = Producto::where('estado',1)->where('tipo',2)->where('nombre','LIKE','%'.$this->search.'%')->paginate(20);
 
 
-        $contadorservicios = Servicio::where('estado',0)->count();
+        $contadorservicios = Producto::where('estado',0)->where('tipo',2)->count();
 
         return view('livewire.servicios',["servicios"=>$servicios,"contadorservicios"=>$contadorservicios]);
     }
@@ -28,7 +28,7 @@ class Servicios extends Component{
     public function delete($id)
     {
         if($id){
-            $servicio = Servicio::find($id);
+            $servicio = Producto::find($id);
             $servicio->estado=0;
             $servicio->update();
             session()->flash('message', 'Servicio eliminado correctamente');

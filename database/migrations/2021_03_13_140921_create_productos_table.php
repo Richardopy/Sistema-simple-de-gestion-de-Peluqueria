@@ -17,11 +17,12 @@ class CreateProductosTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('codigo')->nullable();
-            $table->longText('description');
-            $table->integer('stock');
+            $table->longText('description')->nullable();
+            $table->integer('stock')->nullable();
             $table->integer('precio');
             $table->integer('oferta')->nullable();
             $table->boolean('estado')->default(1);
+            $table->boolean('tipo')->default(1);
             $table->string('foto')->nullable();
 
             $table->timestamps();
