@@ -56,7 +56,8 @@
 		<!-- //navigation -->
 	    <!-- //banner -->
 		<!-- Latest News -->
-		@livewire('services', ['limite' => 1])
+		@livewire('pricing', ['limite' => 1])
+		{{-- @livewire('services', ['limite' => 1]) --}}
 		<!-- //Latest News -->
 		<!-- wthree-mid -->
 	    <livewire:ad />
