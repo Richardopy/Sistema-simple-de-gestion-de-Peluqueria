@@ -10,6 +10,8 @@ class Categorias extends Component{
 
     use WithPagination;
 
+    protected $queryString = ['search' => ['except' => '']];
+
     protected $paginationTheme = 'bootstrap';
     
     public $search='';
@@ -38,7 +40,7 @@ class Categorias extends Component{
 
         Categoria::create($validatedDate);
 
-        session()->flash('message', 'Categoria agregada correctamente!');
+        $this->emit('alert', ['type' => 'success', 'message' => 'Categoria agregada correctamente!']);
 
         $this->resetInputFields();
 
@@ -72,7 +74,7 @@ class Categorias extends Component{
 
             ]);
             $this->updateMode = false;
-            session()->flash('message', 'Categoria actualizada correctamente');
+            $this->emit('alert', ['type' => 'success', 'message' => 'Categoria actualizada correctamente!']);
             $this->resetInputFields();
 
         }
@@ -84,7 +86,7 @@ class Categorias extends Component{
             $categoria = Categoria::find($id);
             $categoria->estado=0;
             $categoria->update();
-            session()->flash('message', 'Categoria eliminada correctamente');
+            $this->emit('alert', ['type' => 'success', 'error' => 'Categoria eliminada correctamente!']);
         }
     }
 }

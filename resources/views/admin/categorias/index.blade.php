@@ -3,7 +3,7 @@
 @section('title', 'Categorias')
 
 @section('content_header')
-    <h1>Categorias</h1>
+    <h1>Categorias de productos y servicios</h1>
 @stop
 
 @section('content')
@@ -14,5 +14,10 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script> console.log('Hi!, {{Auth::user()->name}}'); </script>
+    <script>
+    	window.livewire.on('alert', param => {
+	        toastr[param['type']](param['message']);
+	    });
+    </script>
 @stop
