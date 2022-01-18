@@ -14,7 +14,7 @@ class Proveedores extends Component{
     
     public $search='';
     
-    public $nombre, $proveedor_id, $direccion, $ruc;
+    public $nombre, $proveedor_id, $direccion, $ruc, $contacto;
     
     public $updateMode = false;
     
@@ -29,8 +29,8 @@ class Proveedores extends Component{
     private function resetInputFields(){
         $this->nombre = '';
         $this->ruc = '';
+        $this->contacto = '';
         $this->direccion = '';
-
     }
 
     public function store()
@@ -43,11 +43,11 @@ class Proveedores extends Component{
         Proveedor::create([
             'nombre' => $this->nombre,
             'ruc' => $this->ruc,
+            'contacto' => $this->contacto,
             'direccion' => $this->direccion,
-
         ]);
 
-        session()->flash('message', 'Proveedor agregado correctamente!');
+        $this->emit('alert', ['type' => 'success', 'message' => 'Proveedor agregado correctamente!']);
 
         $this->resetInputFields();
 
@@ -60,6 +60,7 @@ class Proveedores extends Component{
         $this->nombre = $proveedor->nombre;
         $this->proveedor_id = $proveedor->id;
         $this->ruc = $proveedor->ruc;
+        $this->contacto = $proveedor->contacto;
         $this->direccion = $proveedor->direccion;
 
     }
@@ -82,11 +83,11 @@ class Proveedores extends Component{
             $proveedor->update([
                 'nombre' => $this->nombre,
                 'ruc' => $this->ruc,
+                'contacto' => $this->contacto,
                 'direccion' => $this->direccion,
-
             ]);
             $this->updateMode = false;
-            session()->flash('message', 'Proveedor actualizado correctamente');
+            $this->emit('alert', ['type' => 'success', 'message' => 'Proveedor actualizado correctamente!']);
             $this->resetInputFields();
 
         }
@@ -98,7 +99,7 @@ class Proveedores extends Component{
             $proveedor = Proveedor::find($id);
             $proveedor->estado=0;
             $proveedor->update();
-            session()->flash('message', 'Proveedor eliminada correctamente');
+            $this->emit('alert', ['type' => 'error', 'message' => 'Proveedor eliminado correctamente!']);
         }
     }
 }

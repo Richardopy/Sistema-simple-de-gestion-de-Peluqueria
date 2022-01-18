@@ -41,12 +41,12 @@ class AddGasto extends Component
 
 
         Gastos::create([
-            'nombre' => $this->nombre,
+            'nombre' => $this->nombre, 
             'costo' => $this->costo,
             'gastocategoria_id' => $this->categoria_id,
         ]);
 
-        session()->flash('message', 'Gasto agregado correctamente!');
+        $this->emit('alert', ['type' => 'success', 'message' => 'Gasto agregado correctamente!']);
 
         $this->resetInputFields();
 
@@ -81,7 +81,7 @@ class AddGasto extends Component
 
             ]);
             $this->updateMode = false;
-            session()->flash('message', 'Costo actualizado correctamente');
+            $this->emit('alert', ['type' => 'success', 'message' => 'Costo actualizado correctamente!']);
             $this->resetInputFields();
 
         }
@@ -92,7 +92,7 @@ class AddGasto extends Component
         if($id){
             $costos = Gastos::find($id);
             $costos->delete();
-            session()->flash('message', 'Gasto eliminado correctamente');
+            $this->emit('alert', ['type' => 'error', 'message' => 'Gasto eliminado correctamente!']);
         }
     }
 }

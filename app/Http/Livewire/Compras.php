@@ -4,10 +4,12 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use WithPagination;
-use App\Models\Gastos; 
+use App\Models\Cabeceracompra; 
 use App\Models\Producto; 
+use App\Models\Compraproductos;
 use App\Models\Proveedor; 
-
+use DB;
+use Auth;
 
 class Compras extends Component{
 
@@ -15,47 +17,80 @@ class Compras extends Component{
     
     public $search='';
     
-    public $nombre, $costos_id, $costo, $categoria_id;
-    
-    public $updateMode = false;
+    public $updateMode = 0;
+
+    public $proveedor_id,$nfactura,$selectpro,$cabecera_id;
+
+    public $prod_cargados=[];
     
     public function render(){
 
-        $productos=Producto::where('estado',1)->where('stock','>',1)->get();
+        $productos=Producto::where('estado',1)->where('tipo',1)->get();
         $proveedores=Proveedor::where('estado',1)->get();
+
+        $encabezado=DB::table('cabeceracompras as cc')
+            ->join('users as u','cc.usuario_id','u.id')
+            ->join('proveedors as p','cc.proveedor_id','p.id')
+            ->select('cc.*','u.name','p.nombre as proveedor')
+            ->where('p.nombre','LIKE','%'.$this->search.'%')->paginate(20);
+
+        $cabecera=DB::table('cabeceracompras as cc')
+            ->join('proveedors as p','cc.proveedor_id','p.id')
+            ->join('users as u','cc.usuario_id','u.id')
+            ->select('cc.*','p.nombre as proveedor','u.name as comprador')
+            ->where('cc.id',$this->cabecera_id)->first();
+
+        $cabeceraproductos=DB::table('compraproductos as cp')
+            ->join('productos as p','cp.producto_id','p.id')
+            ->select('cp.*','p.nombre','p.codigo')
+            ->where('cp.cabecera_id',$this->cabecera_id)->get();
         
-        return view('livewire.compras.index',["productos"=>$productos,"proveedores"=>$proveedores]);
+        return view('livewire.compras.index',["cabecera"=>$cabecera,"cabeceraproductos"=>$cabeceraproductos,"encabezado"=>$encabezado,"productos"=>$productos,"proveedores"=>$proveedores]);
     }
     
     private function resetInputFields(){
-        $this->nombre = '';
-        $this->costo = '';
+        
+        $this->proveedor_id = '';
+        $this->nfactura = '';
+        $this->selectpro = '';
+        $this->prod_cargados=[];
+
     }
 
-   public function store()
-    {
+    public function crear(){
+        $this->updateMode = 1;
+    }
+
+    public function store(){
+
         $validatedDate = $this->validate([
-            'nombre' => 'required',
-            'costo' => 'required',
+            'proveedor_id' => 'required',
+            'nfactura' => 'required',
         ]);
 
-        Gastos::create([
-            'nombre' => $this->nombre,
-            'costo' => $this->costo,
-            'gastocategoria_id' => $this->categoria_id,
-        ]);
+        $cabecera = new Cabeceracompra;
+            $cabecera->nfactura = $this->nfactura;
+            $cabecera->proveedor_id = $this->proveedor_id;
+            $cabecera->usuario_id = Auth::user()->id;
+        if($cabecera->save()){
+            foreach($this->prod_cargados as $prod){
+                $producto = new Compraproductos;
+                    $producto->producto_id=$prod['id'];
+                    $producto->cantidad=$prod['cantidad'];
+                    $producto->precio=$prod['precio'];
+                    $producto->cabecera_id=$cabecera->id;
+                if($producto->save()){ 
+                    $incremento=Producto::find($prod['id']);
+                        $incremento->stock+=$prod['cantidad'];
+                    $incremento->update();
+                }
+            }
+        }
 
-        session()->flash('message', 'Compra agregada correctamente!');
+        $this->emit('alert', ['type' => 'success', 'message' => 'Compra realizada correctamente!']);
 
         $this->resetInputFields();
-
-    }
-    public function edit($id)
-    {
-        $this->updateMode = true;
-        $gastos = Gastos::where('id',$id)->first();
-        $this->nombre = $gastos->nombre;
-        $this->costo = $gastos->costo;    
+        $this->updateMode = 0;
 
     }
 
@@ -65,34 +100,59 @@ class Compras extends Component{
         $this->resetInputFields();
     }
 
-    public function update()
-    {
-        $validatedDate = $this->validate([
-            'nombre' => 'required',
-            'costo' => 'required',
-        ]);
-
-        if ($this->costos_id) {
-            $gastos = Gastos::find($this->costos_id);
-            $gastos->update([
-                'nombre' => $this->nombre,
-                'costo' => $this->costo,
-
-            ]);
-            $this->updateMode = false;
-            session()->flash('message', 'Costo actualizado correctamente');
-            $this->resetInputFields();
-
-        }
-    }
-
     public function delete($id)
     {
         if($id){
-            $costos = Gastos::find($id);
-            $costos->delete();
-            session()->flash('message', 'Gasto eliminado correctamente');
+            $productos=Compraproductos::where('cabecera_id',$id)->get();
+            foreach($productos as $prod){
+                $producto=Producto::find($prod->producto_id);
+                    $producto->stock-=$prod->cantidad;
+                $producto->update();
+            }
+
+            $cabecera = Cabeceracompra::find($id);
+                $cabecera->estado=0;
+            $cabecera->update();
+            
+            $this->emit('alert', ['type' => 'error', 'message' => 'Compra anulada correctamente!']);
         }
+    }
+
+    public function changeEvent(){
+        $producto=Producto::where('codigo',$this->selectpro)->first();
+        if (array_key_exists($producto->id, $this->prod_cargados)){
+            $this->prod_cargados[$producto->id]['cantidad']+=1;
+        }else{
+            $this->prod_cargados[$producto->id]['id']=$producto->id;
+            $this->prod_cargados[$producto->id]['codigo']=$producto->codigo;
+            $this->prod_cargados[$producto->id]['nombre']=$producto->nombre;
+            $this->prod_cargados[$producto->id]['cantidad']=1;
+            if($producto->oferta)
+                $this->prod_cargados[$producto->id]['precio']=$producto->oferta;
+            else{
+                $this->prod_cargados[$producto->id]['precio']=$producto->precio;
+            }
+        }
+
+        $this->selectpro="";
+    }
+
+    public function deleteitem($id){
+        unset($this->prod_cargados[$id]);
+    }
+
+    public function changecantidad($cantidad,$id){
+        $this->prod_cargados[$id]['cantidad']=$cantidad;
+    }
+
+    public function changeprecio($precio,$id){
+        $this->prod_cargados[$id]['precio']=$precio;
+    }
+
+    public function leer($id){
+        $this->cabecera_id=$id;
+        
+        $this->updateMode = 2;
     }
 }
 

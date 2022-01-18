@@ -45,7 +45,7 @@ class CatGastos extends Component{
 
         ]);
 
-        session()->flash('message', 'Categoria de gastos agregado correctamente!');
+        $this->emit('alert', ['type' => 'success', 'message' => 'Categoria de gastos agregado correctamente!']);
 
         $this->resetInputFields();
 
@@ -77,10 +77,10 @@ class CatGastos extends Component{
             $categoria = CategoriaGastos::find($this->categoria_id);
             $categoria->update([
                 'nombre' => $this->nombre,
-
+                'observacion' => $this->observacion,
             ]);
             $this->updateMode = false;
-            session()->flash('message', 'Categoria de gastos actualizada correctamente');
+            $this->emit('alert', ['type' => 'success', 'message' => 'Categoria de gastos actualizada correctamente!']);
             $this->resetInputFields();
 
         }
@@ -92,7 +92,7 @@ class CatGastos extends Component{
             $categoria = CategoriaGastos::find($id);
             $categoria->estado=0;
             $categoria->update();
-            session()->flash('message', 'Categoria eliminada correctamente');
+            $this->emit('alert', ['type' => 'error', 'message' => 'Categoria eliminada correctamente!']);
         }
     }
 }

@@ -1,78 +1,218 @@
 <div>
-<div class="container">
-<div class="row">
-        <div class="col-md-12"> 
-        </div>
+	<h3>Carga de Compras de Proveedor @if($updateMode == 0)<button class="btn btn-success btn-sm" wire:click="crear()"><i class="fas fa-plus-circle"></i> Crear</button>@endif </h3><hr>
+    <div {{($updateMode == 0) ? 'style=display:inline' : 'style=display:none'}}>
+		<div class="row">
+			<div class="col-md-12">
+				<input wire:model="search" class="form-control" type="search" placeholder="Buscar ..."> <hr>
+			</div>
+		</div>
+		<div class="row">
+			@if ($encabezado->count())
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Proveedor</th>
+							<th>Nº de factura</th>
+							<th>Fecha</th>
+							<th>Recepcionado por</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
 
+						@foreach ($encabezado as $value)
+							<tr>
+								<td>{{ $value->id }}</td>
+								<td>{{ $value->proveedor }}</td>
+								<td>{{ $value->nfactura }}</td>
+								<td>{{ $value->created_at }}</td>
+								<td>{{ $value->name }}</td>
+								<td>
+									<button class="btn btn-sm btn-info" wire:click="leer({{ $value->id }})" data-toggle="modal" data-target="#exampleModalleer"><i class="fas fa-eye"></i></button>
+									@if($value->estado == 1)
+										<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal{{ $value->id }}"><i class="far fa-trash-alt"></i></button>
+									@else
+										<span class="badge badge-danger">Anulado</span>
+									@endif
 
-        <div class="col-md-12">
-              <input wire:model="search" class="form-control" type="search" placeholder="Buscar algo ">
-        </div>
-</div>
-  
-    <br>
-    <div class="row">
-        @if ($productos->count())
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Compra</th>
-                    <th>Monto</th>
-                    <th>Acciones</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @php
-                    $total=0;
-                @endphp
-                @foreach ($productos as $cat)
-                    <tr>
-                        <td>{{ $cat->id }}</td>
-                        <td>{{ $cat->nombre }}</td>
-                        <td>{{ $cat->costo }}</td>
-                        <td>
-                        
-                        <button wire:click="edit({{ $cat->id }})" class="btn btn-sm btn-info">Editar</button>
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal{{ $cat->id }}"><i class="far fa-trash-alt"></i></button>
-
-							<!-- Modal -->
-							<div class="modal fade" id="exampleModal{{$cat->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							  <div class="modal-dialog" role="document">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title" id="exampleModalLabel">Eliminar Categoria</h5>
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							          <span aria-hidden="true">&times;</span>
-							        </button>
-							      </div>
-							      <div class="modal-body">
-							        <p>¿Realmente quiere eliminar la compras {{ $cat->nombre }}?</p>
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-							        <button type="button" wire:click="delete({{ $cat->id }})" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
-							      </div>
-							    </div>
-							  </div>
-							</div>
-                        </td>
-                    </tr>
-                    @php
-                        $total+=$cat->compra;
-                    @endphp
-                @endforeach
-                <tr>
-                    <td colspan="3"><b>Total</b></td>
-                    <td>{{ $total }} Gs.</td>
-                </tr>
-            </tbody>
-        </table>
-        @else
-            <div class="col-12 alert alert-warning">
-                No se encuentran registros para {{ $search }}
+									<!-- Modal -->
+									<div class="modal fade" id="exampleModal{{$value->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Anular Compra</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<p>¿Realmente quiere eliminar la compra con Nº de factura {{ $value->nfactura }}?</p>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+													<button type="button" wire:click="delete({{ $value->id }})" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						@endforeach
+					</tbody>
+				</table>
+				<div class="col-12">
+					{{ $encabezado->links() }}
+				</div>
+			@else
+				<div class="col-12 alert alert-warning">
+					No se encuentran registros para {{ $search }}
+				</div>
+			@endif
+		</div>
+	</div>
+	<div {{($updateMode == 1) ? 'style=display:inline' : 'style=display:none'}}>
+		<div class="row">
+    		<div class="col-md-6">
+    			<div class="form-group" wire:ignore>
+                    <label for="informacion">Seleccione Proveedor </label><br>
+                    <select class="form-select" id="proveedores" style="width: 100%" name="cliente_id" required>
+                    	<option value="">Seleccione un proveedor</option>
+                        @foreach($proveedores as $pro)
+                            <option value="{{ $pro->id }}">{{ $pro->nombre }}</option>
+                        @endforeach 
+                    </select> 
+                </div>
+				@error('proveedor_id') <span class="text-danger">{{ $message }}</span>@enderror
+    		</div>
+    		<div class="col-md-6">
+    			<div class="form-group">
+                    <label for="informacion">Nº de factura</label><br>
+                    <div class="input-group mb-3">
+    				  	<input type="number" wire:model="nfactura" class="form-control" placeholder="Nº de factura">
+    				</div>
+					@error('nfactura') <span class="text-danger">{{ $message }}</span>@enderror
+                </div>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="col-md-12">
+                <label for="informacion">Seleccione producto:</label><br>
+                <input list="suggestionList" id="answerInput" wire:model="selectpro" class="form-control" wire:change="changeEvent">
+                <datalist id="suggestionList">
+                    @foreach ($productos as $value)
+                        <option value="{{ $value->codigo }}">{{ $value->nombre }}</option>
+                    @endforeach
+                </datalist><br>
+    		</div>
+    	</div>
+        <div class="row">
+            <div class="col-md-12 table-responsive table-striped">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Subtotal</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+						@php $total=0; @endphp
+                        @foreach($prod_cargados as $prod)
+							<tr>
+								<td>{{$prod['codigo']}}</td>
+								<td>{{$prod['nombre']}}</td>
+								<td>
+									<input type="number" class="form-control" value="{{$prod['cantidad']}}" wire:change="changecantidad($event.target.value,{{$prod['id']}})">
+								</td>
+								<td>
+								<input type="number" class="form-control" value="{{$prod['precio']}}" wire:change="changeprecio($event.target.value,{{$prod['id']}})">
+								</td>
+								<td>{{$prod['precio']*$prod['cantidad']}}</td>
+								<td><button class="btn btn-danger" wire:click="deleteitem({{$prod['id']}})"><i class="far fa-trash-alt"></i></button></td>
+							</tr>
+							@php $total+=$prod['precio']*$prod['cantidad']; @endphp
+						@endforeach
+                    </tbody>
+                </table><hr>
+            </div> 
+            <div class="col-md-9"></div>
+            <div class="col-md-3">
+                <p><b style="font-size: 26px;">Total: </b><span style="font-size: 26px;">{{$total}} Gs.</span></p>
+                <center><button type="submit" wire:click.prevent="store()" class="btn btn-success">Guardar</button></center>
             </div>
-        @endif
-    </div>
+        </div>
+	</div>
+	@if($updateMode == 2)
+		<div class="row">
+    		<div class="col-md-4">
+    			<div class="form-group">
+                    <label for="informacion">Proveedor </label><br>
+                    <input type="text" class="form-control" value="{{$cabecera->proveedor}}" readonly>
+                </div>
+    		</div>
+    		<div class="col-md-4">
+    			<div class="form-group">
+                    <label for="informacion">Nº de factura</label><br>
+                    <div class="input-group mb-3">
+    				  	<input type="number" class="form-control" value="{{$cabecera->nfactura}}" readonly>
+    				</div>
+                </div>
+    		</div>
+			<div class="col-md-4">
+    			<div class="form-group">
+                    <label for="informacion">Recepcionado por</label><br>
+                    <div class="input-group mb-3">
+    				  	<input type="number" class="form-control" value="{{$cabecera->comprador}}" readonly>
+    				</div>
+                </div>
+    		</div>
+    	</div>
+        <div class="row">
+            <div class="col-md-12 table-responsive table-striped">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+						@php $total=0; @endphp
+                        @foreach($cabeceraproductos as $prod)
+							<tr>
+								<td>{{$prod->codigo}}</td>
+								<td>{{$prod->nombre}}</td>
+								<td>{{$prod->cantidad}}</td>
+								<td>{{$prod->precio}}</td>
+								<td>{{$prod->precio*$prod->cantidad}}</td>
+							</tr>
+							@php $total+=$prod->precio*$prod->cantidad; @endphp
+						@endforeach
+                    </tbody>
+                </table><hr>
+            </div> 
+            <div class="col-md-9"></div>
+            <div class="col-md-3">
+                <p><b style="font-size: 26px;">Total: </b><span style="font-size: 26px;">{{$total}} Gs.</span></p>
+            </div>
+        </div>
+	@endif
+	@section('js')
+		<script>
+			$(document).ready(function () {
+				$('#proveedores').select2();
+				$('#proveedores').on('change', function (e) {
+					var data = $('#proveedores').select2("val");
+					@this.set('proveedor_id', data);
+				});
+			});
+		</script>
+	@stop
 </div>

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Perfil de Empresa')
+@section('title', 'Facturación')
 
 @section('content_header')
- 	<h1>Comprobante de ingreso <a href="facturacion/create"><button class="btn btn-success"><i class="fas fa-plus-circle"></i> Nuevo</button></a></h1><hr>
+ 	<h1>Comprobante de ingreso <a href="facturacion/create"><button class="btn btn-success" id="crear"><i class="fas fa-plus-circle"></i> (N)Nuevo</button></a></h1><hr>
 @stop
 
 @section('content')
@@ -12,6 +12,13 @@
 
 @section('js')
 	<script>
+
+		$(document).keypress(function(e){
+			if(e.charCode == 78){ 
+				$('#crear').click();
+			}
+		});
+
 		let identificadorTiempoDeEspera;
 
 	    function printer() {

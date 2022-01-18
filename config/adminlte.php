@@ -244,6 +244,12 @@ return [
             'icon'        => 'fas fa-cash-register',
         ],
         [
+            'text'        => 'Creditos',
+            'url'         => 'admin/credito',
+            'icon'        => 'fas fa-money-bill-wave',
+            'active'      => ['admin/credito', 'admin/credito*', 'regex:@^content/[0-9]+$@'],
+        ],
+        [
             'header' => 'CLIENTES',
         ],
         [
@@ -272,14 +278,17 @@ return [
         ],
         
         [
-            'header' => 'PRODUCTOS',
+            'header' => 'CATEGORIAS',
         ],
         [
             'text'        => 'Categorias',
             'url'         => 'admin/categorias',
             'icon'        => 'fas fa-boxes'
         ],
-      
+
+        [
+            'header' => 'PRODUCTOS',
+        ],
         [
             'text'        => 'Productos',
             'url'         => 'admin/productos',
@@ -320,6 +329,21 @@ return [
             'url'         => 'admin/categoriagastos',
             'icon'        => 'fas fa-file-invoice-dollar'
 
+        ],
+        [
+            'header' => 'INFORMES',
+        ],
+        [
+            'text'        => 'Productos y Servicios',
+            'url'         => 'admin/infoproductos',
+            'icon'        => 'fas fa-box-open',
+            'active'      => ['admin/infoproductos', 'admin/infoproductos*', 'regex:@^content/[0-9]+$@'],
+        ],
+        [
+            'text'        => 'Contabilidad',
+            'url'         => 'admin/contabilidad',
+            'icon'        => 'fas fa-chart-bar',
+            'active'      => ['admin/contabilidad', 'admin/contabilidad*', 'regex:@^content/[0-9]+$@'],
         ],
         [
             'header' => 'USUARIOS',
@@ -424,11 +448,11 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
                 ],
             ],

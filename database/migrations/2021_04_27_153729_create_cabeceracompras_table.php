@@ -16,9 +16,16 @@ class CreateCabeceracomprasTable extends Migration
         Schema::create('cabeceracompras', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            
+            $table->string('nfactura');
+            
             $table->unsignedBigInteger('proveedor_id');
             $table->foreign('proveedor_id')->references('id')->on('proveedors');
-            $table->integer('estado')->default(1);
+
+            $table->unsignedBigInteger('usuario_id');
+            $table->foreign('usuario_id')->references('id')->on('users');
+
+            $table->integer('estado')->default(1);;
         });
     }
 

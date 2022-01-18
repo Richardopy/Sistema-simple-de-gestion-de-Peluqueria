@@ -45,8 +45,10 @@ class Facturacionindex extends Component{
 
             foreach ($compras as $value) {
                 $producto = Producto::find($value->producto_id);
-                $producto->stock+=$value->cantidad;
-                $producto->update();
+                if($producto->tipo==1){
+                    $producto->stock+=$value->cantidad;
+                    $producto->update();
+                }
             }
 
             session()->flash('message', 'Facturación anulada correctamente');

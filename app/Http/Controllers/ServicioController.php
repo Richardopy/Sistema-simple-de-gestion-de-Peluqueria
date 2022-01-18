@@ -11,7 +11,10 @@ use Cart;
 use Illuminate\Support\Facades\Auth; 
 use App\Models\CabeceraCita;
 use App\Models\ServicioCita;
+use App\Models\CategoriaProducto;
+use App\Models\Categoria;
 use Carbon\Carbon;
+use DB;
 
 class ServicioController extends Controller
 {
@@ -21,7 +24,8 @@ class ServicioController extends Controller
     }
 
     public function create(){
-        return view("admin.servicios.create");
+        $categorias=Categoria::where("estado",1)->get();
+        return view("admin.servicios.create",["categorias"=>$categorias]);
     }
 
     public function store(Request $request) {
@@ -41,17 +45,29 @@ class ServicioController extends Controller
                         ->heighten(1000)
                         ->save(public_path() . '/images/servicios/' . $nombre);
                     $servicio->foto=$nombre;
-                    $control=1;
+                    $control=1; 
                 }
             }
         }
 
-		$servicio->description=$request->get('description');
+		$servicio->codigo=$request->get('nombre');
+        $servicio->description=$request->get('description');
 		$servicio->precio=$request->get('precio');
 		$servicio->oferta=$request->get('oferta');
+        $servicio->stock=1000;
         $servicio->tipo=2;
 
-        if($servicio->save()){
+        if ($servicio->save()){
+            
+            foreach ($request->categorias as $categoria){
+		    	$categoriaservicio=new CategoriaProducto;
+
+		    	$categoriaservicio->producto_id=$servicio->id;
+		    	$categoriaservicio->categoria_id=$categoria;
+
+		    	$categoriaservicio->save();
+            }
+
             Session::flash('success', '¡El servicio se creo correctamente!');
         }
 
@@ -60,13 +76,23 @@ class ServicioController extends Controller
 
     public function show($id) {
         $servicio=Producto::findOrFail($id);  
-        return view('admin.servicios.show',["servicio"=>$servicio]);  
+
+        $categoriaproducto=DB::table('categoria_productos as cp')
+            ->join('productos as p','cp.producto_id','p.id')
+            ->join('categorias as c','cp.categoria_id','c.id')
+            ->select('c.nombre')
+            ->where('p.id',$id)->get();
+        
+        return view('admin.servicios.show',["servicio"=>$servicio,"categoriaproducto"=>$categoriaproducto]);  
     }
 
     public function edit($id) {
         $servicio=Producto::findOrFail($id);  
+        $categorias=Categoria::where("estado",1)->get();
 
-        return view('admin.servicios.edit',["servicio"=>$servicio]);
+        $categoriaservicios=CategoriaProducto::select('categoria_id')->where('producto_id',$id)->get();
+
+        return view('admin.servicios.edit',["servicio"=>$servicio,"categoriaservicios"=>$categoriaservicios,"categorias"=>$categorias]);
     }
 
     public function update(Request $request,$id) {
@@ -90,11 +116,30 @@ class ServicioController extends Controller
                 }
             }
         }
+
+        $servicio->codigo=$request->get('nombre');
         $servicio->description=$request->get('description');
         $servicio->precio=$request->get('precio');
         $servicio->oferta=$request->get('oferta');
+        $servicio->stock=1000;
 
         if ($servicio->update()){
+            
+            $categoriaservicios=CategoriaProducto::where('producto_id',$id)->get();
+
+            foreach ($categoriaservicios as $value){
+                $value->delete();
+            }
+
+            foreach ($request->categorias as $categoria){
+                $categoriaservicio=new CategoriaProducto;
+
+                $categoriaservicio->producto_id=$servicio->id;
+                $categoriaservicio->categoria_id=$categoria;
+
+                $categoriaservicio->save();
+            }
+
             Session::flash('success', '¡El servicio se creo correctamente!');
         }
 

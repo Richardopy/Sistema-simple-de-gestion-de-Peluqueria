@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/admin/panel', function () {
     return view('admin.panel.index');
 })->middleware('auth');
 
@@ -25,9 +21,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/admin/categorias', function () {
-    return view('admin.categorias.index');
-})->middleware('auth');
+Route::resource('/admin/categorias', App\Http\Controllers\CategoriaController::class)->middleware('auth');
 
 Route::resource('/admin/proveedores', App\Http\Controllers\ProveedorController::class)->middleware('auth');
 
@@ -37,6 +31,14 @@ Route::resource('/admin/servicios', App\Http\Controllers\ServicioController::cla
 
 Route::get('/admin/mensajes', function () {
     return view('admin.mensajes.index');
+})->middleware('auth');
+
+Route::get('/admin/credito', function () {
+    return view('admin.credito.index');
+})->middleware('auth');
+
+Route::get('/admin/credito/{id}', function ($id) {
+    return view('admin.credito.show',["usuario_id"=>$id]);
 })->middleware('auth');
 
 Route::get('/admin/mensajesproductos', function () {
@@ -53,6 +55,14 @@ Route::get('/admin/gastos', function () {
 
 Route::get('/perfil', function () {
     return view('frontend.perfil');
+})->middleware('auth');
+
+Route::get('/admin/infoproductos', function () {
+    return view('admin.infoproductos.index');
+})->middleware('auth');
+
+Route::get('/admin/contabilidad', function () {
+    return view('admin.contabilidad.index');
 })->middleware('auth');
 
 Route::get('/admin/categoriagastos', function () {

@@ -56,6 +56,16 @@
                         <input type="number" value="{{$servicio->oferta }}" class="form-control" readonly>
                     </div>
                 </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="informacion">Categorias del producto</label><br>
+                        <ul>
+                            @foreach($categoriaproducto as $value)
+                                <li> {{ $value->nombre }}</li>
+                            @endforeach
+                        </ul>
+                    </div>    
+                </div>
             </div>
         </div>
     </div>

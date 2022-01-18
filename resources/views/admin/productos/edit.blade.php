@@ -139,8 +139,8 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label for="informacion">Seleccione Categorias</label><br>
-                            <select class="js-example-basic-multiple" style="width: 100%" class="form-select select2" name="categorias[]" multiple="multiple">
-                                @foreach($categoriaproducto as $value)
+                            <select class="js-example-basic-multiple" style="width: 100%" class="form-select select2" name="categorias[]" multiple="multiple" required>
+                                @foreach($categorias as $value)
                                     <option value="{{ $value->id }}">{{ $value->nombre }}</option>
                                 @endforeach
                             </select>  
@@ -190,22 +190,6 @@
             event.preventDefault();
         }
     </script>
-    @php
-        $listado = '';
-    @endphp
-    @foreach ($categoriaproducto as $value)
-        @php
-            if ($listado){
-                $listado = $listado.",".$value->id;
-            }else{
-                $listado = $listado.'['.$value->id;
-            }
-            
-        @endphp
-    @endforeach
-    @php
-        $listado = $listado.']';
-    @endphp
 @stop
 @section('adminlte_js')
     <script>
@@ -216,7 +200,11 @@
             });
         });
         $('.js-example-basic-multiple').select2();
-        $('.js-example-basic-multiple').val({{ $listado }}).trigger('change');
+        const categorias = [];
+        @foreach($categoriaproductos as $cat)
+            categorias.push({{$cat->categoria_id}});
+        @endforeach
+        $('.js-example-basic-multiple').val(categorias).trigger('change');
     </script>
 
 @stop

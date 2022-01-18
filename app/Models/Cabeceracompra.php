@@ -9,14 +9,16 @@ class Cabeceracompra extends Model
 {
     use HasFactory;
 
-    protected $table='cabecera_compra';
+    protected $table='cabeceracompras';
 
     protected $primaryKey='id';
 
     public $timestamps='true';
 
     protected $fillable=[
-    	'proveedor_id',
-	    'estado',
+    	'nfactura',
+        'proveedor_id',
+        'usuario_id',
+        'estado',
     ];
 }

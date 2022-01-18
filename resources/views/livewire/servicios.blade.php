@@ -1,26 +1,30 @@
-<div class="container">
+<div>
 	<div class="row">
         <div class="col-md-12">
-              <input wire:model="search" class="form-control" type="search" placeholder="Buscar servicios-">
+              <input wire:model="search" class="form-control" type="search" placeholder="Buscar servicios">
         </div>
 	</div><br>
-	<div class="row">
+	<div class="row table-responsive">
 	    @if ($servicios->count())
-		    <table class="table">
+		    <table class="table table-striped">
 		        <thead>
 		            <tr>
-		                <th>ID</th>
 		                <th>Servicio</th>
+						<th>Monto</th>
 		                <th>Acciones</th>
-
 		            </tr>
 		        </thead>
 		        <tbody>
 
 		            @foreach ($servicios as $value)
 		                <tr>
-		                    <td>{{ $value->id }}</td>
-		                    <td>{{ $value->nombre }}</td>
+		                    <td><img src="/images/servicios/{{ $value->foto }}" style="width:30px;border-radius:50%;"> {{ $value->nombre }}</td>
+							<td>
+								{{ number_format($value->precio, 0, '', '.') }}
+								@if($value->oferta)
+									<br><small><b>Oferta: </b>{{ number_format($value->oferta, 0, '', '.') }}</small>
+								@endif
+							</td>
 		                    <td>
 		                    <a href="servicios/{{ $value->id }}"><button class="btn btn-sm btn-success"><i class="far fa-eye"></i></button></a>
 							<a href="servicios/{{ $value->id }}/edit"><button class="btn btn-sm btn-info"><i class="far fa-edit"></i></button></a>

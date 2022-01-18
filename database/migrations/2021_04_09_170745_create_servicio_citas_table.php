@@ -19,7 +19,7 @@ class CreateServicioCitasTable extends Migration
             $table->unsignedBigInteger('cabecera_id');
             $table->foreign('cabecera_id')->references('id')->on('cabecera_citas');
             $table->unsignedBigInteger('servicio_id');
-            $table->foreign('servicio_id')->references('id')->on('servicios');
+            $table->foreign('servicio_id')->references('id')->on('productos');
             $table->integer('precio'); 
 
             $table->timestamps();

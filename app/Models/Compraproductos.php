@@ -9,7 +9,7 @@ class Compraproductos extends Model
 {
     use HasFactory;
 
-    protected $table='compra_productos';
+    protected $table='compraproductos';
 
     protected $primaryKey='id';
 

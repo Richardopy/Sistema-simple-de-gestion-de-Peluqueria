@@ -17,7 +17,7 @@ class CreateCategoriaGastosTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nombre');
-            $table->longText('observacion');
+            $table->longText('observacion')->nullable();
             $table->boolean('estado')->default(1);
         });
     }

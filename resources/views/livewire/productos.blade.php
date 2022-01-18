@@ -1,24 +1,33 @@
 <div>
     <div class="row">
 		<div class="col-md-12">
-			<input wire:model="search" class="form-control" type="search" placeholder="Buscar categoria">
+			<input wire:model="search" class="form-control" type="search" placeholder="Buscar Producto">
 		</div>
 	</div><br>
-	<div class="row">
+	<div class="row table-responsive">
 		@if ($productos->count())
-			<table class="table">
+			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>ID</th>
+						<th>Código</th>
 						<th>Producto</th>
+						<th>Stock</th>
+						<th>Precio</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
 				<tbody>
 					@foreach ($productos as $value)
 						<tr>
-							<td>{{ $value->id }}</td>
-							<td>{{ $value->nombre }}</td>
+							<td>{{ $value->codigo }}</td>
+							<td><img src="/images/productos/{{ $value->foto }}" style="width:30px;border-radius:50%"> {{ $value->nombre }}</td>
+							<td>{{ $value->stock }}</td>
+							<td>
+								<?= number_format($value->precio, 0, '', '.') ?>
+								@if ($value->oferta)
+									<br><b>Oferta:</b><?= number_format($value->oferta, 0, '', '.') ?>
+								@endif
+							</td>
 							<td>
 								<a href="productos/{{ $value->id }}"><button class="btn btn-sm btn-success"><i class="far fa-eye"></i></button></a>
 								<a href="productos/{{ $value->id }}/edit"><button class="btn btn-sm btn-info"><i class="far fa-edit"></i></button></a>

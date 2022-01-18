@@ -135,7 +135,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label for="informacion">Seleccione Categorias</label><br>
-                            <select class="js-example-basic-multiple" style="width: 100%" class="form-select select2" name="categorias[]" multiple="multiple">
+                            <select class="js-example-basic-multiple" style="width: 100%" class="form-select select2" name="categorias[]" multiple="multiple" required>
                                 @foreach($categorias as $value)
                                     <option value="{{ $value->id }}">{{ $value->nombre }}</option>
                                 @endforeach

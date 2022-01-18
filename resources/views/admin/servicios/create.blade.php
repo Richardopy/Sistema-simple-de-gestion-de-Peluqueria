@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label>Nombre del servicio:</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -102,6 +102,16 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="informacion">Seleccione Categorias</label><br>
+                            <select class="js-example-basic-multiple" style="width: 100%" class="form-select select2" name="categorias[]" multiple="multiple" required>
+                                @foreach($categorias as $value)
+                                    <option value="{{ $value->id }}">{{ $value->nombre }}</option>
+                                @endforeach
+                            </select>  
                         </div>
                     </div>
                 </div>

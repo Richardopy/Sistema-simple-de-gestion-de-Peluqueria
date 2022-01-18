@@ -82,13 +82,11 @@ class ProductoController extends Controller
     public function edit($id) {
         $producto=Producto::findOrFail($id);  
 
-        $categoriaproducto=DB::table('categoria_productos as cp')
-            ->join('productos as p','cp.producto_id','p.id')
-            ->join('categorias as c','cp.categoria_id','c.id')
-            ->select('c.nombre','c.id')
-            ->where('p.id',$id)->get();
+        $categoriaproductos=CategoriaProducto::select('categoria_id')->where('producto_id',$id)->get();
+
+        $categorias=Categoria::where("estado",1)->get();
         
-        return view('admin.productos.edit',["producto"=>$producto,"categoriaproducto"=>$categoriaproducto]);
+        return view('admin.productos.edit',["producto"=>$producto,"categorias"=>$categorias,"categoriaproductos"=>$categoriaproductos]);
 }
     public function update(Request $request,$id) {
 
