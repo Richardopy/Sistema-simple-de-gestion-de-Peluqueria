@@ -30,6 +30,4 @@ Portal web para reserva de turnos, venta de insumos y servicios de peluquerias c
 - npm install
 - npm run dev
 
-## Licencia Privativa
 
-Tech Circle
